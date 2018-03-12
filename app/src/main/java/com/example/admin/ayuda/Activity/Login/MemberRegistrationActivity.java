@@ -10,6 +10,6 @@ public class MemberRegistrationActivity extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.non_member_registration_activity);
+        setContentView(R.layout.member_registration_activity);
     }
 }

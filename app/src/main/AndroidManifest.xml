@@ -9,22 +9,33 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity$Login.MainActivity">
+        <activity android:name=".Activity.Login.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-                <action android:name="android.intent.action.VIEW"/>
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity android:name=".Activity$Login.NgoRegistrationActivity">
 
         </activity>
-        <activity android:name=".Activity$Login.NonMemberRegistrationActivity">
+        <activity android:name=".Activity.Login.NgoRegistrationActivity">
 
         </activity>
-        <activity android:name=".Activity$Login.MemberRegistrationActivity" />
-        <activity android:name=".Activity$Login.ForgotPasswordActivity" />
+        <activity android:name=".Activity.Login.NonMemberRegistrationActivity">
+
+        </activity>
+        <activity android:name=".Activity.Login.MemberRegistrationActivity">
+
+        </activity>
+        <activity android:name=".Activity.Login.ForgotPasswordActivity" />
+        <activity android:name=".Activity.MainNavigationActivity">
+
+        </activity>
+        <activity android:name=".Activity.News.AddNewsActivity" />
+        <activity android:name=".Activity.News.NewsDetailsActivity" />
+        <activity android:name=".Activity.Story.AddStoryActivity" />
+        <activity android:name=".Activity.Story.StoryDetailsActivity" />
+        <activity android:name=".Activity.Event.AddEventActivity" />
+        <activity android:name=".Activity.Event.EventDetailsActivity" />
     </application>
 
 </manifest>
