@@ -13,7 +13,7 @@
         <ImageButton
             android:id="@+id/MemRegDpImageButton"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="250dp"
             app:srcCompat="@android:drawable/ic_input_add" android:contentDescription="@string/todo" />
 
         <EditText
@@ -40,19 +40,29 @@
                 android:layout_margin="5dp"
                 android:text="@string/gender" />
 
-            <RadioButton
-                android:id="@+id/MemRegRadioMale"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:text="@string/male" />
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
 
-            <RadioButton
-                android:id="@+id/MemRegRadioFemale"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:text="@string/female" />
+                <RadioButton
+                    android:id="@+id/MemRegRadioMale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="@string/male" />
+
+                <RadioButton
+                    android:id="@+id/MemRegRadioFemale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="@string/female" />
+
+
+            </RadioGroup>
+
+
 
         </LinearLayout>
 
