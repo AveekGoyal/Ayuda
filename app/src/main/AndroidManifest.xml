@@ -19,6 +19,7 @@
         </activity>
         <activity android:name=".Activity.Login.NgoRegistrationActivity">
 
+
         </activity>
         <activity android:name=".Activity.Login.NonMemberRegistrationActivity">
 
@@ -34,7 +35,10 @@
         <activity android:name=".Activity.News.NewsDetailsActivity" />
         <activity android:name=".Activity.Story.AddStoryActivity" />
         <activity android:name=".Activity.Story.StoryDetailsActivity" />
-        <activity android:name=".Activity.Event.AddEventActivity" />
+        <activity android:name=".Activity.Event.AddEventActivity" >
+
+        </activity>
+
         <activity android:name=".Activity.Event.EventDetailsActivity" />
         <activity android:name=".Activity.Appeal.ChooseAppealCategoryActivity" />
         <activity android:name=".Activity.Appeal.AddBloodBankAppealActivity" />

@@ -52,21 +52,25 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Start:"
-                android:textSize="19dp"/>
+                android:textSize="19dp"
+                android:layout_margin="5dp"/>
 
-            <EditText
+            <Button
+                android:id="@+id/AddEventStartDatePicker"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Date"
-                android:inputType="date"
-                android:layout_marginLeft="25dp"/>
+                android:text="Date"
+                android:layout_margin="5dp"
+                />
 
-            <EditText
+            <Button
+                android:id="@+id/AddEventStartTimePicker"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Time"
-                android:inputType="time"
-                android:layout_marginLeft="25dp"/>
+                android:text="Time"
+                android:layout_margin="5dp"
+                />
+
         </LinearLayout>
 
         <LinearLayout
@@ -78,21 +82,25 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="End : "
-                android:textSize="19dp"/>
+                android:textSize="19dp"
+                android:layout_margin="5dp"/>
 
-            <EditText
+            <Button
+                android:id="@+id/AddEventEndDatePicker"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Date"
-                android:inputType="date"
-                android:layout_marginLeft="25dp"/>
+                android:text="Date"
+                android:layout_margin="5dp"
+                />
 
-            <EditText
+            <Button
+                android:id="@+id/AddEventEndTimePicker"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Time"
-                android:inputType="time"
-                android:layout_marginLeft="25dp"/>
+                android:text="Time"
+                android:layout_margin="5dp"
+                />
+
         </LinearLayout>
 
         <EditText
