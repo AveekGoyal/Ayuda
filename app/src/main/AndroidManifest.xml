@@ -36,6 +36,24 @@
         <activity android:name=".Activity.Story.StoryDetailsActivity" />
         <activity android:name=".Activity.Event.AddEventActivity" />
         <activity android:name=".Activity.Event.EventDetailsActivity" />
+        <activity android:name=".Activity.Appeal.ChooseAppealCategoryActivity" />
+        <activity android:name=".Activity.Appeal.AddBloodBankAppealActivity" />
+        <activity android:name=".Activity.Appeal.BloodBankAppealDetailActivity" />
+        <activity android:name=".Activity.Appeal.BloodBankPopupActivity" />
+        <activity android:name=".Activity.Appeal.AddDisasterManagementAppeal" />
+        <activity android:name=".Activity.Appeal.DisasterManagementAppealDetailsActivity" />
+        <activity android:name=".Activity.Appeal.AddOldAgeAppealActivity" />
+        <activity android:name=".Activity.Appeal.OldAgeAppealDetailsActivity" />
+        <activity android:name=".Activity.Appeal.OldAgePopupActivity" />
+        <activity android:name=".Activity.Appeal.AddChildLabourAppealActivity" />
+        <activity android:name=".Activity.Appeal.ChildLabourDetailsActivity" />
+        <activity android:name=".Activity.Appeal.ChildLabourPopupActivity" />
+        <activity android:name=".Activity.Appeal.AddCommunityDevelopmentAppealActivity" />
+        <activity android:name=".Activity.Appeal.CommunityDevelopmentDetailsActivity" />
+        <activity android:name=".Activity.Appeal.CommunityDevelopmentPopupActivity" />
+        <activity android:name=".Activity.Appeal.AppealsAcceptedByNgoActivity" />
+        <activity android:name=".Activity.Appeal.AppealsStatusForUserActivity" />
+        <activity android:name=".Activity.Appeal.AppealStatusDetailsActivity" />
     </application>
 
 </manifest>
