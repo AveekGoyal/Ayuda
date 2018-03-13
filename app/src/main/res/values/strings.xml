@@ -1,3 +1,20 @@
 <resources>
     <string name="app_name">Ayuda</string>
+    <string name="Submit">Submit</string>
+    <string name="male">male</string>
+    <string name="gender">Gender</string>
+    <string name="last_name">Last Name</string>
+    <string name="email_id">Email ID</string>
+    <string name="female">Female</string>
+    <string name="member_id_if_any">Member ID (if any)</string>
+    <string name="organisation_name">Organisation Name</string>
+    <string name="mobile_number">Mobile Number</string>
+    <string name="password">Password</string>
+    <string name="first_name">First Name</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="pincode">PinCode</string>
+    <string name="address">Address</string>
+    <string name="city">City:</string>
+    <string name="state">State</string>
+    <string name="todo">TODO</string>
 </resources>
