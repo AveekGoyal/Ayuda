@@ -24,28 +24,28 @@
                 android:src="@android:drawable/ic_input_add" />
             <EditText
                 android:id="@+id/ProfileNameTextBox"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Name of the Applicant"
                 android:textColor="#fff"
                 android:textStyle="bold"
                 android:inputType="text" />
             <EditText
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Contact Number"
                 android:textColor="#fff"
                 android:textStyle="bold"
                 android:inputType="text" />
             <EditText
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Email Address"
                 android:textColor="#fff"
                 android:textStyle="bold"
                 android:inputType="text"/>
             <EditText
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Location"
                 android:textColor="#fff"
