@@ -9,10 +9,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.example.admin.ayuda.R;
+
+import org.w3c.dom.Text;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -21,11 +28,20 @@ import java.util.Locale;
 
 public class AddEventActivity extends AppCompatActivity {
 
-    private Button AddEventStartDatePicker;
+    private Button addEventStartDatePicker;
     Calendar myCalendar = Calendar.getInstance();
-    private  Button AddEventEndDatePicker;
-    private  Button AddEventStartTimePicker;
-    private Button AddEventEndTimePicker;
+    private  Button addEventEndDatePicker;
+    private  Button addEventStartTimePicker;
+    private Button addEventEndTimePicker;
+    private ImageView addEventPicProofImageButton;
+    private Spinner addEventChooseCategorySpinner;
+    private EditText addEventDescriptionTextBox;
+    private EditText addEventTitleTextBox;
+    private RadioButton addEventVolunteerRadioYes;
+    private RadioButton addEventVolunteerRadioNo;
+    private RadioButton addEventSponsorRadioYes;
+    private  RadioButton AddEventSponsorRadioNo;
+    private Button addEventSubmitButton;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -33,10 +49,20 @@ public class AddEventActivity extends AppCompatActivity {
         setContentView(R.layout.add_event_activity);
 
         //Joining Variables with their Ids
-         AddEventStartDatePicker = (Button) findViewById(R.id.AddEventStartDatePicker);
-         AddEventEndDatePicker = (Button) findViewById(R.id.AddEventEndDatePicker);
-        AddEventStartTimePicker = (Button) findViewById(R.id.AddEventStartTimePicker);
-        AddEventEndTimePicker = (Button) findViewById(R.id.AddEventEndTimePicker);
+         addEventStartDatePicker = (Button) findViewById(R.id.AddEventStartDatePicker);
+         addEventEndDatePicker = (Button) findViewById(R.id.AddEventEndDatePicker);
+        addEventStartTimePicker = (Button) findViewById(R.id.AddEventStartTimePicker);
+        addEventEndTimePicker = (Button) findViewById(R.id.AddEventEndTimePicker);
+        addEventPicProofImageButton = findViewById(R.id.AddEventPicProofImageButton);
+        addEventChooseCategorySpinner = findViewById(R.id.AddEventChooseCategorySpinner);
+        addEventTitleTextBox = findViewById(R.id.AddEventTitleTextBox);
+        addEventDescriptionTextBox = findViewById(R.id.AddEventDescriptionTextBox);
+        addEventVolunteerRadioYes = findViewById(R.id.AddEventVolunteerRadioYes);
+        addEventVolunteerRadioNo = findViewById(R.id.AddEventVolunteerRadioNo);
+        addEventSponsorRadioYes = findViewById(R.id.AddEventSponsorRadioYes);
+        addEventSponsorRadioYes = findViewById(R.id.AddEventSponsorRadioNo);
+        addEventSubmitButton = findViewById(R.id.AddEventSubmitButton);
+
 
         /*
         Functions to use Date Pick Button
@@ -57,7 +83,7 @@ public class AddEventActivity extends AppCompatActivity {
 
         };
 
-        AddEventEndDatePicker.setOnClickListener(new View.OnClickListener() {
+        addEventEndDatePicker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 new DatePickerDialog(AddEventActivity.this, date , myCalendar
@@ -66,7 +92,7 @@ public class AddEventActivity extends AppCompatActivity {
             }
         });
 
-        AddEventStartDatePicker.setOnClickListener(new View.OnClickListener() {
+        addEventStartDatePicker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 new DatePickerDialog(AddEventActivity.this, date , myCalendar
@@ -83,7 +109,7 @@ public class AddEventActivity extends AppCompatActivity {
         Time Pick Starts Here
          */
 
-        AddEventStartTimePicker.setOnClickListener(new View.OnClickListener() {
+        addEventStartTimePicker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Calendar mcurrentTime = Calendar.getInstance();
@@ -99,7 +125,7 @@ public class AddEventActivity extends AppCompatActivity {
                 mTimePicker.show();
             }
         });
-        AddEventEndTimePicker.setOnClickListener(new View.OnClickListener() {
+        addEventEndTimePicker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Calendar mcurrentTime = Calendar.getInstance();

@@ -59,6 +59,7 @@
         <activity android:name=".Activity.Appeal.AppealsStatusForUserActivity" />
         <activity android:name=".Activity.Appeal.AppealStatusDetailsActivity" />
         <activity android:name=".Activity.ProfileActivity" />
+        <activity android:name=".Activity.Event.EventUploadedByNgo" />
     </application>
 
 </manifest>
