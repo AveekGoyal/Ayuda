@@ -14,26 +14,27 @@
             android:layout_width="match_parent"
             android:layout_height="250dp"
             android:src="@drawable/ic_account_circle_black_24dp"
-            android:padding="2dp"/>
+            />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_margin="5dp">
 
             <TextView
                 android:id="@+id/textView1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Type Of Disasters"
-                android:padding="2dp"/>
+                />
 
             <TextView
                 android:id="@+id/DisasterMgmtTypeOfDisasterPlainText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Type Goes here"
-                android:padding="2dp">
+                >
 
             </TextView>
         </LinearLayout>
@@ -43,7 +44,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Description"
-            android:padding="2dp" />
+            android:layout_margin="5dp"
+            android:textSize="16dp"
+             />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -100,7 +103,9 @@
             android:layout_height="wrap_content"
             android:hint="Contact Number"
             android:inputType="number"
-            android:padding="2dp"/>
+            android:textSize="16dp"
+            android:layout_margin="5dp"
+            />
 
         <TextView
             android:id="@+id/DisasterMgmtAltContactNoPlainText"
@@ -108,7 +113,9 @@
             android:layout_height="wrap_content"
             android:hint="Alternate Contact Number"
             android:inputType="number"
-            android:padding="2dp"/>
+            android:textSize="16dp"
+            android:layout_margin="5dp"
+            />
 
 
         <Button
@@ -131,7 +138,7 @@
             android:layout_height="wrap_content"
             android:text="Accept"
             android:layout_gravity="left"
-            android:layout_marginBottom="25dp" />
+            />
 
         <Button
             android:id="@+id/DisasterMgmtRejectButton"

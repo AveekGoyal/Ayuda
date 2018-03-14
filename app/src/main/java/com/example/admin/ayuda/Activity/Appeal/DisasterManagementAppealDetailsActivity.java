@@ -3,6 +3,7 @@ package com.example.admin.ayuda.Activity.Appeal;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -21,6 +22,11 @@ public class DisasterManagementAppealDetailsActivity extends AppCompatActivity {
     private CheckBox disasterMgmtNeedShelter;
     private CheckBox disasterMgmtNeedMedical;
     private CheckBox disasterMgmtNeedClothing;
+    private TextView disasterMgmtNeedRehab;
+    private TextView disasterMgmtContactNoPlainText;
+    private Button disasterMgmtSafetyButton;
+    private Button disasterMgmtAcceptButton;
+    private Button disasterMgmtRejectButton;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -36,6 +42,11 @@ public class DisasterManagementAppealDetailsActivity extends AppCompatActivity {
         disasterMgmtNeedShelter = findViewById(R.id.DisasterMgmtNeedShelter);
         disasterMgmtNeedClothing = findViewById(R.id.DisasterMgmtNeedClothing);
         disasterMgmtNeedMedical = findViewById(R.id.DisasterMgmtNeedMedical);
+        disasterMgmtNeedRehab = findViewById(R.id.DisasterMgmtNeedRehab);
+        disasterMgmtContactNoPlainText = findViewById(R.id.DisasterMgmtContactNoPlainText);
+        disasterMgmtSafetyButton = findViewById(R.id.DisasterMgmtSafetyButton);
+        disasterMgmtAcceptButton = findViewById(R.id.DisasterMgmtAcceptButton);
+        disasterMgmtRejectButton = findViewById(R.id.DisasterMgmtRejectButton);
 
     }
 }
