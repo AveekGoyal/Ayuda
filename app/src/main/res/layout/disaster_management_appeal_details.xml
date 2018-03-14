@@ -1,6 +1,148 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-</android.support.constraint.ConstraintLayout>
+    <android.support.v7.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/DisasterMgmtPicProofImageView"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:src="@drawable/ic_account_circle_black_24dp"
+            android:padding="2dp"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Type Of Disasters"
+                android:padding="2dp"/>
+
+            <PlainText
+                android:id="@+id/DisasterMgmtTypeOfDisasterPlainText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="2dp">
+
+            </PlainText>
+        </LinearLayout>
+
+        <PlainText
+            android:id="@+id/DisasterMgmtDescPlainText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Description"
+            android:padding="2dp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Needs"
+                android:padding="2dp"/>
+
+            <PlainText
+                android:id="@+id/DisasterMgmtNeedFood"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Food"/>
+
+            <PlainText
+                android:id="@+id/DisasterMgmtNeedWater"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Water"/>
+
+            <PlainText
+                android:id="@+id/DisasterMgmtNeedShelter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Shelter"/>
+
+            <PlainText
+                android:id="@+id/DisasterMgmtNeedClothing"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Clothing"/>
+
+            <PlainText
+                android:id="@+id/DisasterMgmtNeedMedical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Medical Facilities"/>
+
+            <PlainText
+                android:id="@+id/DisasterMgmtNeedRehab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rehabilitation"/>
+        </LinearLayout>
+
+        <PlainText
+            android:id="@+id/DisasterMgmtContactNoPlainText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Contact Number"
+            android:inputType="number"
+            android:padding="2dp"/>
+
+        <PlainText
+            android:id="@+id/DisasterMgmtAltContactNoPlainText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Alternate Contact Number"
+            android:inputType="number"
+            android:padding="2dp"/>
+
+
+        <Button
+            android:id="@+id/DisasterMgmtSafetyButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Safety Procedures"
+            android:layout_gravity="center"
+            android:layout_marginBottom="25dp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/DisasterMgmtAcceptButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Accept"
+            android:layout_gravity="left"
+            android:layout_marginBottom="25dp" />
+
+        <Button
+            android:id="@+id/DisasterMgmtRejectButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Reject"
+            android:layout_marginLeft="60dp"
+            android:layout_marginBottom="25dp" />
+
+        </LinearLayout>
+
+
+    </android.support.v7.widget.LinearLayoutCompat>
+
+</ScrollView>

@@ -1,6 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="Choose Category:"
+        android:textSize="20dp"/>
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+
+            <RadioButton
+                android:id="@+id/chooseAppealRadioBloodBank"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Blood Bank"/>
+
+            <RadioButton
+                android:id="@+id/chooseAppealRadioDisaster"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Disaster Management"/>
+
+            <RadioButton
+                android:id="@+id/chooseAppealRadioChild"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Child Labour "/>
+
+            <RadioButton
+                android:id="@+id/chooseAppealRadioOld"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Old age Home"/>
+
+            <RadioButton
+                android:id="@+id/chooseAppealRadioCommunity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Community Development"/>
+
+
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/chooseAppealRadioSubmitButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Submit" />
+
+
+    </LinearLayout>
+
+</RelativeLayout>

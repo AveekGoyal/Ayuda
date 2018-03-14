@@ -1,6 +1,136 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-</android.support.constraint.ConstraintLayout>
+
+    <android.support.v7.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:orientation="vertical">
+
+        <ImageButton
+            android:id="@+id/AddBloodPicProofImageButton"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:src="@drawable/ic_account_circle_black_24dp"
+            android:padding="2dp"/>
+
+        <EditText
+            android:id="@+id/AddBloodPatientNameTextBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Patient Name"
+            android:padding="2dp"/>
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Family Information:"
+            android:padding="2dp"/>
+
+        <EditText
+            android:id="@+id/AddBloodFamilyMemberNameTextBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Name"
+            android:padding="2dp"/>
+
+        <EditText
+            android:id="@+id/AddBloodFamilyMemberContactNoTextBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Mobile Number"
+            android:inputType="number"
+            android:padding="2dp"/>
+
+        <EditText
+            android:id="@+id/AddBloodFamilyMemberAltContactNoTextBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Alternate Mobile Number"
+            android:inputType="number"
+            android:padding="2dp"/>
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Hospital Information"
+            android:padding="2dp"/>
+
+        <EditText
+            android:id="@+id/AddBloodHospitalNameTextBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Hospital Name"
+            android:padding="2dp"/>
+
+        <EditText
+            android:id="@+id/AddBloodHospitalContactNoTextBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Contact Number"
+            android:inputType="number"
+            android:padding="2dp"/>
+
+        <EditText
+            android:id="@+id/AddBloodHospitalAddressTextBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Hospital Address"
+            android:inputType="textMultiLine"
+            android:padding="2dp"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="5dp">
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Blood Group"
+                android:padding="2dp"/>
+
+
+            <Spinner
+                android:id="@+id/AddBloodGroupSpinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="2dp"/>
+
+        </LinearLayout>
+
+
+        <EditText
+            android:id="@+id/AddBloodPlateletsCountTextBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Platelets Count"
+            android:padding="2dp"/>
+
+        <EditText
+            android:id="@+id/AddBloodAmountNeededTextBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Amount Needed (If you know)"
+            android:padding="2dp"/>
+
+        <Button
+            android:id="@+id/AddBloodSubmitButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Submit"
+            android:layout_gravity="center"
+            android:layout_marginBottom="25dp" />
+
+
+    </android.support.v7.widget.LinearLayoutCompat>
+</ScrollView>
