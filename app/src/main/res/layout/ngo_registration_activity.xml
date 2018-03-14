@@ -8,28 +8,32 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_margin="16dp">
 
 
         <ImageButton
             android:id="@+id/NgoRegDpImageButton"
             android:layout_width="match_parent"
             android:layout_height="250dp"
-            app:srcCompat="@android:drawable/ic_input_add" />
+            app:srcCompat="@android:drawable/ic_input_add"
+            />
 
         <EditText
             android:id="@+id/NgoRegNameTextBox"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="Name of Applicant Organiztaion"
-            android:inputType="text"/>
+            android:inputType="text"
+            />
 
         <EditText
             android:id="@+id/NgoRegHeadNameTextBox"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="Name of Head of the Organization"
-            android:inputType="text"/>
+            android:inputType="text"
+            />
 
         <EditText
             android:id="@+id/NgoRegPanNoTextBox"
