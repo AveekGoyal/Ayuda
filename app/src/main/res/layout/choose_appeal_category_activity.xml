@@ -21,31 +21,31 @@
             android:layout_gravity="center">
 
             <RadioButton
-                android:id="@+id/chooseAppealRadioBloodBank"
+                android:id="@+id/ChooseAppealRadioBloodBank"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Blood Bank"/>
+                android:text="Blood Bank" />
 
             <RadioButton
-                android:id="@+id/chooseAppealRadioDisaster"
+                android:id="@+id/ChooseAppealRadioDisaster"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Disaster Management"/>
+                android:text="Disaster Management" />
 
             <RadioButton
-                android:id="@+id/chooseAppealRadioChild"
+                android:id="@+id/ChooseAppealRadioChild"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Child Labour "/>
 
             <RadioButton
-                android:id="@+id/chooseAppealRadioOld"
+                android:id="@+id/ChooseAppealRadioOld"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Old age Home"/>
 
             <RadioButton
-                android:id="@+id/chooseAppealRadioCommunity"
+                android:id="@+id/ChooseAppealRadioCommunity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Community Development"/>
@@ -54,10 +54,11 @@
         </RadioGroup>
 
         <Button
-            android:id="@+id/chooseAppealRadioSubmitButton"
+            android:id="@+id/ChooseAppealRadioSubmitButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_margin="20dp"
             android:text="Submit" />
 
 

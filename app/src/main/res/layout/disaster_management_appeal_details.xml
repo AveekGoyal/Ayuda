@@ -28,17 +28,17 @@
                 android:text="Type Of Disasters"
                 android:padding="2dp"/>
 
-            <PlainText
+            <TextView
                 android:id="@+id/DisasterMgmtTypeOfDisasterPlainText"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:text="Type Goes here"
                 android:padding="2dp">
 
-            </PlainText>
+            </TextView>
         </LinearLayout>
 
-        <PlainText
+        <TextView
             android:id="@+id/DisasterMgmtDescPlainText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -54,47 +54,47 @@
                 android:id="@+id/textView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Needs"
+                android:text="Needs:"
                 android:padding="2dp"/>
 
-            <PlainText
+            <CheckBox
                 android:id="@+id/DisasterMgmtNeedFood"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Food"/>
 
-            <PlainText
+            <CheckBox
                 android:id="@+id/DisasterMgmtNeedWater"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Water"/>
 
-            <PlainText
+            <CheckBox
                 android:id="@+id/DisasterMgmtNeedShelter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Shelter"/>
 
-            <PlainText
+            <CheckBox
                 android:id="@+id/DisasterMgmtNeedClothing"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Clothing"/>
 
-            <PlainText
+            <CheckBox
                 android:id="@+id/DisasterMgmtNeedMedical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Medical Facilities"/>
 
-            <PlainText
+            <CheckBox
                 android:id="@+id/DisasterMgmtNeedRehab"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Rehabilitation"/>
         </LinearLayout>
 
-        <PlainText
+        <TextView
             android:id="@+id/DisasterMgmtContactNoPlainText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -102,7 +102,7 @@
             android:inputType="number"
             android:padding="2dp"/>
 
-        <PlainText
+        <TextView
             android:id="@+id/DisasterMgmtAltContactNoPlainText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -122,7 +122,8 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_gravity="center">
 
         <Button
             android:id="@+id/DisasterMgmtAcceptButton"
@@ -138,7 +139,8 @@
             android:layout_height="wrap_content"
             android:text="Reject"
             android:layout_marginLeft="60dp"
-            android:layout_marginBottom="25dp" />
+            android:layout_marginBottom="25dp"
+            />
 
         </LinearLayout>
 
