@@ -17,7 +17,7 @@
             android:src="@drawable/ic_account_circle_black_24dp"
             android:padding="2dp"/>
 
-        <PlainText
+        <TextView
             android:id="@+id/BloodPatientNamePlainText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -31,14 +31,14 @@
             android:hint="Family Information:"
             android:padding="2dp"/>
 
-        <PlainText
+        <TextView
             android:id="@+id/BloodBankFamilyMemberNamePlainText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Name"
             android:padding="2dp"/>
 
-        <PlainText
+        <TextView
             android:id="@+id/BloodBankFamilyMemberContactNoPlainText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -46,7 +46,7 @@
             android:inputType="number"
             android:padding="2dp"/>
 
-        <PlainText
+        <TextView
             android:id="@+id/BloodBankFamilyMemberAltContactNoPlainText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -61,14 +61,14 @@
             android:hint="Hospital Information"
             android:padding="2dp"/>
 
-        <PlainText
+        <TextView
             android:id="@+id/BloodBankHospitalNamePlainText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Hospital Name"
             android:padding="2dp"/>
 
-        <PlainText
+        <TextView
             android:id="@+id/BloodBankHospitalContactNoPlainText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -76,7 +76,7 @@
             android:inputType="number"
             android:padding="2dp"/>
 
-        <PlainText
+        <TextView
             android:id="@+id/BloodBankHospitalAddressPlainText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -99,7 +99,7 @@
                 android:padding="2dp"/>
 
 
-            <PlainText
+            <TextView
                 android:id="@+id/BloodBankGroupPlainText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -109,14 +109,14 @@
         </LinearLayout>
 
 
-        <PlainText
+        <TextView
             android:id="@+id/BloodBankPlateletsCountPlainText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Platelets Count"
             android:padding="2dp"/>
 
-        <PlainText
+        <TextView
             android:id="@+id/BloodBankAmountNeededPlainText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

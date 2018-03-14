@@ -28,17 +28,17 @@
                 android:text="Type Of Disasters"
                 android:padding="2dp"/>
 
-            <PlainText
+            <TextView
                 android:id="@+id/DisasterMgmtTypeOfDisasterPlainText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:padding="2dp">
 
-            </PlainText>
+            </TextView>
         </LinearLayout>
 
-        <PlainText
+        <TextView
             android:id="@+id/DisasterMgmtDescPlainText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -57,44 +57,44 @@
                 android:text="Needs"
                 android:padding="2dp"/>
 
-            <PlainText
+            <TextView
                 android:id="@+id/DisasterMgmtNeedFood"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Food"/>
 
-            <PlainText
+            <TextView
                 android:id="@+id/DisasterMgmtNeedWater"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Water"/>
 
-            <PlainText
+            <TextView
                 android:id="@+id/DisasterMgmtNeedShelter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Shelter"/>
 
-            <PlainText
+            <TextView
                 android:id="@+id/DisasterMgmtNeedClothing"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Clothing"/>
 
-            <PlainText
+            <TextView
                 android:id="@+id/DisasterMgmtNeedMedical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Medical Facilities"/>
 
-            <PlainText
+            <TextView
                 android:id="@+id/DisasterMgmtNeedRehab"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Rehabilitation"/>
         </LinearLayout>
 
-        <PlainText
+        <TextView
             android:id="@+id/DisasterMgmtContactNoPlainText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -102,7 +102,7 @@
             android:inputType="number"
             android:padding="2dp"/>
 
-        <PlainText
+        <TextView
             android:id="@+id/DisasterMgmtAltContactNoPlainText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

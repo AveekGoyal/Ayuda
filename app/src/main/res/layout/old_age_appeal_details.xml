@@ -16,13 +16,13 @@
             android:src="@drawable/ic_account_circle_black_24dp"
             android:padding="2dp"/>
 
-        <PlainText
+        <TextView
             android:id="@+id/OldAgeHomeDescriptionPlainText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="2dp" />
 
-        <PlainText
+        <TextView
             android:id="@+id/OldAgeHomeAddressPlainText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -41,19 +41,19 @@
                 android:text="The Elderly Needs"
                 android:padding="2dp"/>
 
-            <CheckBox
+            <TextView
                 android:id="@+id/OldAgeHomeFinancialNeeds"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Financial Needs"/>
 
-            <CheckBox
+            <TextView
                 android:id="@+id/ldAgeHomeMedicalNeeds"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Medical Needs"/>
 
-            <CheckBox
+            <TextView
                 android:id="@+id/OldAgeHomeLivelihoodNeeds"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
