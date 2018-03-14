@@ -7,7 +7,9 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="This appeal should be completed with in a day.So, if can complete it then click Proceed else Reject "
+        android:textAlignment="center"
+        android:layout_marginTop="100dp"
+        android:text="This appeal should be completed within a day.So, if you can complete it then click Proceed else Reject "
         android:textSize="25dp"
        android:layout_marginBottom="20dp" />
 
@@ -21,7 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Proceed"
-            android:layout_marginLeft="40dp"/>
+            android:layout_marginLeft="100dp"/>
 
         <Button
             android:id="@+id/BloodBankPopupRejectButton"

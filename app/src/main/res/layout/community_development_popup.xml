@@ -9,6 +9,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="20dp"
+        android:textAlignment="center"
+        android:layout_marginTop="100dp"
         android:text="You will have Maximum 20 Days to complete the appeal. If Yes then accept elese Reject."/>
 
     <LinearLayout
