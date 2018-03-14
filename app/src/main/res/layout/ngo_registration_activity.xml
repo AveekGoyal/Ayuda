@@ -1,6 +1,185 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <ImageButton
+            android:id="@+id/NgoRegDpImageButton"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            app:srcCompat="@android:drawable/ic_input_add" />
+
+        <EditText
+            android:id="@+id/NgoRegNameTextBox"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Name of Applicant Organiztaion"
+            android:inputType="text"/>
+
+        <EditText
+            android:id="@+id/NgoRegHeadNameTextBox"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Name of Head of the Organization"
+            android:inputType="text"/>
+
+        <EditText
+            android:id="@+id/NgoRegPanNoTextBox"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Pan Number of Applicant Organization"
+            android:inputType="text" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Gender:"
+                android:layout_margin="5dp"/>
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/NgoRegRadioMale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    android:text="Male" />
+
+                <RadioButton
+                    android:id="@+id/NgoRedRadioFemale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    android:text="Female" />
+
+            </RadioGroup>
+
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Designation"
+            android:inputType="textMultiLine" />
+
+        <EditText
+            android:id="@+id/NgoRegEmailTextBox"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Email ID"
+            android:inputType="textEmailAddress"/>
+
+        <EditText
+            android:id="@+id/NgoRegPasswordTextBox"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Password"
+            android:inputType="textPassword" />
+
+        <EditText
+            android:id="@+id/NgoRegConfirmPassTextBox"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Confirm Password"
+            android:inputType="textPassword" />
+
+        <EditText
+            android:id="@+id/NgoRegMobileNoTextBox"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Mobile Number"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/NgoRegWebsiteLinkTextBox"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Website"
+            android:inputType="text"/>
+
+        <EditText
+            android:id="@+id/NgoRegAddressTextBox"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Address"
+            android:inputType="textMultiLine" />
+
+        <EditText
+            android:id="@+id/NgoRegPincodeTextBox"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Pincode"
+            android:inputType="number" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="5dp"
+            android:padding="2dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="State:  "/>
+
+            <Spinner
+                android:id="@+id/NgoRegStateSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"></Spinner>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="5dp"
+            android:padding="2dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="City:  "/>
+
+            <Spinner
+                android:id="@+id/NgoRegCitySpinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"></Spinner>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/NgoRegSubmitButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Submit"
+            android:layout_margin="5dp"/>
+        
+
+
+    </LinearLayout>
+
+
+
+</ScrollView>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/appealFragment"
+        android:icon="@drawable/ic_account_box_black_24dp"
+        android:title="Appeal">
+    </item>
+    <item
+        android:id="@+id/eventFragment"
+        android:icon="@drawable/ic_account_circle_black_24dp"
+        android:title="Event"
+        >
+
+    </item>
+    <item
+        android:id="@+id/storyFragment"
+        android:icon="@drawable/ic_assignment_ind_black_24dp"
+        android:title="Story">
+
+    </item>
+    <item
+        android:id="@+id/newsFragment"
+        android:icon="@mipmap/ic_launcher_round"
+        android:title="News">
+
+    </item>
+</menu>
