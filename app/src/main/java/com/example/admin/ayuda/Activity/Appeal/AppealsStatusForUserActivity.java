@@ -11,6 +11,6 @@ public class AppealsStatusForUserActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.appeal_status_for_user_activity);
+        setContentView(R.layout.appeal_status_for_user_cardview);
     }
 }

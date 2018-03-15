@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:padding="10dp">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+
+
+
+        <ImageView
+            android:id="@+id/AppealAcceptedPicImageView"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:padding="2dp"
+            android:src="@drawable/ic_account_circle_black_24dp" />
+
+
+        <TextView
+            android:id="@+id/AppealAcceptedTitlePlainText"
+            android:layout_width="match_parent"
+            android:text="Appeal Title"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:padding="2dp"
+            android:layout_margin="5dp"/>
+
+        <TextView
+            android:id="@+id/AppealAcceptedAppealIDPlainText"
+            android:layout_width="match_parent"
+            android:text="Appeal ID"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:padding="2dp"
+            android:layout_margin="5dp"/>
+
+
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/AppealAcceptedCompleteStatusButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:text="Complete"/>
+
+
+
+
+</android.support.v7.widget.CardView>
+
+
+
+
+
