@@ -1,6 +1,7 @@
 package com.example.admin.ayuda.Activity.Login;
 
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +12,10 @@ import android.widget.RadioButton;
 import android.widget.Spinner;
 
 import com.example.admin.ayuda.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.StorageReference;
 
 public class MemberRegistrationActivity extends AppCompatActivity{
 
@@ -30,6 +35,14 @@ public class MemberRegistrationActivity extends AppCompatActivity{
     private Spinner memRegStateSpinner;
     private EditText memRegPincodeTextBox;
     private Button memRegSubmitButton;
+    private FirebaseAuth mAuth;
+    private FirebaseDatabase mDatabase;
+    private DatabaseReference mDatabaseReference;
+    private StorageReference mStorageReference;
+    private Uri resultUri= null;
+    private String male;
+    private String female;
+    private final static int GALLERY_CODE = 1;
 
 
     @Override
@@ -53,6 +66,10 @@ public class MemberRegistrationActivity extends AppCompatActivity{
         memRegStateSpinner = findViewById(R.id.MemRegStateSpinner);
         memRegSubmitButton = findViewById(R.id.MemRegSubmitButton);
         memRegPincodeTextBox = findViewById(R.id.MemRegPincodeTextBox);
+
+
+        mDatabase =FirebaseDatabase.getInstance();
+
 
     }
 }

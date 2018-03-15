@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_margin="16dp">
+        >
 
 
         <ImageButton
@@ -43,7 +43,9 @@
                 android:layout_height="wrap_content"
                 android:text="Gender:"
                 android:layout_margin="5dp"/>
+
             <RadioGroup
+                android:id="@+id/NonMemberRadioButtonGroup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -61,7 +63,6 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:text="Female" />
-
 
 
             </RadioGroup>
