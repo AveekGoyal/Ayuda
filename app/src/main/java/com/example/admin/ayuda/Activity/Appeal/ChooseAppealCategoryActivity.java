@@ -73,7 +73,39 @@ public class ChooseAppealCategoryActivity extends AppCompatActivity{
                             }
                         });
                         break;
+                    case R.id.ChooseAppealRadioChild:
+                        chooseAppealRadioSubmitButton.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                if (mAuth != null && mUser != null) {
+                                    startActivity(new Intent(ChooseAppealCategoryActivity.this, AddChildLabourAppealActivity.class));
+                                    finish();
+                                }
+                            }
+                        });
+                        break;
+                    case R.id.ChooseAppealRadioCommunity:
+                        chooseAppealRadioSubmitButton.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                if (mAuth != null && mUser != null) {
+                                    startActivity(new Intent(ChooseAppealCategoryActivity.this, AddCommunityDevelopmentAppealActivity.class));
+                                    finish();
+                                }
 
+                            }
+                        });
+                        break;
+                    case R.id.ChooseAppealRadioOld:
+                        chooseAppealRadioSubmitButton.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                if (mAuth != null && mUser != null) {
+                                    startActivity(new Intent(ChooseAppealCategoryActivity.this, AddOldAgeAppealActivity.class));
+                                    finish();
+                                }
+                            }
+                        });
 
                 }
             }
