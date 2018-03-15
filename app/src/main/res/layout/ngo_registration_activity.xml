@@ -54,6 +54,7 @@
                 android:layout_margin="5dp"/>
 
             <RadioGroup
+                android:id="@+id/ngoRegRadioGroup"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
@@ -66,7 +67,7 @@
                     android:text="Male" />
 
                 <RadioButton
-                    android:id="@+id/NgoRedRadioFemale"
+                    android:id="@+id/NgoRegRadioFemale"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_margin="5dp"
@@ -148,7 +149,9 @@
             <Spinner
                 android:id="@+id/NgoRegStateSpinner"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"></Spinner>
+                android:layout_height="wrap_content">
+
+            </Spinner>
 
         </LinearLayout>
 
@@ -168,7 +171,9 @@
             <Spinner
                 android:id="@+id/NgoRegCitySpinner"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"></Spinner>
+                android:layout_height="wrap_content">
+
+            </Spinner>
 
         </LinearLayout>
 
