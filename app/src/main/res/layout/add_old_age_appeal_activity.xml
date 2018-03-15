@@ -1,6 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-</android.support.constraint.ConstraintLayout>
+    <android.support.v7.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:orientation="vertical">
+
+        <ImageButton
+            android:id="@+id/AddOldAgeHomePicProofImageButton"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:src="@drawable/ic_account_circle_black_24dp"
+            android:padding="2dp"/>
+
+        <EditText
+            android:id="@+id/AddOldAgeHomeDescriptionTextBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Name and Age for all members"
+            android:inputType="textMultiLine"
+             />
+
+        <EditText
+            android:id="@+id/AddOldAgeHomeAddressTextBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Address"
+            android:inputType="textMultiLine"
+            />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="5dp">
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="The Elderly Needs"
+                android:padding="2dp"/>
+
+            <CheckBox
+                android:id="@+id/AddOldAgeHomeFinancialNeeds"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Financial Needs"/>
+
+            <CheckBox
+                android:id="@+id/AddOldAgeHomeMedicalNeeds"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Medical Needs"/>
+
+            <CheckBox
+                android:id="@+id/AddOldAgeHomeLivelihoodNeeds"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Livelihood Needs"/>
+
+        </LinearLayout>
+
+
+        <Button
+            android:id="@+id/AddOldAgeHomeSubmitButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Submit"
+            android:layout_gravity="center"
+            android:layout_marginBottom="25dp" />
+
+
+    </android.support.v7.widget.LinearLayoutCompat>
+
+</ScrollView>

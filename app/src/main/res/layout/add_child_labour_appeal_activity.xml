@@ -1,6 +1,158 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-</android.support.constraint.ConstraintLayout>
+    <android.support.v7.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:orientation="vertical">
+
+    <ImageButton
+        android:id="@+id/AddChildLabourPicProofImageButton"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:src="@drawable/ic_account_circle_black_24dp"
+        android:padding="2dp"/>
+
+        <EditText
+            android:id="@+id/AddChildLabourDescTextBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Description"
+            android:inputType="textMultiLine" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Types Of Abuse:"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+            <CheckBox
+                android:id="@+id/AddChildLabourPhysicalAbuse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Physical Abuse"/>
+
+            <CheckBox
+                android:id="@+id/AddChildLabourSexualAbuse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sexual Abuse"/>
+
+            <CheckBox
+                android:id="@+id/AddChildLabourPsychologicalAbuse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Psychological Abuse"/>
+
+            <CheckBox
+                android:id="@+id/AddChildLabourAbandon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Abandon"/>
+
+            <CheckBox
+                android:id="@+id/AddChildLabourChildLabour"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Child Labour"/>
+
+            <CheckBox
+                android:id="@+id/AddChildLabourChildMarriage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Child Marriage"/>
+
+        </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="5dp">
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Child Aprox Age"/>
+
+            <Spinner
+                android:id="@+id/AddChildLabourApproxAgeSpinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="@string/gender" />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/AddChildLabourRadioMale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="@string/male" />
+
+                <RadioButton
+                    android:id="@+id/AddChildLabourRadioFemale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="@string/female" />
+
+            </RadioGroup>
+
+        </LinearLayout>
+
+            <Button
+                android:id="@+id/AddChildLabourSubmitButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Submit"
+                android:layout_gravity="center"
+                android:layout_marginBottom="25dp"
+                android:layout_marginTop="10dp"/>
+
+
+
+
+
+
+
+
+
+
+    </android.support.v7.widget.LinearLayoutCompat>
+
+
+
+</ScrollView>
