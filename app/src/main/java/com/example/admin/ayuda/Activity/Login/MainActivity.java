@@ -107,7 +107,6 @@ public class MainActivity extends AppCompatActivity {
                         });
 
 
-
                         break;
                     case R.id.loginRadioNonMember:
                         loginCreateButton.setOnClickListener(new View.OnClickListener() {
@@ -167,6 +166,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

@@ -227,7 +227,7 @@ public class NgoRegistrationActivity extends AppCompatActivity {
             CropImage.activity(mImageUri)
                     .setAspectRatio(1, 1)
                     .setGuidelines(CropImageView.Guidelines.ON)
-                    .start(NgoRegistrationActivity.this);
+                    .start(this);
 
 
         }

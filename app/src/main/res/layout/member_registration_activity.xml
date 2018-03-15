@@ -11,7 +11,7 @@
         android:orientation="vertical">
 
         <ImageButton
-            android:id="@+id/MemRegDpImageButton"
+            android:id="@+id/AddstoryPictureUploadImageButton"
             android:layout_width="match_parent"
             android:layout_height="250dp"
             app:srcCompat="@android:drawable/ic_input_add" android:contentDescription="@string/todo" />

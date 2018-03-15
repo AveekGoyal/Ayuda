@@ -14,11 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".Activity.Login.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
         </activity>
         <activity android:name=".Activity.Login.NgoRegistrationActivity">
@@ -28,13 +24,18 @@
         <activity android:name=".Activity.Login.NonMemberRegistrationActivity">
 
         </activity>
-        <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity" />
+        <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity" android:theme="@style/Base.Theme.AppCompat" />
+
         <activity android:name=".Activity.Login.MemberRegistrationActivity">
 
         </activity>
         <activity android:name=".Activity.Login.ForgotPasswordActivity" />
         <activity android:name=".Activity.MainNavigationActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".Activity.News.AddNewsActivity" />
         <activity android:name=".Activity.News.NewsDetailsActivity" />
