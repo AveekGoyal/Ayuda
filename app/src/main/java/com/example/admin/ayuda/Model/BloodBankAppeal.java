@@ -7,7 +7,7 @@ public class BloodBankAppeal {
     public String familyMemberName;
     public String familyMemberContactNo;
     public String familyMemberAltContactNo;
-    public String hospitakName;
+    public String hospitalName;
     public String hospitalContactNo;
     public String hospitalAddress;
     public String plateletsCount;
@@ -23,7 +23,7 @@ public class BloodBankAppeal {
         this.familyMemberName = familyMemberName;
         this.familyMemberContactNo = familyMemberContactNo;
         this.familyMemberAltContactNo = familyMemberAltContactNo;
-        this.hospitakName = hospitakName;
+        this.hospitalName = hospitakName;
         this.hospitalContactNo = hospitalContactNo;
         this.hospitalAddress = hospitalAddress;
         this.plateletsCount = plateletsCount;
@@ -72,11 +72,11 @@ public class BloodBankAppeal {
     }
 
     public String getHospitakName() {
-        return hospitakName;
+        return hospitalName;
     }
 
     public void setHospitakName(String hospitakName) {
-        this.hospitakName = hospitakName;
+        this.hospitalName = hospitakName;
     }
 
     public String getHospitalContactNo() {

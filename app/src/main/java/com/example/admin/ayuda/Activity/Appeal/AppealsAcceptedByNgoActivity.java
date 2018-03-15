@@ -11,6 +11,6 @@ public class AppealsAcceptedByNgoActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.appeals_accepted_by_ngo_activity);
+        setContentView(R.layout.appeal_accepted_by_ngo_activity);
     }
 }
