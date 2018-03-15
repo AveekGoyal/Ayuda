@@ -105,6 +105,17 @@ public class MainActivity extends AppCompatActivity {
                                 startActivity(new Intent(MainActivity.this, MemberRegistrationActivity.class));
                             }
                         });
+
+                        loginButton.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                String email = loginEmail.getText().toString();
+                                String password = loginPassword.getText().toString();
+                                loginMember(email,password);
+                            }
+                        });
+
+
                         break;
                     case R.id.loginRadioNonMember:
                         loginCreateButton.setOnClickListener(new View.OnClickListener() {
@@ -114,10 +125,113 @@ public class MainActivity extends AppCompatActivity {
                             }
                         });
 
+                        loginButton.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                String email = loginEmail.getText().toString();
+                                String password = loginPassword.getText().toString();
+                                loginNonMember(email,password);
+
+
+                            }
+                        });
+                        
+                        break;
+
                 }
             }
         });
 
+
+    }
+
+    private void loginMember(final String email, final String password) {
+
+        mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+
+
+                if (task.isSuccessful())
+                {
+
+
+                    mAuthListener = new FirebaseAuth.AuthStateListener() {
+                        @Override
+                        public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+
+
+                            mUser=firebaseAuth.getCurrentUser();
+
+                            DatabaseReference mNgoAdminDatabase = FirebaseDatabase.getInstance().getReference().child("Member");
+
+                            if(mUser.isEmailVerified())
+                            {
+
+                                DatabaseReference newAdmin = mNgoAdminDatabase.push();
+                                Map<String, String> dataToSave = new HashMap<>();
+
+                                dataToSave.put("Email", email);
+                                dataToSave.put("Password", password);
+                                newAdmin.setValue(dataToSave);
+                                startActivity(new Intent(MainActivity.this, MainNavigationActivity.class));
+                                finish();
+                            }
+                        }
+                    };
+                }
+                else
+                {
+                    Toast.makeText(getApplicationContext(),"Task Unsuccessful", Toast.LENGTH_LONG).show();
+                }
+            }
+
+        });
+
+
+    }
+
+    private void loginNonMember(final String email, final String password) {
+        mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+
+
+                if (task.isSuccessful())
+                {
+
+
+                    mAuthListener = new FirebaseAuth.AuthStateListener() {
+                        @Override
+                        public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+
+
+                            mUser=firebaseAuth.getCurrentUser();
+
+                            DatabaseReference mNgoAdminDatabase = FirebaseDatabase.getInstance().getReference().child("NonMember");
+
+                            if(mUser.isEmailVerified())
+                            {
+
+                                DatabaseReference newAdmin = mNgoAdminDatabase.push();
+                                Map<String, String> dataToSave = new HashMap<>();
+
+                                dataToSave.put("Email", email);
+                                dataToSave.put("Password", password);
+                                newAdmin.setValue(dataToSave);
+                                startActivity(new Intent(MainActivity.this, MainNavigationActivity.class));
+                                finish();
+                            }
+                        }
+                    };
+                }
+                else
+                {
+                    Toast.makeText(getApplicationContext(),"Task Unsuccessful", Toast.LENGTH_LONG).show();
+                }
+            }
+
+        });
 
     }
 
@@ -165,22 +279,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId() == R.id.action_signout)
-        {
-            mAuth.signOut();
-            Toast.makeText(MainActivity.this, "Signed Out", Toast.LENGTH_LONG).show();
-        }
 
-        return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main_menu, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
 
     @Override
     protected void onStart() {

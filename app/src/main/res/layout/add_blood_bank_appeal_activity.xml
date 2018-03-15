@@ -15,65 +15,74 @@
             android:layout_width="match_parent"
             android:layout_height="250dp"
             android:src="@drawable/ic_account_circle_black_24dp"
-            android:padding="2dp"/>
+            />
 
         <EditText
             android:id="@+id/AddBloodPatientNameTextBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Patient Name" />
+            android:hint="Patient Name"
+            />
 
         <TextView
             android:id="@+id/textView1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Family Information:" />
+            android:hint="Family Information:"
+            />
 
         <EditText
             android:id="@+id/AddBloodFamilyMemberNameTextBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Name" />
+            android:hint="Name"
+            />
 
         <EditText
             android:id="@+id/AddBloodFamilyMemberContactNoTextBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Mobile Number"
-            android:inputType="number" />
+            android:inputType="number"
+            />
 
         <EditText
             android:id="@+id/AddBloodFamilyMemberAltContactNoTextBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Alternate Mobile Number"
-            android:inputType="number" />
+            android:inputType="number"
+            />
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Hospital Information" />
+            android:hint="Hospital Information"
+            />
 
         <EditText
             android:id="@+id/AddBloodHospitalNameTextBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Hospital Name" />
+            android:hint="Hospital Name"
+            />
 
         <EditText
             android:id="@+id/AddBloodHospitalContactNoTextBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Contact Number"
-            android:inputType="number" />
+            android:inputType="number"
+           />
 
         <EditText
             android:id="@+id/AddBloodHospitalAddressTextBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Hospital Address"
-            android:inputType="textMultiLine" />
+            android:inputType="textMultiLine"
+            />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -86,14 +95,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Blood Group" />
+                android:text="Blood Group"
+                />
 
 
             <Spinner
                 android:id="@+id/AddBloodGroupSpinner"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+               />
 
         </LinearLayout>
 
@@ -102,13 +113,15 @@
             android:id="@+id/AddBloodPlateletsCountTextBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Platelets Count" />
+            android:hint="Platelets Count"
+            />
 
         <EditText
             android:id="@+id/AddBloodAmountNeededTextBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Amount Needed (If you know)" />
+            android:hint="Amount Needed (If you know)"
+            />
 
         <Button
             android:id="@+id/AddBloodSubmitButton"
