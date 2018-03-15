@@ -1,5 +1,6 @@
 package com.example.admin.ayuda.Activity.Appeal;
 
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -10,7 +11,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
+import com.example.admin.ayuda.Activity.MainNavigationActivity;
 import com.example.admin.ayuda.R;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -116,9 +119,26 @@ public class AddBloodBankAppealActivity extends AppCompatActivity {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                     Uri downloadUrl = taskSnapshot.getDownloadUrl();
-                    DatabaseReference newBloodAppeal = mDatabaseReference.push();
+                    String userId = mAuth.getCurrentUser().getUid();
+                    DatabaseReference newBloodAppeal = mDatabaseReference.child(userId);
 
-                    Map<String,String> dataToSave = new HashMap<>();
+
+
+                    newBloodAppeal.child("patientName").setValue(patientName);
+                    newBloodAppeal.child("familyMemberName").setValue(familyMemName);
+                    newBloodAppeal.child("familyMemberContactNo").setValue(familyMemContactNo);
+                    newBloodAppeal.child("familyMemberAltContactNo").setValue(familyMemAltContactNo);
+                    newBloodAppeal.child("hospitalName").setValue(hospitalName);
+                    newBloodAppeal.child("hospitalContactNo").setValue(hospitalContactNo);
+                    newBloodAppeal.child("hospitalAddress").setValue(hospitalAddress);
+                    newBloodAppeal.child("plateletsCount").setValue(plateletsCount);
+                    newBloodAppeal.child("amountNeeded").setValue(bloodAmountNeeded);
+                    newBloodAppeal.child("picProof").setValue(downloadUrl.toString());
+                    newBloodAppeal.child("timestamp").setValue(String.valueOf(java.lang.System.currentTimeMillis()));
+                    startActivity(new Intent(AddBloodBankAppealActivity.this, MainNavigationActivity.class));
+
+
+
 
                 }
             });
