@@ -15,28 +15,28 @@
             android:layout_width="match_parent"
             android:layout_height="250dp"
             android:src="@drawable/ic_account_circle_black_24dp"
-            android:padding="2dp"/>
+            />
 
         <EditText
             android:id="@+id/AddBloodPatientNameTextBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Patient Name"
-            android:padding="2dp"/>
+            />
 
         <TextView
             android:id="@+id/textView1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Family Information:"
-            android:padding="2dp"/>
+            />
 
         <EditText
             android:id="@+id/AddBloodFamilyMemberNameTextBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Name"
-            android:padding="2dp"/>
+            />
 
         <EditText
             android:id="@+id/AddBloodFamilyMemberContactNoTextBox"
@@ -44,7 +44,7 @@
             android:layout_height="wrap_content"
             android:hint="Mobile Number"
             android:inputType="number"
-            android:padding="2dp"/>
+            />
 
         <EditText
             android:id="@+id/AddBloodFamilyMemberAltContactNoTextBox"
@@ -52,21 +52,21 @@
             android:layout_height="wrap_content"
             android:hint="Alternate Mobile Number"
             android:inputType="number"
-            android:padding="2dp"/>
+            />
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Hospital Information"
-            android:padding="2dp"/>
+            />
 
         <EditText
             android:id="@+id/AddBloodHospitalNameTextBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Hospital Name"
-            android:padding="2dp"/>
+            />
 
         <EditText
             android:id="@+id/AddBloodHospitalContactNoTextBox"
@@ -74,7 +74,7 @@
             android:layout_height="wrap_content"
             android:hint="Contact Number"
             android:inputType="number"
-            android:padding="2dp"/>
+           />
 
         <EditText
             android:id="@+id/AddBloodHospitalAddressTextBox"
@@ -82,7 +82,7 @@
             android:layout_height="wrap_content"
             android:hint="Hospital Address"
             android:inputType="textMultiLine"
-            android:padding="2dp"/>
+            />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -96,7 +96,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Blood Group"
-                android:padding="2dp"/>
+                />
 
 
             <Spinner
@@ -104,7 +104,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:padding="2dp"/>
+               />
 
         </LinearLayout>
 
@@ -114,14 +114,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Platelets Count"
-            android:padding="2dp"/>
+            />
 
         <EditText
             android:id="@+id/AddBloodAmountNeededTextBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Amount Needed (If you know)"
-            android:padding="2dp"/>
+            />
 
         <Button
             android:id="@+id/AddBloodSubmitButton"
