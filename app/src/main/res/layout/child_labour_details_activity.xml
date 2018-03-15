@@ -20,7 +20,9 @@
             android:id="@+id/ChildLabourDescPlainText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Description" />
+            android:hint="Description"
+            android:layout_margin="5dp"
+            android:textSize="16dp"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -68,11 +70,11 @@
                 android:layout_height="wrap_content"
                 android:text="Child Labour"/>
 
-            <CheckBox
-                android:id="@+id/ChildLabourChildMarriage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Child Marriage"/>
+                <CheckBox
+                    android:id="@+id/ChildLabourChildMarriage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Child Marriage" />
 
         </LinearLayout>
 
