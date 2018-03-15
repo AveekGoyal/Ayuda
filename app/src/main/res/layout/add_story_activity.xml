@@ -27,13 +27,5 @@
             android:hint="Caption"
             android:textSize="25dp"
             android:layout_margin="35dp"/>
-        <Button
-            android:id="@+id/AddStorySaveButton"
-            android:layout_width="130dp"
-            android:layout_height="80dp"
-            android:layout_gravity="center"
-            android:text="Save"
-            android:layout_margin="50dp"
-            android:textSize="20dp"/>
     </LinearLayout>
 </ScrollView>

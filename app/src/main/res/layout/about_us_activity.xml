@@ -1,6 +1,243 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:text="About Us"
+            android:layout_gravity="center"/>
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="horizontal"
+           android:layout_margin="10dp">
+           <LinearLayout
+               android:layout_width="200dp"
+               android:layout_height="wrap_content"
+               android:orientation="vertical">
+
+               <ImageView
+                   android:layout_width="100dp"
+                   android:layout_height="100dp"
+                   android:src="@drawable/ic_account_circle_black_24dp"
+                   android:layout_gravity="center"
+                   android:id="@+id/AboutUsPic1ImageView"/>
+
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:textSize="20dp"
+                   android:text="Name 1"
+                   android:layout_gravity="center"
+                   android:layout_margin="9dp"
+                   android:id="@+id/AboutUsName1PlainText"
+                   />
+
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="Desc"
+                   android:layout_margin="9dp"
+                   android:textSize="19dp"
+                   android:layout_gravity="center"
+                   android:id="@+id/AboutUsDescription1PlainText"/>
+
+           </LinearLayout>
+
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:orientation="vertical">
+
+               <ImageView
+                   android:layout_width="100dp"
+                   android:layout_height="100dp"
+                   android:src="@drawable/ic_account_circle_black_24dp"
+                   android:layout_gravity="center"
+                   android:id="@+id/AboutUsPic2ImageView"/>
+
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:textSize="20dp"
+                   android:text="Name 2"
+                   android:layout_gravity="center"
+                   android:layout_margin="9dp"
+                   android:id="@+id/AboutUsName2PlainText"
+                   />
+
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="Desc"
+                   android:layout_margin="9dp"
+                   android:textSize="19dp"
+                   android:layout_gravity="center"
+                   android:id="@+id/AboutUsDescription2PlainText"/>
+
+
+           </LinearLayout>
+
+
+       </LinearLayout><LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="horizontal"
+           android:layout_margin="10dp">
+           <LinearLayout
+               android:layout_width="200dp"
+               android:layout_height="wrap_content"
+               android:orientation="vertical">
+
+               <ImageView
+                   android:layout_width="100dp"
+                   android:layout_height="100dp"
+                   android:src="@drawable/ic_account_circle_black_24dp"
+                   android:layout_gravity="center"
+                   android:id="@+id/AboutUsPic3ImageView"/>
+
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:textSize="20dp"
+                   android:text="Name 3"
+                   android:layout_gravity="center"
+                   android:layout_margin="9dp"
+                   android:id="@+id/AboutUsName3PlainText"
+                   />
+
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="Desc"
+                   android:layout_margin="9dp"
+                   android:textSize="19dp"
+                   android:layout_gravity="center"
+                   android:id="@+id/AboutUsDescription3PlainText"/>
+
+           </LinearLayout>
+
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:orientation="vertical">
+
+               <ImageView
+                   android:layout_width="100dp"
+                   android:layout_height="100dp"
+                   android:src="@drawable/ic_account_circle_black_24dp"
+                   android:layout_gravity="center"
+                   android:id="@+id/AboutUsPic4ImageView"/>
+
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:textSize="20dp"
+                   android:text="Name 4"
+                   android:layout_gravity="center"
+                   android:layout_margin="9dp"
+                   android:id="@+id/AboutUsName4PlainText"
+                   />
+
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="Desc"
+                   android:layout_margin="9dp"
+                   android:textSize="19dp"
+                   android:layout_gravity="center"
+                   android:id="@+id/AboutUsDescription4PlainText"/>
+
+
+           </LinearLayout>
+
+
+       </LinearLayout><LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="horizontal"
+           android:layout_margin="10dp">
+           <LinearLayout
+               android:layout_width="200dp"
+               android:layout_height="wrap_content"
+               android:orientation="vertical">
+
+               <ImageView
+                   android:layout_width="100dp"
+                   android:layout_height="100dp"
+                   android:src="@drawable/ic_account_circle_black_24dp"
+                   android:layout_gravity="center"
+                   android:id="@+id/AboutUsPic5ImageView"/>
+
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:textSize="20dp"
+                   android:text="Name 5"
+                   android:layout_gravity="center"
+                   android:layout_margin="9dp"
+                   android:id="@+id/AboutUsName5PlainText"
+                   />
+
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="Desc"
+                   android:layout_margin="9dp"
+                   android:textSize="19dp"
+                   android:layout_gravity="center"
+                   android:id="@+id/AboutUsDescription5PlainText"/>
+
+           </LinearLayout>
+
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:orientation="vertical">
+
+               <ImageView
+                   android:layout_width="100dp"
+                   android:layout_height="100dp"
+                   android:src="@drawable/ic_account_circle_black_24dp"
+                   android:layout_gravity="center"
+                   android:id="@+id/AboutUsPic6ImageView"/>
+
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:textSize="20dp"
+                   android:text="Name 6"
+                   android:layout_gravity="center"
+                   android:layout_margin="9dp"
+                   android:id="@+id/AboutUsName6PlainText"
+                   />
+
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="Desc"
+                   android:layout_margin="9dp"
+                   android:textSize="19dp"
+                   android:layout_gravity="center"
+                   android:id="@+id/AboutUsDescription6PlainText"/>
+
+
+           </LinearLayout>
+
+
+       </LinearLayout>
+    </LinearLayout>
+
+
+</ScrollView>
