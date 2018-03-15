@@ -64,10 +64,31 @@ public class AddEventActivity extends AppCompatActivity {
         addEventSubmitButton = findViewById(R.id.AddEventSubmitButton);
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         /*
         Functions to use Date Pick Button
          */
-
         final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
 
             @Override
