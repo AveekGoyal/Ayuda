@@ -126,7 +126,7 @@ public class MemberRegistrationActivity extends AppCompatActivity{
         });
 
         //Add VAlues in Spinner
-        String[] cities = {"panipat" , "Meerut" , "Pune" , "Saharanpur"};
+        String[] cities = {"Panipat" , "Meerut" , "Pune" , "Saharanpur"};
         ArrayAdapter<String> adaptercity = new ArrayAdapter<String>(this , android.R.layout.simple_spinner_dropdown_item , cities);
         memRegCitySpinner.setAdapter(adaptercity);
 
@@ -186,7 +186,7 @@ public class MemberRegistrationActivity extends AppCompatActivity{
 
                           DatabaseReference currentUserDb = mDatabaseReference.child(userId);
                           currentUserDb.child("firstName").setValue(firstName);
-                          currentUserDb.child("secondName").setValue(lastName);
+                          currentUserDb.child("lastName").setValue(lastName);
                           currentUserDb.child("email").setValue(email);
                           currentUserDb.child("MobileNumber").setValue(number);
                           currentUserDb.child("OrgName").setValue(org);
