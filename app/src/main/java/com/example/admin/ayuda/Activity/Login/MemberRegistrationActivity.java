@@ -57,8 +57,8 @@ public class MemberRegistrationActivity extends AppCompatActivity{
     private StorageReference mStorageReference;
     private RadioGroup memberRadioGrGroup;
     private Uri resultUri= null;
-    private String male;
-    private String female;
+    private String male= " ";
+    private String female= " ";
     private final static int GALLERY_CODE = 1;
 
 
@@ -205,6 +205,7 @@ public class MemberRegistrationActivity extends AppCompatActivity{
                           }
 
                           currentUserDb.child("imageDp").setValue(downloadUrl.toString());
+                          currentUserDb.child("type").setValue("Member");
                           Toast.makeText(getApplicationContext(), " Account Created Successfully", Toast.LENGTH_LONG).show();
                           FirebaseUser user = mAuth.getCurrentUser();
                           user.sendEmailVerification().addOnCompleteListener(MemberRegistrationActivity.this, new OnCompleteListener<Void>() {

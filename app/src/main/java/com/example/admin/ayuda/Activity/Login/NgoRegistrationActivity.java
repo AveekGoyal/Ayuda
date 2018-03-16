@@ -54,8 +54,8 @@ public class NgoRegistrationActivity extends AppCompatActivity {
     private DatabaseReference mDatabaseReference;
     private StorageReference mStorageReference;
     private Uri resultUri= null;
-    private String male;
-    private String female;
+    private String male =" ";
+    private String female=" ";
     private final static int GALLERY_CODE = 1;
 
 
@@ -174,7 +174,7 @@ public class NgoRegistrationActivity extends AppCompatActivity {
                                 {
                                     currentUserDb.child("gender").setValue(male);
                                 }
-                                else
+                                else if(female.equals("Female"))
                                 {
                                     currentUserDb.child("gender").setValue(female);
                                 }
@@ -183,6 +183,7 @@ public class NgoRegistrationActivity extends AppCompatActivity {
                                 currentUserDb.child("websiteLink").setValue(webLink);
                                 currentUserDb.child("ngoAddress").setValue(ngoAddress);
                                 currentUserDb.child("ngoPinCode").setValue(pinCode);
+                                currentUserDb.child("type").setValue("NgoAdmin");
                                 currentUserDb.child("imageDp").setValue(downloadUrl.toString());
                                 Toast.makeText(getApplicationContext(), " Account Created Successfully", Toast.LENGTH_LONG).show();
                                 FirebaseUser user = mAuth.getCurrentUser();

@@ -15,8 +15,17 @@ public class NgoAdmin {
     public String ngoPinCode;
     public String ngoState;
     public String ngoCity;
+    public String appealFirstName;
+    public String appealLastName;
+    public String appealImageDp;
 
     public NgoAdmin() {
+    }
+
+    public NgoAdmin(String appealFirstName, String appealLastName, String appealImageDp) {
+        this.appealFirstName = appealFirstName;
+        this.appealLastName = appealLastName;
+        this.appealImageDp = appealImageDp;
     }
 
     public NgoAdmin(String orgName, String imageDp, String headName, String panNumber, String gender, String email, String mobileNumber, String websiteLink, String ngoAddress, String ngoPinCode, String ngoState, String ngoCity) {
@@ -32,6 +41,24 @@ public class NgoAdmin {
         this.ngoPinCode = ngoPinCode;
         this.ngoState = ngoState;
         this.ngoCity = ngoCity;
+    }
+
+    public NgoAdmin(String orgName, String imageDp, String headName, String panNumber, String gender, String email, String mobileNumber, String websiteLink, String ngoAddress, String ngoPinCode, String ngoState, String ngoCity, String appealFirstName, String appealLastName, String appealImageDp) {
+        this.orgName = orgName;
+        this.imageDp = imageDp;
+        this.headName = headName;
+        this.panNumber = panNumber;
+        this.gender = gender;
+        this.email = email;
+        this.mobileNumber = mobileNumber;
+        this.websiteLink = websiteLink;
+        this.ngoAddress = ngoAddress;
+        this.ngoPinCode = ngoPinCode;
+        this.ngoState = ngoState;
+        this.ngoCity = ngoCity;
+        this.appealFirstName = appealFirstName;
+        this.appealLastName = appealLastName;
+        this.appealImageDp = appealImageDp;
     }
 
     public String getOrgName() {
@@ -128,5 +155,29 @@ public class NgoAdmin {
 
     public void setNgoCity(String ngoCity) {
         this.ngoCity = ngoCity;
+    }
+
+    public String getAppealFirstName() {
+        return appealFirstName;
+    }
+
+    public void setAppealFirstName(String appealFirstName) {
+        this.appealFirstName = appealFirstName;
+    }
+
+    public String getAppealLastName() {
+        return appealLastName;
+    }
+
+    public void setAppealLastName(String appealLastName) {
+        this.appealLastName = appealLastName;
+    }
+
+    public String getAppealImageDp() {
+        return appealImageDp;
+    }
+
+    public void setAppealImageDp(String appealImageDp) {
+        this.appealImageDp = appealImageDp;
     }
 }

@@ -48,9 +48,9 @@ public class NonMemberRegistrationActivity extends AppCompatActivity {
     private DatabaseReference mDatabaseReference;
     private StorageReference mStorageReference;
     private Uri resultUri= null;
-    private String male;
+    private String male=" ";
     private RadioGroup nonMemberRadioButtonGroup;
-    private String female;
+    private String female= " ";
     private final static int GALLERY_CODE = 1;
 
 
@@ -154,10 +154,12 @@ public class NonMemberRegistrationActivity extends AppCompatActivity {
                                 currentUserDb.child("email").setValue(emailId);
                                 if (male.equals("Male")) {
                                     currentUserDb.child("Gender").setValue(male);
-                                } else {
+                                }
+                                else {
                                     currentUserDb.child("Gender").setValue(female);
                                 }
                                 currentUserDb.child("imageDp").setValue(downloadUrl.toString());
+                                currentUserDb.child("type").setValue("NonMember");
                                 Toast.makeText(getApplicationContext(), "Account Created Succesfuly", Toast.LENGTH_SHORT).show();
                                 FirebaseUser user = mAuth.getCurrentUser();
                                 user.sendEmailVerification().addOnCompleteListener(NonMemberRegistrationActivity.this, new OnCompleteListener<Void>() {
