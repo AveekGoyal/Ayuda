@@ -50,6 +50,7 @@ public class AppealListFragment extends Fragment implements AdapterView.OnItemSe
 
 
 
+
     public static AppealListFragment newInstance()
     {
         AppealListFragment fragment = new AppealListFragment();
@@ -86,7 +87,52 @@ public class AppealListFragment extends Fragment implements AdapterView.OnItemSe
         ArrayAdapter dataAdapter = new ArrayAdapter(getActivity(), android.R.layout.simple_spinner_item, categories);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         chooseSortCategory.setAdapter(dataAdapter);
-        FloatingActionButton addAppealBtn = view.findViewById(R.id.AppealListAddAppealFloatingButton);
+        final String userId = mUser.getUid();
+        DatabaseReference getType = FirebaseDatabase.getInstance().getReference().child("NonMember").child(userId);
+        getType.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                type = dataSnapshot.child("type").getValue(String.class);
+                if (type==null)
+                {
+                    DatabaseReference getTypeMember = FirebaseDatabase.getInstance().getReference().child("Member").child(userId);
+                    getTypeMember.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            type = dataSnapshot.child("type").getValue(String.class);
+                            if(type==null)
+                            {
+                                FloatingActionButton addAppealBtn = view.findViewById(R.id.AppealListAddAppealFloatingButton);
+                                addAppealBtn.setVisibility(View.GONE);
+
+                            }
+                            else
+                            {
+                                FloatingActionButton addAppealBtn = view.findViewById(R.id.AppealListAddAppealFloatingButton);
+                                addAppealBtn.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        if (mAuth != null && mUser != null) {
+                                            startActivity(new Intent(getActivity(), ChooseAppealCategoryActivity.class));
+                                        }
+                                    }
+                                });
+
+
+                            }
+
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                    });
+
+                }
+                else
+                {
+                    FloatingActionButton addAppealBtn = view.findViewById(R.id.AppealListAddAppealFloatingButton);
                     addAppealBtn.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -95,6 +141,15 @@ public class AppealListFragment extends Fragment implements AdapterView.OnItemSe
                             }
                         }
                     });
+
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
 
 
