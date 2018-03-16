@@ -1,6 +1,7 @@
 package com.example.admin.ayuda.Data.AppealAdapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.admin.ayuda.Activity.Appeal.BloodBankAppealDetailActivity;
 import com.example.admin.ayuda.Model.BloodBankAppeal;
 import com.example.admin.ayuda.Model.NgoAdmin;
 import com.example.admin.ayuda.Model.NonMember;
@@ -95,7 +97,7 @@ public class BloodBankAppealAdapter extends RecyclerView.Adapter<BloodBankAppeal
         public TextView appealDate;
         String userId = null;
 
-        public ViewHolder(View itemView, Context ctx) {
+        public ViewHolder(View itemView, final Context ctx) {
             super(itemView);
             context = ctx;
             imageDp = itemView.findViewById(R.id.AppealListDpImageView);
@@ -103,8 +105,30 @@ public class BloodBankAppealAdapter extends RecyclerView.Adapter<BloodBankAppeal
             appealPic = itemView.findViewById(R.id.AppealListPictureImageView);
             appealTitle = itemView.findViewById(R.id.AppealListTitlePlainText);
             appealDate = itemView.findViewById(R.id.AppealListDateCreatedPlainText);
+             itemView.setOnClickListener(new View.OnClickListener() {
+                 @Override
+                 public void onClick(View v) {
+                     BloodBankAppeal bloodBankAppeal = bloodBankAppealList.get(getAdapterPosition());
+
+                     Intent intent = new Intent(context, BloodBankAppealDetailActivity.class);
+
+                     intent.putExtra("appealPic", bloodBankAppealList.get(getAdapterPosition()).getPicProof() );
+                     intent.putExtra("appealTitle",bloodBankAppealList.get(getAdapterPosition()).getPatientName());
+                     intent.putExtra("familyMemberName",bloodBankAppealList.get(getAdapterPosition()).getFamilyMemberName());
+                     intent.putExtra("familyMemberContact",bloodBankAppealList.get(getAdapterPosition()).getFamilyMemberContactNo());
+                     intent.putExtra("familyMemberAltContact",bloodBankAppealList.get(getAdapterPosition()).getFamilyMemberAltContactNo());
+                     intent.putExtra("hospitalName",bloodBankAppealList.get(getAdapterPosition()).getHospitakName());
+                     intent.putExtra("hospitalContactNo",bloodBankAppealList.get(getAdapterPosition()).getHospitalContactNo());
+                     intent.putExtra("plateletsCount",bloodBankAppealList.get(getAdapterPosition()).getPlateletsCount());
+                     intent.putExtra("bloodAmountNeeded",bloodBankAppealList.get(getAdapterPosition()).getAmountNeeded());
+                     intent.putExtra("patientName",bloodBankAppealList.get(getAdapterPosition()).getPatientName());
+                     intent.putExtra("hospitalAddress",bloodBankAppealList.get(getAdapterPosition()).getHospitalAddress());
+                     ctx.startActivity(intent);
 
 
+
+                 }
+             });
         }
     }
 }
