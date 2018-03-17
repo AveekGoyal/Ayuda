@@ -121,55 +121,53 @@ public class AddBloodBankAppealActivity extends AppCompatActivity {
                 !TextUtils.isEmpty(hospitalAddress) &&
                 !TextUtils.isEmpty(bloodAmountNeeded) )
         {
+            DatabaseReference getUserDetails= FirebaseDatabase.getInstance().getReference().child("NonMember");
+            getUserDetails.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    String fName= dataSnapshot.child(userId).child("firstName").getValue(String.class);
+                    String lname = dataSnapshot.child(userId).child("lastName").getValue(String.class);
+                    String imageUrl = dataSnapshot.child(userId).child("imageDp").getValue(String.class);
+                    NonMember userDetail = new NonMember(fName,lname,imageUrl);
+
+
+
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+
             StorageReference filePath = mStorage.child("BloodBankAppeal_Images").child(resultUri.getLastPathSegment());
             filePath.putFile(resultUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(final UploadTask.TaskSnapshot taskSnapshot) {
                     final Uri downloadUrl = taskSnapshot.getDownloadUrl();
-                    DatabaseReference getUserDetails= FirebaseDatabase.getInstance().getReference().child("NonMember");
-                    getUserDetails.addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(DataSnapshot dataSnapshot) {
-                          String fName= dataSnapshot.child(userId).child("firstName").getValue(String.class);
-                          String lname = dataSnapshot.child(userId).child("lastName").getValue(String.class);
-                          String imageUrl = dataSnapshot.child(userId).child("imageDp").getValue(String.class);
-                          Toast.makeText(getApplicationContext()," "+fName,Toast.LENGTH_LONG).show();
 
-                            NonMember userDetail = new NonMember(fName,lname,imageUrl);
+                    //String userId = mAuth.getCurrentUser().getUid();
+                    DatabaseReference newBloodAppeal = mDatabaseReference.push();
+                    NonMember userDetail = new NonMember();
+                    Map<String, String> dataToSave = new HashMap<>();
 
-
-                            String userId = mAuth.getCurrentUser().getUid();
-                            DatabaseReference newBloodAppeal = mDatabaseReference.child(userId);
-
-                            newBloodAppeal.child("appealFirstName").setValue(userDetail.getAppealFirstName());
-                            newBloodAppeal.child("appealLastName").setValue(userDetail.getAppealLastName());
-                            newBloodAppeal.child("appealImageDp").setValue(userDetail.getAppealImageDp());
-                            newBloodAppeal.child("patientName").setValue(patientName);
-                            newBloodAppeal.child("patientName").setValue(patientName);
-                            newBloodAppeal.child("patientName").setValue(patientName);
-                            newBloodAppeal.child("familyMemberName").setValue(familyMemName);
-                            newBloodAppeal.child("familyMemberContactNo").setValue(familyMemContactNo);
-                            newBloodAppeal.child("familyMemberAltContactNo").setValue(familyMemAltContactNo);
-                            newBloodAppeal.child("hospitalName").setValue(hospitalName);
-                            newBloodAppeal.child("hospitalContactNo").setValue(hospitalContactNo);
-                            newBloodAppeal.child("hospitalAddress").setValue(hospitalAddress);
-                            newBloodAppeal.child("plateletsCount").setValue(plateletsCount);
-                            newBloodAppeal.child("amountNeeded").setValue(bloodAmountNeeded);
-                            newBloodAppeal.child("picProof").setValue(downloadUrl.toString());
-                            newBloodAppeal.child("timestamp").setValue(String.valueOf(java.lang.System.currentTimeMillis()));
-                            startActivity(new Intent(AddBloodBankAppealActivity.this, MainNavigationActivity.class));
-
-
-
-
-
-                        }
-
-                        @Override
-                        public void onCancelled(DatabaseError databaseError) {
-
-                        }
-                    });
+                    dataToSave.put("appealFirstName",userDetail.getAppealFirstName());
+                    dataToSave.put("appealLastName",userDetail.getAppealLastName());
+                    dataToSave.put("appealImageDp",userDetail.getAppealImageDp());
+                    dataToSave.put("patientName",patientName);
+                    dataToSave.put("familyMemberName",familyMemName);
+                    dataToSave.put("familyMemberContactNo",familyMemContactNo);
+                    dataToSave.put("familyMemberAltContactNo",familyMemAltContactNo);
+                    dataToSave.put("hospitalName",hospitalName);
+                    dataToSave.put("hospitalContactNo",hospitalContactNo);
+                    dataToSave.put("hospitalAddress",hospitalAddress);
+                    dataToSave.put("plateletsCount",plateletsCount);
+                    dataToSave.put("amountNeeded",bloodAmountNeeded);
+                    dataToSave.put("picProof",downloadUrl.toString());
+                    dataToSave.put("timestamp",String.valueOf(java.lang.System.currentTimeMillis()));
+                    newBloodAppeal.setValue(dataToSave);
+                    startActivity(new Intent(AddBloodBankAppealActivity.this, MainNavigationActivity.class));
+                    finish();
 
                 }
             });

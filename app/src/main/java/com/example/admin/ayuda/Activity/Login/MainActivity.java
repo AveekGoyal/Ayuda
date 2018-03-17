@@ -175,6 +175,7 @@ public class MainActivity extends AppCompatActivity {
                                 dataToSave.put("Password", password);
                                 newAdmin.setValue(dataToSave);
                                 startActivity(new Intent(MainActivity.this, MainNavigationActivity.class));
+
                                 finish();
                             }
                         }
