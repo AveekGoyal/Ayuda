@@ -13,11 +13,45 @@ public class ChildAbuseAppeals {
     public String childMarriage;
     public String approxAge;
     public String gender;
+    public String appealFirstName;
+    public String appealLastName;
+    public String appealImageDp;
+    public String timestamp;
+
+
+
+    public String getAppealFirstName() {
+        return appealFirstName;
+    }
+
+    public void setAppealFirstName(String appealFirstName) {
+        this.appealFirstName = appealFirstName;
+    }
+
+    public String getAppealLastName() {
+        return appealLastName;
+    }
+
+    public void setAppealLastName(String appealLastName) {
+        this.appealLastName = appealLastName;
+    }
+
+    public String getAppealImageDp() {
+        return appealImageDp;
+    }
+
+    public void setAppealImageDp(String appealImageDp) {
+        this.appealImageDp = appealImageDp;
+    }
 
     public ChildAbuseAppeals() {
     }
 
-    public ChildAbuseAppeals(String picProof, String desc, String physicalAbuse, String sexualAbuse, String psychologicalAbuse, String abandon, String childLabour, String childMarriage, String approxAge, String gender) {
+    public String getTimestamp() {
+        return timestamp;
+    }
+
+    public ChildAbuseAppeals(String picProof, String desc, String physicalAbuse, String sexualAbuse, String psychologicalAbuse, String abandon, String childLabour, String childMarriage, String approxAge, String gender, String appealFirstName, String appealLastName, String appealImageDp, String timestamp) {
         this.picProof = picProof;
         this.desc = desc;
         this.physicalAbuse = physicalAbuse;
@@ -28,6 +62,11 @@ public class ChildAbuseAppeals {
         this.childMarriage = childMarriage;
         this.approxAge = approxAge;
         this.gender = gender;
+
+        this.appealFirstName = appealFirstName;
+        this.appealLastName = appealLastName;
+        this.appealImageDp = appealImageDp;
+        this.timestamp = timestamp;
     }
 
     public String getPicProof() {
