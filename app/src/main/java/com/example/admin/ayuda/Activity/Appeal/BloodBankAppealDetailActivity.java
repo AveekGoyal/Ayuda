@@ -1,12 +1,15 @@
 package com.example.admin.ayuda.Activity.Appeal;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.admin.ayuda.Activity.MainNavigationActivity;
 import com.example.admin.ayuda.Data.AppealAdapters.BloodBankAppealAdapter;
 import com.example.admin.ayuda.Model.BloodBankAppeal;
 import com.example.admin.ayuda.R;
@@ -78,6 +81,13 @@ public class BloodBankAppealDetailActivity extends AppCompatActivity {
         bloodBankAmountNeededPlainText.setText(String.format("Amount Needed : %s", getIntent().getStringExtra("bloodAmountNeeded")));
         bloodBankHospitalAddressPlainText.setText(String.format("Hospital Address : %s", getIntent().getStringExtra("hospitalAddress")));
 
+
+        bloodBankRejectButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(BloodBankAppealDetailActivity.this, MainNavigationActivity.class));
+            }
+        });
 
 
     }

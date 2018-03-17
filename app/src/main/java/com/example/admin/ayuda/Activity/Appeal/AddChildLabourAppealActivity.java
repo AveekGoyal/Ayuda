@@ -17,6 +17,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.admin.ayuda.Activity.MainNavigationActivity;
+import com.example.admin.ayuda.Model.Members;
 import com.example.admin.ayuda.Model.NonMember;
 import com.example.admin.ayuda.R;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -172,74 +173,141 @@ public class AddChildLabourAppealActivity extends AppCompatActivity {
                             String lname = dataSnapshot.child(userId).child("lastName").getValue(String.class);
                             String imageUrl = dataSnapshot.child(userId).child("imageDp").getValue(String.class);
 
-                            NonMember userDetail = new NonMember(fName,lname,imageUrl);
+                            NonMember userDetail = new NonMember(fName, lname, imageUrl);
+                            if (fName == null && lname == null && imageUrl == null) {
+                                DatabaseReference getMemberDetails = FirebaseDatabase.getInstance().getReference().child("Member");
+                                getMemberDetails.addValueEventListener(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(DataSnapshot dataSnapshot) {
+                                        String fName = dataSnapshot.child(userId).child("firstName").getValue(String.class);
+                                        String lname = dataSnapshot.child(userId).child("lastName").getValue(String.class);
+                                        String imageUrl = dataSnapshot.child(userId).child("imageDp").getValue(String.class);
+                                        Members memberDetails = new Members(fName, lname, imageUrl);
+
+                                        DatabaseReference newChildLabourAppeal = mDatabaseReference.push();
+                                        Map<String, String> dataToSave = new HashMap<>();
+                                        dataToSave.put("appealFirstName", memberDetails.getAppealFirstName());
+                                        dataToSave.put("appealLastName", memberDetails.getAppealLastName());
+                                        dataToSave.put("appealImageDp", memberDetails.getAppealImageDp());
+                                        dataToSave.put("description", desc);
+                                        dataToSave.put("ChildApproxAge", approxAge);
+                                        dataToSave.put("gender", male);
+                                        dataToSave.put("picProof", downloadUrl.toString());
+                                        if (addChildLabourSexualAbuse.isChecked())
+                                            dataToSave.put("SexualAbuse", "Yes");
+                                        else
+                                            dataToSave.put("SexualAbuse", "No");
+
+                                        if (addChildLabourPhysicalAbuse.isSelected())
+                                            dataToSave.put("PhysicalAbuse", "Yes");
+                                        else
+                                            dataToSave.put("PhysicalAbuse", "No");
+
+                                        if (addChildLabourPsychologicalAbuse.isChecked())
+                                            dataToSave.put("psycologicalAbuse", "Yes");
+                                        else
+                                            dataToSave.put("psycologicalAbuse", "No");
+
+                                        if (addChildLabourAbandon.isChecked())
+                                            dataToSave.put("ChildLabour", "Yes");
+                                        else
+                                            dataToSave.put("ChildLabour", "No");
+
+                                        if (addChildLabourChildMarriage.isChecked())
+                                            dataToSave.put("ChildMarriage", "Yes");
+                                        else
+                                            dataToSave.put("ChildMarriage", "No");
+
+                                        if (addChildLabourRadioMale.isSelected())
+                                            dataToSave.put("gender", "Male");
+                                        else if (addChildLabourRadioFemale.isSelected())
+                                            dataToSave.put("gender", "Female");
+
+
+                                        dataToSave.put("timestamp", String.valueOf(java.lang.System.currentTimeMillis()));
+                                        newChildLabourAppeal.setValue(dataToSave);
+
+                                        startActivity(new Intent(AddChildLabourAppealActivity.this, MainNavigationActivity.class));
+                                        finish();
+
+
+                                    }
+
+                                    @Override
+                                    public void onCancelled(DatabaseError databaseError) {
+
+                                    }
+                                });
+                            } else {
+
+
 
 
                             DatabaseReference newChildLabourAppeal = mDatabaseReference.push();
-                            Map<String , String > dataToSave = new HashMap<>();
+                            Map<String, String> dataToSave = new HashMap<>();
 
-                            dataToSave.put("appealFirstName" , userDetail.getAppealFirstName());
-                            dataToSave.put("appealLastName" , userDetail.getAppealLastName());
-                            dataToSave.put("appealImageDp" , userDetail.getAppealImageDp());
-                            dataToSave.put("description" , desc);
+                            dataToSave.put("appealFirstName", userDetail.getAppealFirstName());
+                            dataToSave.put("appealLastName", userDetail.getAppealLastName());
+                            dataToSave.put("appealImageDp", userDetail.getAppealImageDp());
+                            dataToSave.put("description", desc);
 //                            dataToSave.put("PhysicalAbuse" , physicalStr);
 //                            dataToSave.put("SexualAbuse" ,sexualStr);
 //                            dataToSave.put("PsychologicalAbuse" , psycoStr);
 //                            dataToSave.put("Abandon" ,abandonStr);
 //                            dataToSave.put("childLabour" , childLabourStr);
 //                            dataToSave.put("ChildMarriage" , childMarriageStr);
-                            dataToSave.put("ChildApproxAge" , approxAge);
-                            dataToSave.put("gender" , male);
-                            dataToSave.put("picProof",downloadUrl.toString());
-                            if(addChildLabourSexualAbuse.isChecked())
-                                dataToSave.put("SexualAbuse" , "Yes");
+                            dataToSave.put("ChildApproxAge", approxAge);
+                            dataToSave.put("gender", male);
+                            dataToSave.put("picProof", downloadUrl.toString());
+                            if (addChildLabourSexualAbuse.isChecked())
+                                dataToSave.put("SexualAbuse", "Yes");
                             else
-                                dataToSave.put("SexualAbuse" , "No");
+                                dataToSave.put("SexualAbuse", "No");
 
-                            if(addChildLabourPhysicalAbuse.isSelected())
-                                dataToSave.put("PhysicalAbuse" ,"Yes");
+                            if (addChildLabourPhysicalAbuse.isSelected())
+                                dataToSave.put("PhysicalAbuse", "Yes");
                             else
-                                dataToSave.put("PhysicalAbuse" , "No");
+                                dataToSave.put("PhysicalAbuse", "No");
 
-                            if(addChildLabourPsychologicalAbuse.isChecked())
-                                dataToSave.put("psycologicalAbuse" , "Yes");
+                            if (addChildLabourPsychologicalAbuse.isChecked())
+                                dataToSave.put("psycologicalAbuse", "Yes");
                             else
-                                dataToSave.put("psycologicalAbuse" , "No");
+                                dataToSave.put("psycologicalAbuse", "No");
 
-                            if(addChildLabourAbandon.isChecked())
-                                dataToSave.put("ChildLabour" , "Yes");
+                            if (addChildLabourAbandon.isChecked())
+                                dataToSave.put("ChildLabour", "Yes");
                             else
-                                dataToSave.put("ChildLabour" , "No");
+                                dataToSave.put("ChildLabour", "No");
 
-                            if(addChildLabourChildMarriage.isChecked())
-                                dataToSave.put("ChildMarriage" , "Yes");
+                            if (addChildLabourChildMarriage.isChecked())
+                                dataToSave.put("ChildMarriage", "Yes");
                             else
-                                dataToSave.put("ChildMarriage" ,"No");
+                                dataToSave.put("ChildMarriage", "No");
 
-                            if(addChildLabourRadioMale.isSelected())
-                                dataToSave.put("gender" , "Male");
-                            else if(addChildLabourRadioFemale.isSelected())
-                                dataToSave.put("gender" , "Female");
+                            if (addChildLabourRadioMale.isSelected())
+                                dataToSave.put("gender", "Male");
+                            else if (addChildLabourRadioFemale.isSelected())
+                                dataToSave.put("gender", "Female");
 
 
-
-                            dataToSave.put("timestamp",String.valueOf(java.lang.System.currentTimeMillis()));
+                            dataToSave.put("timestamp", String.valueOf(java.lang.System.currentTimeMillis()));
                             newChildLabourAppeal.setValue(dataToSave);
 
-                            startActivity(new Intent(AddChildLabourAppealActivity.this , MainNavigationActivity.class));
+                            startActivity(new Intent(AddChildLabourAppealActivity.this, MainNavigationActivity.class));
                             finish();
                         }
+                    }
 
                         @Override
                         public void onCancelled(DatabaseError databaseError) {
 
                         }
                     });
+
                 }
             });
 
         }
-
 
     }
 

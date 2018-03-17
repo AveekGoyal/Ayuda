@@ -15,8 +15,17 @@ public class Members {
     public String city;
     public String state;
     public String pincode;
+    public String appealFirstName;
+    public String appealLastName;
+    public String appealImageDp;
 
     public Members() {
+    }
+
+    public Members(String appealFirstName, String appealLastName, String appealImageDp) {
+        this.appealFirstName = appealFirstName;
+        this.appealLastName = appealLastName;
+        this.appealImageDp = appealImageDp;
     }
 
     public Members(String firstName, String lastName, String gender, String dpImage, String email, String moblileNo, String orgName, String memberId, String address, String city, String state, String pincode) {
@@ -128,5 +137,29 @@ public class Members {
 
     public void setPincode(String pincode) {
         this.pincode = pincode;
+    }
+
+    public String getAppealFirstName() {
+        return appealFirstName;
+    }
+
+    public void setAppealFirstName(String appealFirstName) {
+        this.appealFirstName = appealFirstName;
+    }
+
+    public String getAppealLastName() {
+        return appealLastName;
+    }
+
+    public void setAppealLastName(String appealLastName) {
+        this.appealLastName = appealLastName;
+    }
+
+    public String getAppealImageDp() {
+        return appealImageDp;
+    }
+
+    public void setAppealImageDp(String appealImageDp) {
+        this.appealImageDp = appealImageDp;
     }
 }
