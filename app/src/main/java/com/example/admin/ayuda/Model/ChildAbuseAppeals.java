@@ -4,7 +4,7 @@ package com.example.admin.ayuda.Model;
 public class ChildAbuseAppeals {
 
     public String picProof;
-    public String desc;
+    public String description;
     public String physicalAbuse;
     public String sexualAbuse;
     public String psychologicalAbuse;
@@ -51,9 +51,9 @@ public class ChildAbuseAppeals {
         return timestamp;
     }
 
-    public ChildAbuseAppeals(String picProof, String desc, String physicalAbuse, String sexualAbuse, String psychologicalAbuse, String abandon, String childLabour, String childMarriage, String approxAge, String gender, String appealFirstName, String appealLastName, String appealImageDp, String timestamp) {
+    public ChildAbuseAppeals(String picProof, String description, String physicalAbuse, String sexualAbuse, String psychologicalAbuse, String abandon, String childLabour, String childMarriage, String approxAge, String gender, String appealFirstName, String appealLastName, String appealImageDp, String timestamp) {
         this.picProof = picProof;
-        this.desc = desc;
+        this.description = description;
         this.physicalAbuse = physicalAbuse;
         this.sexualAbuse = sexualAbuse;
         this.psychologicalAbuse = psychologicalAbuse;
@@ -77,12 +77,16 @@ public class ChildAbuseAppeals {
         this.picProof = picProof;
     }
 
-    public String getDesc() {
-        return desc;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setTimestamp(String timestamp) {
+        this.timestamp = timestamp;
     }
 
     public String getPhysicalAbuse() {

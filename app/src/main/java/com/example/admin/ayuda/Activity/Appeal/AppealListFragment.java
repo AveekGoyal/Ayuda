@@ -18,7 +18,9 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.admin.ayuda.Data.AppealAdapters.BloodBankAppealAdapter;
+import com.example.admin.ayuda.Data.AppealAdapters.ChildLabourAppealAdapter;
 import com.example.admin.ayuda.Model.BloodBankAppeal;
+import com.example.admin.ayuda.Model.ChildAbuseAppeals;
 import com.example.admin.ayuda.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -45,6 +47,8 @@ public class AppealListFragment extends Fragment implements AdapterView.OnItemSe
     private Spinner chooseSortCategory;
     private BloodBankAppealAdapter bloodBankAppealAdapter;
     private List<BloodBankAppeal> bloodBankAppealList;
+    private ChildLabourAppealAdapter childLabourAppealAdapter;
+    private List<ChildAbuseAppeals> childAbuseAppealsList;
     String type=" ";
 
 
@@ -70,6 +74,7 @@ public class AppealListFragment extends Fragment implements AdapterView.OnItemSe
         mUser = mAuth.getCurrentUser();
         mDatabase = FirebaseDatabase.getInstance();
         bloodBankAppealList = new ArrayList<>();
+        childAbuseAppealsList = new ArrayList<>();
         recycler = view.findViewById(R.id.appealListFragmentRecyclerView);
         recycler.setHasFixedSize(true);
         recycler.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -195,6 +200,41 @@ public class AppealListFragment extends Fragment implements AdapterView.OnItemSe
     }
 
     private void getChildAbuseAppealData() {
+            FirebaseDatabase.getInstance().getReference().child("ChildLabourAppeal").orderByChild("timestamp").addChildEventListener(new ChildEventListener() {
+                @Override
+                public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                    ChildAbuseAppeals childAbuseAppeals = dataSnapshot.getValue(ChildAbuseAppeals.class);
+                    childAbuseAppealsList.add(childAbuseAppeals);
+                    childLabourAppealAdapter = new ChildLabourAppealAdapter(getActivity(), childAbuseAppealsList);
+                    recycler.setAdapter(childLabourAppealAdapter);
+                    childLabourAppealAdapter.notifyDataSetChanged();
+
+
+                }
+
+                @Override
+                public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                }
+
+                @Override
+                public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                }
+
+                @Override
+                public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+
+
+
     }
 
     private void getOldAgeAppealData() {

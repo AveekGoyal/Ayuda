@@ -181,7 +181,7 @@ public class AddChildLabourAppealActivity extends AppCompatActivity {
                             dataToSave.put("appealFirstName" , userDetail.getAppealFirstName());
                             dataToSave.put("appealLastName" , userDetail.getAppealLastName());
                             dataToSave.put("appealImageDp" , userDetail.getAppealImageDp());
-                            dataToSave.put("Description" , desc);
+                            dataToSave.put("description" , desc);
 //                            dataToSave.put("PhysicalAbuse" , physicalStr);
 //                            dataToSave.put("SexualAbuse" ,sexualStr);
 //                            dataToSave.put("PsychologicalAbuse" , psycoStr);

@@ -59,11 +59,11 @@ public class ChildLabourAppealAdapter extends RecyclerView.Adapter<ChildLabourAp
         holder.appealUsername.setText(String.format("%s %s" , childAbuseAppeals.getAppealFirstName() , childAbuseAppeals.getAppealLastName()));
         String imageDp = childAbuseAppeals.getAppealImageDp();
         Picasso.with(context).load(imageDp).into(holder.imageDp);
-        holder.appealTitle.setText(String.format("Title: %s  -is a problem." , childAbuseAppeals.getDesc()));
+        holder.appealTitle.setText(String.format("Title: %s  -is a problem." , childAbuseAppeals.getDescription()));
         java.text.DateFormat dateFormat = DateFormat.getDateInstance();
         String formattedDate = dateFormat.format(new Date(Long.valueOf(childAbuseAppeals.getTimestamp())).getTime());
 
-        holder.appealDate.setText(String.format("Created On%s", formattedDate));
+        holder.appealDate.setText(String.format("Created On: %s", formattedDate));
         imageUrl =childAbuseAppeals.getPicProof();
 
         Picasso.with(context).load(imageUrl).into(holder.appealPic);
@@ -101,7 +101,7 @@ public class ChildLabourAppealAdapter extends RecyclerView.Adapter<ChildLabourAp
                     Intent intent = new Intent(context , ChildLabourDetailsActivity.class);
 
                     intent.putExtra("appealPic" , childAbuseAppealList.get(getAdapterPosition()).getPicProof());
-                    intent.putExtra("appealTitle" , childAbuseAppealList.get(getAdapterPosition()).getDesc());
+                    intent.putExtra("appealTitle" , childAbuseAppealList.get(getAdapterPosition()).getDescription());
                     intent.putExtra(("PhysicalAbuse" ), childAbuseAppealList.get(getAdapterPosition()).getPhysicalAbuse());
                     intent.putExtra("sexualAbuse" ,childAbuseAppealList.get(getAdapterPosition()).getSexualAbuse());
                     intent.putExtra("psycologicalAbuse" , childAbuseAppealList.get(getAdapterPosition()).getPsychologicalAbuse());
