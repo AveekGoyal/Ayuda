@@ -168,11 +168,39 @@ public class AppealListFragment extends Fragment implements AdapterView.OnItemSe
         {
             getBloodBankAppealData();
         }
+        if(categorySelected.equals("Disaster Management"))
+        {
+            getDisasterManagementAppealData();
+        }
+        if(categorySelected.equals("Old Age"))
+        {
+            getOldAgeAppealData();
+        }
+        if(categorySelected.equals("Child Abuse"))
+        {
+            getChildAbuseAppealData();
+        }
+        if(categorySelected.equals("Community Development"))
+        {
+            getCommunityDevelopmentAppealData();
+        }
 
 
 
 
 
+    }
+
+    private void getCommunityDevelopmentAppealData() {
+    }
+
+    private void getChildAbuseAppealData() {
+    }
+
+    private void getOldAgeAppealData() {
+    }
+
+    private void getDisasterManagementAppealData() {
     }
 
     private void getBloodBankAppealData() {
