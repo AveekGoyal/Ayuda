@@ -9,9 +9,50 @@ public class CommunityAppeal {
     public String poverty;
     public String desc;
     public String contactNo;
+    public String appealFirstName;
+    public String appealLastName;
+    public String appealImageDp;
+    public String timestamp;
+
+    public String getAppealFirstName()
+    {
+        return appealFirstName;
+
+    }
+
+    public void setAppealFirstName(String appealFirstName) {
+        this.appealFirstName = appealFirstName;
+    }
+
+    public String getAppealLastName() {
+        return appealLastName;
+    }
+
+    public void setAppealLastName(String appealLastName) {
+        this.appealLastName = appealLastName;
+    }
+
+    public String getAppealImageDp() {
+        return appealImageDp;
+    }
+
+    public void setAppealImageDp(String appealImageDp) {
+        this.appealImageDp = appealImageDp;
+    }
+
+
 
     public CommunityAppeal() {
     }
+
+    public String getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(String timestamp) {
+        this.timestamp = timestamp;
+    }
+
 
     public CommunityAppeal(String picProof, String cleaning, String hunger, String healthIssues, String poverty, String desc, String contactNo) {
         this.picProof = picProof;
@@ -21,6 +62,12 @@ public class CommunityAppeal {
         this.poverty = poverty;
         this.desc = desc;
         this.contactNo = contactNo;
+
+        this.appealFirstName = appealFirstName;
+        this.appealLastName = appealLastName;
+        this.appealImageDp = appealImageDp;
+        this.timestamp = timestamp;
+
     }
 
     public String getPicProof() {
