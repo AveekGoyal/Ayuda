@@ -185,6 +185,7 @@ public class NgoRegistrationActivity extends AppCompatActivity {
                                 currentUserDb.child("ngoPinCode").setValue(pinCode);
                                 currentUserDb.child("type").setValue("NgoAdmin");
                                 currentUserDb.child("imageDp").setValue(downloadUrl.toString());
+                                currentUserDb.child("type").setValue("NgoAdmin");
                                 Toast.makeText(getApplicationContext(), " Account Created Successfully", Toast.LENGTH_LONG).show();
                                 FirebaseUser user = mAuth.getCurrentUser();
                                 user.sendEmailVerification().addOnCompleteListener(NgoRegistrationActivity.this, new OnCompleteListener<Void>() {

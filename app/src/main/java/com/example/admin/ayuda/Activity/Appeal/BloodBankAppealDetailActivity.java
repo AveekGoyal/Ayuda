@@ -15,8 +15,11 @@ import com.example.admin.ayuda.Model.BloodBankAppeal;
 import com.example.admin.ayuda.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import org.w3c.dom.Text;
@@ -44,6 +47,7 @@ public class BloodBankAppealDetailActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private BloodBankAppealAdapter bloodBankAppealAdapter;
     private List<BloodBankAppeal> bloodBankAppealList;
+    String type=" ";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -82,12 +86,41 @@ public class BloodBankAppealDetailActivity extends AppCompatActivity {
         bloodBankHospitalAddressPlainText.setText(String.format("Hospital Address : %s", getIntent().getStringExtra("hospitalAddress")));
 
 
-        bloodBankRejectButton.setOnClickListener(new View.OnClickListener() {
+
+        final String userId = mUser.getUid();
+        DatabaseReference getType = FirebaseDatabase.getInstance().getReference().child("NgoAdmin").child(userId);
+        getType.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onClick(View v) {
-                startActivity(new Intent(BloodBankAppealDetailActivity.this, MainNavigationActivity.class));
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                type =  dataSnapshot.child("type").getValue(String.class);
+                if(type == null)
+                {
+                    bloodBankAcceptButton.setEnabled(false);
+                    bloodBankRejectButton.setEnabled(false);
+                }
+                else if(type.equals("NgoAdmin"))
+                {
+                    bloodBankRejectButton.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            startActivity(new Intent(BloodBankAppealDetailActivity.this, MainNavigationActivity.class));
+                        }
+                    });
+
+
+                }
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
             }
         });
+
+
+
+
 
 
     }
