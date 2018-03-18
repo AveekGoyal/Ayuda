@@ -13,6 +13,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -50,6 +51,7 @@ public class AddChildLabourAppealActivity extends AppCompatActivity {
     private CheckBox addChildLabourChildMarriage;
     private RadioButton addChildLabourRadioMale;
     private RadioButton addChildLabourRadioFemale;
+    private RadioGroup addChildGender;
     private Button addChildLabourSubmitButton;
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabaseReference;
@@ -90,6 +92,7 @@ public class AddChildLabourAppealActivity extends AppCompatActivity {
         addChildLabourRadioMale = findViewById(R.id.AddChildLabourRadioMale);
         addChildLabourRadioFemale = findViewById(R.id.AddChildLabourRadioFemale);
         addChildLabourSubmitButton = findViewById(R.id.AddChildLabourSubmitButton);
+        addChildGender = findViewById(R.id.AddChildGenderRadioGroup);
         mStorage = FirebaseStorage.getInstance().getReference();
         String[] ageGrp = {"0-6" , "6-10" , "10-16"};
         ArrayAdapter<String> adapterAge = new ArrayAdapter<String>(this , android.R.layout.simple_spinner_dropdown_item, ageGrp);
@@ -111,6 +114,19 @@ public class AddChildLabourAppealActivity extends AppCompatActivity {
                 galleryIntent.setAction(Intent.ACTION_GET_CONTENT);
                 galleryIntent.setType("image/*");
                 startActivityForResult(galleryIntent, GALLERY_CODE);
+            }
+        });
+        addChildGender.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                switch (i)
+                {
+                    case R.id.AddChildLabourRadioMale:
+                        male = "Male";
+                        break;
+                    case R.id.AddChildLabourRadioFemale:
+                        female="Female";
+                }
             }
         });
 
@@ -150,14 +166,10 @@ public class AddChildLabourAppealActivity extends AppCompatActivity {
 //        final String abandonStr = abandon;
 //        final String childLabourStr = childLabour;
 //        final String childMarriageStr  = childMarriage;
-        final String gender;
-        final String approxAge = addChildLabourChildAgeSpinner.getSelectedItem().toString();
-        if(male.equals("Male"))
-            gender = male;
-        else
-            gender = female;
 
-        if(!TextUtils.isEmpty(desc) && !TextUtils.isEmpty(gender) && !TextUtils.isEmpty(approxAge))
+        final String approxAge = addChildLabourChildAgeSpinner.getSelectedItem().toString();
+
+        if(!TextUtils.isEmpty(desc) && !TextUtils.isEmpty(approxAge))
         {
 
             StorageReference filePath   = mStorage.child("ChildLabourAppeal_Pics").child(resultUri.getLastPathSegment());
@@ -190,37 +202,40 @@ public class AddChildLabourAppealActivity extends AppCompatActivity {
                                         dataToSave.put("appealLastName", memberDetails.getAppealLastName());
                                         dataToSave.put("appealImageDp", memberDetails.getAppealImageDp());
                                         dataToSave.put("description", desc);
-                                        dataToSave.put("ChildApproxAge", approxAge);
+                                        dataToSave.put("childApproxAge", approxAge);
                                         dataToSave.put("gender", male);
                                         dataToSave.put("picProof", downloadUrl.toString());
                                         if (addChildLabourSexualAbuse.isChecked())
-                                            dataToSave.put("SexualAbuse", "Yes");
+                                            dataToSave.put("sexualAbuse", "Yes");
                                         else
-                                            dataToSave.put("SexualAbuse", "No");
+                                            dataToSave.put("sexualAbuse", "No");
 
                                         if (addChildLabourPhysicalAbuse.isSelected())
-                                            dataToSave.put("PhysicalAbuse", "Yes");
+                                            dataToSave.put("physicalAbuse", "Yes");
                                         else
-                                            dataToSave.put("PhysicalAbuse", "No");
+                                            dataToSave.put("physicalAbuse", "No");
 
                                         if (addChildLabourPsychologicalAbuse.isChecked())
-                                            dataToSave.put("psycologicalAbuse", "Yes");
+                                            dataToSave.put("psychologicalAbuse", "Yes");
                                         else
-                                            dataToSave.put("psycologicalAbuse", "No");
+                                            dataToSave.put("psychologicalAbuse", "No");
 
-                                        if (addChildLabourAbandon.isChecked())
-                                            dataToSave.put("ChildLabour", "Yes");
+                                        if (addChildLabourChildLabour.isChecked())
+                                            dataToSave.put("childLabour", "Yes");
                                         else
-                                            dataToSave.put("ChildLabour", "No");
+                                            dataToSave.put("childLabour", "No");
+                                        if(addChildLabourAbandon.isChecked())
+                                            dataToSave.put("childAbandon","Yes");
+                                        else
+                                            dataToSave.put("childAbandon", "No");
 
                                         if (addChildLabourChildMarriage.isChecked())
-                                            dataToSave.put("ChildMarriage", "Yes");
+                                            dataToSave.put("childMarriage", "Yes");
                                         else
-                                            dataToSave.put("ChildMarriage", "No");
-
-                                        if (addChildLabourRadioMale.isSelected())
+                                            dataToSave.put("childMarriage", "No");
+                                        if (male.equals("Male"))
                                             dataToSave.put("gender", "Male");
-                                        else if (addChildLabourRadioFemale.isSelected())
+                                        else if (female.equals("Female"))
                                             dataToSave.put("gender", "Female");
 
 
@@ -256,7 +271,7 @@ public class AddChildLabourAppealActivity extends AppCompatActivity {
 //                            dataToSave.put("Abandon" ,abandonStr);
 //                            dataToSave.put("childLabour" , childLabourStr);
 //                            dataToSave.put("ChildMarriage" , childMarriageStr);
-                            dataToSave.put("ChildApproxAge", approxAge);
+                            dataToSave.put("childApproxAge", approxAge);
                             dataToSave.put("gender", male);
                             dataToSave.put("picProof", downloadUrl.toString());
                             if (addChildLabourSexualAbuse.isChecked())
@@ -284,9 +299,9 @@ public class AddChildLabourAppealActivity extends AppCompatActivity {
                             else
                                 dataToSave.put("ChildMarriage", "No");
 
-                            if (addChildLabourRadioMale.isSelected())
+                            if (male.equals("Male"))
                                 dataToSave.put("gender", "Male");
-                            else if (addChildLabourRadioFemale.isSelected())
+                            else if (female.equals("Female"))
                                 dataToSave.put("gender", "Female");
 
 
