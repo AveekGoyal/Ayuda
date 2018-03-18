@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_margin="16dp">
+        android:layout_margin="13dp">
 
 
         <ImageButton
@@ -33,7 +33,9 @@
             <Spinner
                 android:id="@+id/AddEventChooseCategorySpinner"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"></Spinner>
+                android:layout_height="wrap_content">
+
+            </Spinner>
 
         </LinearLayout>
 
@@ -55,18 +57,30 @@
                 android:text="Start:"
                 android:textSize="19dp"
                 android:layout_margin="5dp"/>
+            <TextView
+                android:id="@+id/AddEventStartDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="dd/mm/yyyy"
+                android:padding="10dp"/>
 
             <Button
                 android:id="@+id/AddEventStartDatePicker"
-                android:layout_width="wrap_content"
+                android:layout_width="59sp"
                 android:layout_height="wrap_content"
                 android:text="Date"
                 android:layout_margin="5dp"
                 />
+            <TextView
+                android:id="@+id/AddEventStartTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Hr : Min"
+                android:padding="10dp"/>
 
             <Button
                 android:id="@+id/AddEventStartTimePicker"
-                android:layout_width="wrap_content"
+                android:layout_width="57sp"
                 android:layout_height="wrap_content"
                 android:text="Time"
                 android:layout_margin="5dp"
@@ -86,17 +100,30 @@
                 android:textSize="19dp"
                 android:layout_margin="5dp"/>
 
+            <TextView
+                android:id="@+id/AddEventEndDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="dd/mm/yyyy"
+                android:padding="10dp"/>
+
             <Button
                 android:id="@+id/AddEventEndDatePicker"
-                android:layout_width="wrap_content"
+                android:layout_width="60sp"
                 android:layout_height="wrap_content"
                 android:text="Date"
                 android:layout_margin="5dp"
                 />
+            <TextView
+                android:id="@+id/AddEventEndTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Hr : Min"
+                android:padding="10dp"/>
 
             <Button
                 android:id="@+id/AddEventEndTimePicker"
-                android:layout_width="wrap_content"
+                android:layout_width="57sp"
                 android:layout_height="wrap_content"
                 android:text="Time"
                 android:layout_margin="5dp"
@@ -193,7 +220,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_margin="5dp"
+            android:layout_margin="15dp"
             android:text="Submit"
             android:padding="10dp"/>
 

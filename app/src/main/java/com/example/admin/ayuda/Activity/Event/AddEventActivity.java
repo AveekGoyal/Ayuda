@@ -12,6 +12,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -37,6 +38,12 @@ public class AddEventActivity extends AppCompatActivity {
     private Spinner addEventChooseCategorySpinner;
     private EditText addEventDescriptionTextBox;
     private EditText addEventTitleTextBox;
+    private RadioGroup addEventVolunteerRadioGroup;
+    private RadioGroup addEventSponsorRadioGroup;
+    private TextView addEventStartDate;
+    private TextView addEventEndDate;
+    private TextView addEventStartTime;
+    private TextView addEventEndTime;
     private RadioButton addEventVolunteerRadioYes;
     private RadioButton addEventVolunteerRadioNo;
     private RadioButton addEventSponsorRadioYes;
@@ -62,63 +69,55 @@ public class AddEventActivity extends AppCompatActivity {
         addEventSponsorRadioYes = findViewById(R.id.AddEventSponsorRadioYes);
         addEventSponsorRadioYes = findViewById(R.id.AddEventSponsorRadioNo);
         addEventSubmitButton = findViewById(R.id.AddEventSubmitButton);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        addEventEndDate = findViewById(R.id.AddEventEndDate);
+        addEventEndTime = findViewById(R.id.AddEventEndTime);
+        addEventStartDate = findViewById(R.id.AddEventStartDate);
+        addEventStartTime= findViewById(R.id.AddEventStartTime);
+        addEventSponsorRadioGroup = findViewById(R.id.SponsorsRadioGroup);
+        addEventVolunteerRadioGroup = findViewById(R.id.VolunteersRadioGroup);
 
 
 
         /*
         Functions to use Date Pick Button
          */
-        final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
 
-            @Override
-            public void onDateSet(DatePicker view, int year, int monthOfYear,
-                                  int dayOfMonth) {
-                // TODO Auto-generated method stub
-                myCalendar.set(Calendar.YEAR, year);
-                myCalendar.set(Calendar.MONTH, monthOfYear);
-                myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
 
-                updateLabel();
-            }
-
-        };
 
         addEventEndDatePicker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new DatePickerDialog(AddEventActivity.this, date , myCalendar
-                        .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
-                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+                Calendar mCurrentDate = Calendar.getInstance();
+                int year = mCurrentDate.get(Calendar.YEAR);
+                int month = mCurrentDate.get(Calendar.MONTH);
+                int dayOfMonth = mCurrentDate.get(Calendar.DAY_OF_MONTH);
+                DatePickerDialog mDatePicker = new DatePickerDialog(AddEventActivity.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        addEventEndDate.setText(String.format("%s / %s / %s", dayOfMonth,month,year));
+                    }
+                }, year,month,dayOfMonth);
+                mDatePicker.setTitle("Select End Date");
+                mDatePicker.show();
             }
         });
 
         addEventStartDatePicker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new DatePickerDialog(AddEventActivity.this, date , myCalendar
-                        .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
-                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+               Calendar mCurrentDate = Calendar.getInstance();
+               int year = mCurrentDate.get(Calendar.YEAR);
+               int month = mCurrentDate.get(Calendar.MONTH);
+               int dayOfMonth = mCurrentDate.get(Calendar.DAY_OF_MONTH);
+               DatePickerDialog mDatePicker = new DatePickerDialog(AddEventActivity.this, new DatePickerDialog.OnDateSetListener() {
+                   @Override
+                   public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                       addEventStartDate.setText(String.format("%s / %s / %s", dayOfMonth,month,year));
+                   }
+               }, year,month,dayOfMonth);
+               mDatePicker.setTitle("Select Start Date");
+               mDatePicker.show();
+              // addEventStartDate.setText(String.format("%s / %s / %s", myCalendar.get(Calendar.DAY_OF_MONTH), myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.YEAR)));
             }
         });
 
@@ -139,8 +138,16 @@ public class AddEventActivity extends AppCompatActivity {
                 TimePickerDialog mTimePicker = new TimePickerDialog(AddEventActivity.this, new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
-                        Toast.makeText(AddEventActivity.this , ( selectedHour + ":" + selectedMinute) , Toast.LENGTH_LONG).show();
-                    }
+                        //Toast.makeText(AddEventActivity.this , ( selectedHour + ":" + selectedMinute) , Toast.LENGTH_LONG).show();
+
+                        if (selectedHour >= 12 && selectedHour <= 24)
+                        {
+                            addEventStartTime.setText(String.format("%s : %s PM", selectedHour, selectedMinute));
+                        }
+                        else
+                        {
+                            addEventStartTime.setText(String.format("%s : %s AM", selectedHour, selectedMinute));
+                        }                    }
                 }, hour, minute, true);
                 mTimePicker.setTitle("Select Time");
                 mTimePicker.show();
@@ -155,7 +162,16 @@ public class AddEventActivity extends AppCompatActivity {
                 TimePickerDialog mTimePicker = new TimePickerDialog(AddEventActivity.this, new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
-                        Toast.makeText(AddEventActivity.this , ( selectedHour + ":" + selectedMinute) , Toast.LENGTH_LONG).show();
+                        //Toast.makeText(AddEventActivity.this , ( selectedHour + ":" + selectedMinute) , Toast.LENGTH_LONG).show();
+                        if (selectedHour >= 12 && selectedHour <= 24)
+                        {
+                            addEventEndTime.setText(String.format("%s : %s PM", selectedHour, selectedMinute));
+                        }
+                        else
+                        {
+                            addEventEndTime.setText(String.format("%s : %s AM", selectedHour, selectedMinute));
+                        }
+
                     }
                 }, hour, minute, true);
                 mTimePicker.setTitle("Select Time");
@@ -169,10 +185,11 @@ public class AddEventActivity extends AppCompatActivity {
 
     }
 
-    private void updateLabel() {
-        String myFormat = "MM/dd/yy"; //In which you need put here
-        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+//    private void updateLabel() {
+//        String myFormat = "dd/mm/yy"; //In which you need put here
+//        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+//
+//        Toast.makeText(AddEventActivity.this ,(sdf.format(myCalendar.getTime())) , Toast.LENGTH_LONG).show();
+//    }
 
-        Toast.makeText(AddEventActivity.this ,(sdf.format(myCalendar.getTime())) , Toast.LENGTH_LONG).show();
-    }
 }
