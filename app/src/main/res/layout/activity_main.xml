@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,100 +8,118 @@
     tools:context="com.example.admin.ayuda.Activity.Login.MainActivity">
 
 
-        <LinearLayout
+    <ProgressBar
+        android:id="@+id/progressBar2"
+        style="?android:progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="invisible"/>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="16dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:text="Type of User:"
+            android:textSize="20dp" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
-                android:text="Type of User:"
-                android:textSize="20dp"/>
+        <RadioGroup
+            android:id="@+id/loginRadioGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
 
-            <RadioGroup
-                android:id="@+id/loginRadioGroup"
+            <RadioButton
+                android:id="@+id/loginRadioAdmin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center">
+                android:text="Ngo Admin" />
 
-                <RadioButton
-                    android:id="@+id/loginRadioAdmin"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Ngo Admin" />
-
-                <RadioButton
-                    android:id="@+id/loginRadioMember"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Ngo Member" />
-
-                <RadioButton
-                    android:id="@+id/loginRadioNonMember"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Non Member" />
-
-            </RadioGroup>
-
-
-            <Button
-                android:id="@+id/loginGoogle"
+            <RadioButton
+                android:id="@+id/loginRadioMember"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="25dp"
-                android:text="Google" />
+                android:text="Ngo Member" />
 
-            <Button
-                android:id="@+id/loginFacebook"
+            <RadioButton
+                android:id="@+id/loginRadioNonMember"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginBottom="25dp"
-                android:text="Facebook" />
+                android:text="Non Member" />
+
+        </RadioGroup>
 
 
-            <EditText
-                android:id="@+id/loginEmailTextBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Email"
-                android:inputType="textEmailAddress"/>
+        <Button
+            android:id="@+id/loginGoogle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="25dp"
+            android:text="Google" />
 
-            <EditText
-                android:id="@+id/loginPasswordTextBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="7dp"
-                android:hint="Password"
-                android:inputType="textPassword" />
-
-            <Button
-                android:id="@+id/loginLoginButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="Login" />
-
-            <TextView
-                android:text="New User??"
-                android:textStyle="bold"
-                android:layout_gravity="center"
-                android:layout_marginTop="30sp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <Button
-                android:id="@+id/loginNewUserRegButton"
-                android:text="Create Account"
-                android:layout_gravity="center"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-        </LinearLayout>
+        <Button
+            android:id="@+id/loginFacebook"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="25dp"
+            android:text="Facebook" />
 
 
-</RelativeLayout>
+        <EditText
+            android:id="@+id/loginEmailTextBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email"
+            android:inputType="textEmailAddress" />
+
+        <EditText
+            android:id="@+id/loginPasswordTextBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="7dp"
+            android:hint="Password"
+            android:inputType="textPassword" />
+
+        <Button
+            android:id="@+id/loginLoginButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Login" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="30sp"
+            android:text="New User??"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/loginNewUserRegButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Create Account" />
+
+    </LinearLayout>
+
+
+</android.support.constraint.ConstraintLayout>
