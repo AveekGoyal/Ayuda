@@ -22,6 +22,8 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.List;
 
+import static java.text.DateFormat.getDateInstance;
+
 /**
  * Created by HP on 3/18/2018.
  */
@@ -60,8 +62,8 @@ public class CommunityDevelopmentAppealAdapter extends RecyclerView.Adapter<Comm
         holder.appealUsername.setText(String.format("%s %s", communityAppeal.getAppealFirstName(), communityAppeal.getAppealLastName()));
         String imageDp = communityAppeal.getAppealImageDp();
         Picasso.with(context).load(imageDp).into(holder.imageDp);
-        holder.appealTitle.setText(String.format("Title: Issues %s ", communityAppeal.getDesc()));
-        java.text.DateFormat dateFormat = DateFormat.getDateInstance();
+        holder.appealTitle.setText(String.format("Title: Issues %s ", communityAppeal.getDescription()));
+        java.text.DateFormat dateFormat = getDateInstance();
         String formattedDate = dateFormat.format(new Date(Long.valueOf(communityAppeal.getTimestamp())).getTime());
 
         holder.appealDate.setText(String.format("Created On: %s", formattedDate));
@@ -102,7 +104,7 @@ public class CommunityDevelopmentAppealAdapter extends RecyclerView.Adapter<Comm
 
                     Intent intent = new Intent(context, CommunityDevelopmentAppealAdapter.class);
                     intent.putExtra("appealPic", communityAppealList.get(getAdapterPosition()).getPicProof());
-                    intent.putExtra("appealTitle", communityAppealList.get(getAdapterPosition()).getDesc());
+                    intent.putExtra("appealTitle", communityAppealList.get(getAdapterPosition()).getDescription());
                     intent.putExtra("Cleaning", communityAppealList.get(getAdapterPosition()).getCleaning());
                     intent.putExtra("Hunger", communityAppealList.get(getAdapterPosition()).getHunger());
                     intent.putExtra("HealthIssues", communityAppealList.get(getAdapterPosition()).getHealthIssues());

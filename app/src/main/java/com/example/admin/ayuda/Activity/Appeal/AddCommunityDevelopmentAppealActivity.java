@@ -145,9 +145,9 @@ public class AddCommunityDevelopmentAppealActivity extends AppCompatActivity {
                                             dataToSave.put("Hunger", "No");
                                         }
                                         if (addCommunityDevHealthIssuesCheckBox.isChecked()) {
-                                            dataToSave.put("Health Issues", "Yes");
+                                            dataToSave.put("HealthIssues", "Yes");
                                         } else {
-                                            dataToSave.put("Health Issues", "No");
+                                            dataToSave.put("HealthIssues", "No");
                                         }
                                         if (addCommunityDevPovertyCheckBox.isChecked()) {
                                             dataToSave.put("Poverty", "Yes");
@@ -157,7 +157,7 @@ public class AddCommunityDevelopmentAppealActivity extends AppCompatActivity {
 
                                         dataToSave.put("ContactNo", ContactNo);
                                         dataToSave.put("picProof", downloadUrl.toString());
-                                        dataToSave.put("timestamp", String.valueOf(java.lang.System.currentTimeMillis()));
+                                        dataToSave.put("timestamp", String.valueOf(System.currentTimeMillis()));
                                         newCommunityAppeal.setValue(dataToSave);
                                         startActivity(new Intent(AddCommunityDevelopmentAppealActivity.this, MainNavigationActivity.class));
                                         finish();
@@ -189,9 +189,9 @@ public class AddCommunityDevelopmentAppealActivity extends AppCompatActivity {
                                     dataToSave.put("Hunger", "No");
                                 }
                                 if (addCommunityDevHealthIssuesCheckBox.isChecked()) {
-                                    dataToSave.put("Health Issues", "Yes");
+                                    dataToSave.put("HealthIssues", "Yes");
                                 } else {
-                                    dataToSave.put("Health Issues", "No");
+                                    dataToSave.put("HealthIssues", "No");
                                 }
                                 if (addCommunityDevPovertyCheckBox.isChecked()) {
                                     dataToSave.put("Poverty", "Yes");

@@ -23,6 +23,8 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.List;
 
+import static java.text.DateFormat.getDateInstance;
+
 /**
  * Created by Admin on 16-Mar-18.
  */
@@ -50,7 +52,8 @@ public class DisasterManagementAppealAdapter extends RecyclerView.Adapter<Disast
     }
 
     @Override
-    public void onBindViewHolder(DisasterManagementAppealAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(final DisasterManagementAppealAdapter.ViewHolder holder, int position) {
+
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
         mDatabase = FirebaseDatabase.getInstance();
@@ -63,8 +66,8 @@ public class DisasterManagementAppealAdapter extends RecyclerView.Adapter<Disast
         holder.appealUsername.setText(String.format("%s %s" , disasterAppeal.getAppealFirstName(), disasterAppeal.getAppealLastName()));
         String imageDp = disasterAppeal.getAppealImageDp();
         Picasso.with(context).load(imageDp).into(holder.imageDp);
-        holder.appealTitle.setText(String.format("Title: %s had occured" , disasterAppeal.getDesc()));
-        java.text.DateFormat dateFormat = DateFormat.getDateInstance();
+        holder.appealTitle.setText(String.format("Title: %s had occured" , disasterAppeal.getDescription()));
+        java.text.DateFormat dateFormat = getDateInstance();
         String formattedDate = dateFormat.format(new Date(Long.valueOf(disasterAppeal.getTimestamp())).getTime());
 
         holder.appealDate.setText(String.format("Created On: %s", formattedDate));
@@ -106,15 +109,15 @@ public class DisasterManagementAppealAdapter extends RecyclerView.Adapter<Disast
                     Intent intent = new Intent(context , DisasterManagementAppealDetailsActivity.class);
 
                     intent.putExtra("appealPic" , disasterAppealList.get(getAdapterPosition()).getPicProof());
-                    intent.putExtra("appealTitle", disasterAppealList.get(getAdapterPosition()).getDesc());
+                    intent.putExtra("appealTitle", disasterAppealList.get(getAdapterPosition()).getDescription());
                     intent.putExtra("Food", disasterAppealList.get(getAdapterPosition()).getNeedFood());
                     intent.putExtra("Water", disasterAppealList.get(getAdapterPosition()).getNeedWater());
                     intent.putExtra("Shelter", disasterAppealList.get(getAdapterPosition()).getNeedShelter());
                     intent.putExtra("Clothing", disasterAppealList.get(getAdapterPosition()).getNeedClothing());
                     intent.putExtra("MedicalFacilities", disasterAppealList.get(getAdapterPosition()).getNeedMedical());
                     intent.putExtra("Rehabilitation", disasterAppealList.get(getAdapterPosition()).getNeedRehab());
-                    intent.putExtra("ContactNo", disasterAppealList.get(getAdapterPosition()).getContactNo());
-                    intent.putExtra("AltContactNo", disasterAppealList.get(getAdapterPosition()).getAltContactNo());
+                    intent.putExtra("contactNo", disasterAppealList.get(getAdapterPosition()).getContactNo());
+                    intent.putExtra("altContactNo", disasterAppealList.get(getAdapterPosition()).getAltContactNo());
                     ctx.startActivity(intent);
 
 

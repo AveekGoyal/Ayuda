@@ -105,10 +105,10 @@ public class AddDisasterManagementAppeal extends AppCompatActivity {
 
     private void addDisasterManagementAppeal() {
         final String description = addDisasterDescTextBox.getText().toString().trim();
-        final String ContactNo = addDisasterContactNoTextBox.getText().toString().trim();
-        final String AltContactNo = addDisasterAltContactNoTextBox.getText().toString().trim();
+        final String contactNo = addDisasterContactNoTextBox.getText().toString().trim();
+        final String altContactNo = addDisasterAltContactNoTextBox.getText().toString().trim();
 
-        if (!TextUtils.isEmpty(description) && !TextUtils.isEmpty(ContactNo)) {
+        if (!TextUtils.isEmpty(description) && !TextUtils.isEmpty(contactNo)) {
             StorageReference filePath = mStorage.child("DisasterManagementAppeal_Images").child(resultUri.getLastPathSegment());
             filePath.putFile(resultUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
 
@@ -132,6 +132,7 @@ public class AddDisasterManagementAppeal extends AppCompatActivity {
                                         String lname = dataSnapshot.child(userId).child("lastName").getValue(String.class);
                                         String imageUrl = dataSnapshot.child(userId).child("imageDp").getValue(String.class);
                                         Members memberDetails = new Members(fName, lname, imageUrl);
+
                                         DatabaseReference newDisasterAppeal = mDatabaseReference.push();
                             Map<String, String> dataToSave = new HashMap<>();
 
@@ -170,10 +171,11 @@ public class AddDisasterManagementAppeal extends AppCompatActivity {
                             } else {
                                 dataToSave.put("needRehab", "No");
                             }
-                            dataToSave.put("ContactNo", ContactNo);
-                            dataToSave.put("AltContactNo", AltContactNo);
+                            dataToSave.put("contactNo", contactNo);
+                            dataToSave.put("altContactNo", altContactNo);
                             dataToSave.put("picProof", downloadUrl.toString());
                             dataToSave.put("timestamp", String.valueOf(java.lang.System.currentTimeMillis()));
+                            newDisasterAppeal.setValue(dataToSave);
                             startActivity(new Intent(AddDisasterManagementAppeal.this, MainNavigationActivity.class));
                             finish();
 
@@ -224,10 +226,11 @@ public class AddDisasterManagementAppeal extends AppCompatActivity {
                                 } else {
                                     dataToSave.put("needRehab", "No");
                                 }
-                                dataToSave.put("ContactNo", ContactNo);
-                                dataToSave.put("AltContactNo", AltContactNo);
+                                dataToSave.put("contactNo", contactNo);
+                                dataToSave.put("altContactNo", altContactNo);
                                 dataToSave.put("picProof", downloadUrl.toString());
                                 dataToSave.put("timestamp", String.valueOf(java.lang.System.currentTimeMillis()));
+                                newDisasterAppeal.setValue(dataToSave);
                                 startActivity(new Intent(AddDisasterManagementAppeal.this, MainNavigationActivity.class));
                                 finish();
 
