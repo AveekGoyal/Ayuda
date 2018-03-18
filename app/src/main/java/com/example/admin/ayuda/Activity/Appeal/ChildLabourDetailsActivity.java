@@ -1,20 +1,27 @@
 package com.example.admin.ayuda.Activity.Appeal;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
+import com.example.admin.ayuda.Activity.MainNavigationActivity;
 import com.example.admin.ayuda.Data.AppealAdapters.ChildLabourAppealAdapter;
 import com.example.admin.ayuda.Model.ChildAbuseAppeals;
 import com.example.admin.ayuda.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -33,6 +40,8 @@ public class ChildLabourDetailsActivity extends AppCompatActivity {
     private TextView childLabourAproxAge;
     private RadioButton childLabourMale;
     private RadioButton childLabourFemale;
+    private Button childLabourAcceptButton;
+    private Button childLabourRejectButton;
     private DatabaseReference mDatabaseReference;
     private FirebaseDatabase mDatabase;
     private FirebaseUser mUser;
@@ -57,6 +66,8 @@ public class ChildLabourDetailsActivity extends AppCompatActivity {
         childLabourAproxAge = findViewById(R.id.ChildLabourApproxAgePlainText);
         childLabourMale = findViewById(R.id.ChildLabourRadioMale);
         childLabourFemale = findViewById(R.id.ChildLabourRadioFemale);
+        childLabourAcceptButton = findViewById(R.id.ChildLabourAcceptButton);
+        childLabourRejectButton = findViewById(R.id.ChildLabourRejectButton);
         
         //Setting CheckBox Uneditable so tha in view option user cannot edit them
         mAuth = FirebaseAuth.getInstance();
@@ -130,6 +141,39 @@ public class ChildLabourDetailsActivity extends AppCompatActivity {
             childLabourFemale.setEnabled(false);
             childLabourMale.setEnabled(false);
         }
+
+
+
+        final String userId = mUser.getUid();
+        DatabaseReference getType = FirebaseDatabase.getInstance().getReference().child("NgoAdmin").child(userId);
+        getType.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String type = dataSnapshot.child("type").getValue(String.class);
+                if(type == null)
+                {
+                    childLabourAcceptButton.setEnabled(false);
+                    childLabourRejectButton.setEnabled(false);
+                }
+                else if(type.equals("NgoAdmin"))
+                {
+                    childLabourRejectButton.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            startActivity(new Intent(ChildLabourDetailsActivity.this, MainNavigationActivity.class));
+                        }
+                    });
+
+
+                }
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
 
 

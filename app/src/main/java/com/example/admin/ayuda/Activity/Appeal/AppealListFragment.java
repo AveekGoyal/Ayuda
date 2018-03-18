@@ -74,7 +74,9 @@ public class AppealListFragment extends Fragment implements AdapterView.OnItemSe
         mUser = mAuth.getCurrentUser();
         mDatabase = FirebaseDatabase.getInstance();
         bloodBankAppealList = new ArrayList<>();
+
         childAbuseAppealsList = new ArrayList<>();
+
         recycler = view.findViewById(R.id.appealListFragmentRecyclerView);
         recycler.setHasFixedSize(true);
         recycler.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -171,6 +173,7 @@ public class AppealListFragment extends Fragment implements AdapterView.OnItemSe
 
         if( categorySelected.equals("Blood Bank"))
         {
+            bloodBankAppealList.clear();
             getBloodBankAppealData();
         }
         if(categorySelected.equals("Disaster Management"))
@@ -183,6 +186,7 @@ public class AppealListFragment extends Fragment implements AdapterView.OnItemSe
         }
         if(categorySelected.equals("Child Abuse"))
         {
+            childAbuseAppealsList.clear();
             getChildAbuseAppealData();
         }
         if(categorySelected.equals("Community Development"))
@@ -203,11 +207,14 @@ public class AppealListFragment extends Fragment implements AdapterView.OnItemSe
             FirebaseDatabase.getInstance().getReference().child("ChildLabourAppeal").orderByChild("timestamp").addChildEventListener(new ChildEventListener() {
                 @Override
                 public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+
+
                     ChildAbuseAppeals childAbuseAppeals = dataSnapshot.getValue(ChildAbuseAppeals.class);
                     childAbuseAppealsList.add(childAbuseAppeals);
                     childLabourAppealAdapter = new ChildLabourAppealAdapter(getActivity(), childAbuseAppealsList);
                     recycler.setAdapter(childLabourAppealAdapter);
                     childLabourAppealAdapter.notifyDataSetChanged();
+
 
 
                 }
@@ -248,6 +255,7 @@ public class AppealListFragment extends Fragment implements AdapterView.OnItemSe
         FirebaseDatabase.getInstance().getReference().child("BloodBankAppeals").orderByChild("timestamp").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+
                 BloodBankAppeal bloodBankAppeal = dataSnapshot.getValue(BloodBankAppeal.class);
                 bloodBankAppealList.add(bloodBankAppeal);
                 bloodBankAppealAdapter = new BloodBankAppealAdapter(getActivity(), bloodBankAppealList);
