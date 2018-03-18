@@ -18,7 +18,11 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.admin.ayuda.Data.AppealAdapters.BloodBankAppealAdapter;
+import com.example.admin.ayuda.Data.AppealAdapters.CommunityDevelopmentAppealAdapter;
+import com.example.admin.ayuda.Data.AppealAdapters.DisasterManagementAppealAdapter;
 import com.example.admin.ayuda.Model.BloodBankAppeal;
+import com.example.admin.ayuda.Model.CommunityAppeal;
+import com.example.admin.ayuda.Model.DisasterAppeal;
 import com.example.admin.ayuda.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -45,6 +49,10 @@ public class AppealListFragment extends Fragment implements AdapterView.OnItemSe
     private Spinner chooseSortCategory;
     private BloodBankAppealAdapter bloodBankAppealAdapter;
     private List<BloodBankAppeal> bloodBankAppealList;
+    private DisasterManagementAppealAdapter disasterManagementAppealAdapter;
+    private List<DisasterAppeal> disasterAppealList;
+    private CommunityDevelopmentAppealAdapter communityDevelopmentAppealAdapter;
+    private List<CommunityAppeal> communityAppealList;
     String type=" ";
 
 
@@ -70,6 +78,8 @@ public class AppealListFragment extends Fragment implements AdapterView.OnItemSe
         mUser = mAuth.getCurrentUser();
         mDatabase = FirebaseDatabase.getInstance();
         bloodBankAppealList = new ArrayList<>();
+        disasterAppealList = new ArrayList<>();
+        communityAppealList = new ArrayList<>();
         recycler = view.findViewById(R.id.appealListFragmentRecyclerView);
         recycler.setHasFixedSize(true);
         recycler.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -168,12 +178,96 @@ public class AppealListFragment extends Fragment implements AdapterView.OnItemSe
         {
             getBloodBankAppealData();
         }
+        else if (categorySelected.equals("Disaster Management"))
+        {
+            getDisasterManagementAppealData();
+        }
+        else if (categorySelected.equals("Community Development"))
+        {
+            getCommunityDevelopmentAppealData();
+        }
 
 
 
 
 
     }
+
+    private void getCommunityDevelopmentAppealData() {
+        FirebaseDatabase.getInstance().getReference().child("CommunityDevelopmentAppeals").orderByChild("timestamp").addChildEventListener(new ChildEventListener() {
+
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                CommunityAppeal communityDevelopmentAppeal = dataSnapshot.getValue(CommunityAppeal.class);
+                communityAppealList.add(communityDevelopmentAppeal);
+                communityDevelopmentAppealAdapter =  new CommunityDevelopmentAppealAdapter(getActivity(), communityAppealList);
+                recycler.setAdapter(communityDevelopmentAppealAdapter);
+                communityDevelopmentAppealAdapter.notifyDataSetChanged();
+
+            }
+
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+    }
+    @Override
+    public void onNothingSelected (AdapterView < ? > parent){
+
+    }
+
+
+
+    private void getDisasterManagementAppealData() {
+
+        FirebaseDatabase.getInstance().getReference().child("DisasterManagementAppeals").orderByChild("timestamp").addChildEventListener(new ChildEventListener() {
+
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                DisasterAppeal disasterManagementAppeal = dataSnapshot.getValue(DisasterAppeal.class);
+                disasterAppealList.add(disasterManagementAppeal);
+                disasterManagementAppealAdapter = new DisasterManagementAppealAdapter(getActivity(), disasterAppealList);
+                recycler.setAdapter(disasterManagementAppealAdapter);
+                disasterManagementAppealAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+    }
+
 
     private void getBloodBankAppealData() {
 
@@ -209,9 +303,6 @@ public class AppealListFragment extends Fragment implements AdapterView.OnItemSe
         });
     }
 
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
 
-    }
 }
 

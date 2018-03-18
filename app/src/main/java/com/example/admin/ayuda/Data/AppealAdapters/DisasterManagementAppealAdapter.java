@@ -1,8 +1,13 @@
 package com.example.admin.ayuda.Data.AppealAdapters;
 
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.admin.ayuda.Model.DisasterAppeal;
+
+import java.util.List;
 
 /**
  * Created by Admin on 16-Mar-18.
@@ -10,7 +15,11 @@ import android.view.ViewGroup;
 
 public class DisasterManagementAppealAdapter extends RecyclerView.Adapter<DisasterManagementAppealAdapter.ViewHolder> {
 
+    private List<DisasterAppeal> disasterAppealList;
 
+
+    public DisasterManagementAppealAdapter(FragmentActivity activity, List<DisasterAppeal> disasterAppealList) {
+    }
 
     @Override
     public DisasterManagementAppealAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
