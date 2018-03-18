@@ -80,7 +80,7 @@ public class DisasterManagementAppealDetailsActivity extends AppCompatActivity {
 
         String imageUrl = getIntent().getStringExtra("appealPic");
         Picasso.with(getApplicationContext()).load(imageUrl).into(disasterMgmtPicProofImageView);
-        disasterMgmtDescPlainText.setText(String.format("Description: %s " , getIntent().getStringExtra("description")));
+        disasterMgmtDescPlainText.setText(String.format("Description: %s " , getIntent().getStringExtra("appealTitle")));
         if (getIntent().getStringExtra("needFood").equals("Yes"))
         {
             disasterMgmtNeedFood.setChecked(true);
@@ -105,7 +105,7 @@ public class DisasterManagementAppealDetailsActivity extends AppCompatActivity {
         else {
             disasterMgmtNeedShelter.setEnabled(false);
         }
-                if (getIntent().getStringExtra("needMedical").equals("Yes"))
+                if (getIntent().getStringExtra("needMedicalFacilities").equals("Yes"))
         {
             disasterMgmtNeedMedical.setChecked(true);
             disasterMgmtNeedMedical.setEnabled(false);
@@ -121,7 +121,7 @@ public class DisasterManagementAppealDetailsActivity extends AppCompatActivity {
         else {
             disasterMgmtNeedClothing.setEnabled(false);
         }
-        if(getIntent().getStringExtra("needRehab").equals("Yes"))
+        if(getIntent().getStringExtra("needRehabilitation").equals("Yes"))
         {
             disasterMgmtNeedRehab.setChecked(true);
             disasterMgmtNeedRehab.setEnabled(false);
@@ -131,8 +131,8 @@ public class DisasterManagementAppealDetailsActivity extends AppCompatActivity {
             disasterMgmtNeedRehab.setEnabled(false);
         }
 
-        disasterMgmtContactNoPlainText.setText(String.format("Contact Number : %s", getIntent().getStringExtra("ContactNo")));
-        disasterMgmtAltContactNoPlainText.setText(String.format("Alternate Number: %s", getIntent().getStringExtra("AltContactNo")));
+        disasterMgmtContactNoPlainText.setText(String.format("Contact Number : %s", getIntent().getStringExtra("contactNo")));
+        disasterMgmtAltContactNoPlainText.setText(String.format("Alternate Number: %s", getIntent().getStringExtra("altContactNo")));
 
 
         disasterMgmtRejectButton.setOnClickListener(new View.OnClickListener() {

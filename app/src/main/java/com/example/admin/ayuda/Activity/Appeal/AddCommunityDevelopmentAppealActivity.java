@@ -135,27 +135,27 @@ public class AddCommunityDevelopmentAppealActivity extends AppCompatActivity {
                                         dataToSave.put("appealImageDp", memberDetails.getAppealImageDp());
                                         dataToSave.put("description", description);
                                         if (addCommunityDevCleaningCheckBox.isChecked()) {
-                                            dataToSave.put("Cleaning", "Yes");
+                                            dataToSave.put("cleaning", "Yes");
                                         } else {
-                                            dataToSave.put("Cleaning", "No");
+                                            dataToSave.put("cleaning", "No");
                                         }
                                         if (addCommunityDevHungerCheckBox.isChecked()) {
-                                            dataToSave.put("Hunger", "Yes");
+                                            dataToSave.put("hunger", "Yes");
                                         } else {
-                                            dataToSave.put("Hunger", "No");
+                                            dataToSave.put("hunger", "No");
                                         }
                                         if (addCommunityDevHealthIssuesCheckBox.isChecked()) {
-                                            dataToSave.put("HealthIssues", "Yes");
+                                            dataToSave.put("healthIssues", "Yes");
                                         } else {
-                                            dataToSave.put("HealthIssues", "No");
+                                            dataToSave.put("healthIssues", "No");
                                         }
                                         if (addCommunityDevPovertyCheckBox.isChecked()) {
-                                            dataToSave.put("Poverty", "Yes");
+                                            dataToSave.put("poverty", "Yes");
                                         } else {
-                                            dataToSave.put("Poverty", "No");
+                                            dataToSave.put("poverty", "No");
                                         }
 
-                                        dataToSave.put("ContactNo", ContactNo);
+                                        dataToSave.put("contactNo", ContactNo);
                                         dataToSave.put("picProof", downloadUrl.toString());
                                         dataToSave.put("timestamp", String.valueOf(System.currentTimeMillis()));
                                         newCommunityAppeal.setValue(dataToSave);
@@ -179,27 +179,27 @@ public class AddCommunityDevelopmentAppealActivity extends AppCompatActivity {
                                 dataToSave.put("appealImageDp", userDetail.getAppealImageDp());
                                 dataToSave.put("description", description);
                                 if (addCommunityDevCleaningCheckBox.isChecked()) {
-                                    dataToSave.put("Cleaning", "Yes");
+                                    dataToSave.put("cleaning", "Yes");
                                 } else {
-                                    dataToSave.put("Cleaning", "No");
+                                    dataToSave.put("cleaning", "No");
                                 }
                                 if (addCommunityDevHungerCheckBox.isChecked()) {
-                                    dataToSave.put("Hunger", "Yes");
+                                    dataToSave.put("hunger", "Yes");
                                 } else {
-                                    dataToSave.put("Hunger", "No");
+                                    dataToSave.put("hunger", "No");
                                 }
                                 if (addCommunityDevHealthIssuesCheckBox.isChecked()) {
-                                    dataToSave.put("HealthIssues", "Yes");
+                                    dataToSave.put("healthIssues", "Yes");
                                 } else {
-                                    dataToSave.put("HealthIssues", "No");
+                                    dataToSave.put("healthIssues", "No");
                                 }
                                 if (addCommunityDevPovertyCheckBox.isChecked()) {
-                                    dataToSave.put("Poverty", "Yes");
+                                    dataToSave.put("poverty", "Yes");
                                 } else {
-                                    dataToSave.put("Poverty", "No");
+                                    dataToSave.put("poverty", "No");
                                 }
 
-                                dataToSave.put("ContactNo", ContactNo);
+                                dataToSave.put("contactNo", ContactNo);
                                 dataToSave.put("picProof", downloadUrl.toString());
                                 dataToSave.put("timestamp", String.valueOf(java.lang.System.currentTimeMillis()));
                                 newCommunityAppeal.setValue(dataToSave);

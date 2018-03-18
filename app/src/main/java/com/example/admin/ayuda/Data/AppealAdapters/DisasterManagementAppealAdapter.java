@@ -110,12 +110,12 @@ public class DisasterManagementAppealAdapter extends RecyclerView.Adapter<Disast
 
                     intent.putExtra("appealPic" , disasterAppealList.get(getAdapterPosition()).getPicProof());
                     intent.putExtra("appealTitle", disasterAppealList.get(getAdapterPosition()).getDescription());
-                    intent.putExtra("Food", disasterAppealList.get(getAdapterPosition()).getNeedFood());
-                    intent.putExtra("Water", disasterAppealList.get(getAdapterPosition()).getNeedWater());
-                    intent.putExtra("Shelter", disasterAppealList.get(getAdapterPosition()).getNeedShelter());
-                    intent.putExtra("Clothing", disasterAppealList.get(getAdapterPosition()).getNeedClothing());
-                    intent.putExtra("MedicalFacilities", disasterAppealList.get(getAdapterPosition()).getNeedMedical());
-                    intent.putExtra("Rehabilitation", disasterAppealList.get(getAdapterPosition()).getNeedRehab());
+                    intent.putExtra("needFood", disasterAppealList.get(getAdapterPosition()).getNeedFood());
+                    intent.putExtra("needWater", disasterAppealList.get(getAdapterPosition()).getNeedWater());
+                    intent.putExtra("needShelter", disasterAppealList.get(getAdapterPosition()).getNeedShelter());
+                    intent.putExtra("needClothing", disasterAppealList.get(getAdapterPosition()).getNeedClothing());
+                    intent.putExtra("needMedicalFacilities", disasterAppealList.get(getAdapterPosition()).getNeedMedical());
+                    intent.putExtra("needRehabilitation", disasterAppealList.get(getAdapterPosition()).getNeedRehab());
                     intent.putExtra("contactNo", disasterAppealList.get(getAdapterPosition()).getContactNo());
                     intent.putExtra("altContactNo", disasterAppealList.get(getAdapterPosition()).getAltContactNo());
                     ctx.startActivity(intent);

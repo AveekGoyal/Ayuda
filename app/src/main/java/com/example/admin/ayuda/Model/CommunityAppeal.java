@@ -3,12 +3,12 @@ package com.example.admin.ayuda.Model;
 public class CommunityAppeal {
 
     public String picProof;
-    public String Cleaning;
-    public String Hunger;
-    public String HealthIssues;
-    public String Poverty;
+    public String cleaning;
+    public String hunger;
+    public String healthIssues;
+    public String poverty;
     public String description;
-    public String ContactNo;
+    public String contactNo;
     public String userId;
     public String appealFirstName;
     public String appealLastName;
@@ -19,22 +19,19 @@ public class CommunityAppeal {
     public CommunityAppeal() {
     }
 
-
-
-    public CommunityAppeal(String picProof, String Cleaning, String Hunger, String HealthIssues, String Poverty, String description, String ContactNo, String userId, String timestamp, String appealFirstName, String appealLastName, String appealImageDp) {
+    public CommunityAppeal(String picProof, String cleaning, String hunger, String healthIssues, String poverty, String description, String contactNo, String userId, String appealFirstName, String appealLastName, String appealImageDp, String timestamp) {
         this.picProof = picProof;
-        this.Cleaning = Cleaning;
-        this.Hunger = Hunger;
-        this.HealthIssues = HealthIssues;
-        this.Poverty = Poverty;
+        this.cleaning = cleaning;
+        this.hunger = hunger;
+        this.healthIssues = healthIssues;
+        this.poverty = poverty;
         this.description = description;
-        this.ContactNo = ContactNo;
+        this.contactNo = contactNo;
         this.userId = userId;
         this.appealFirstName = appealFirstName;
         this.appealLastName = appealLastName;
         this.appealImageDp = appealImageDp;
         this.timestamp = timestamp;
-
     }
 
     public String getPicProof() {
@@ -46,35 +43,35 @@ public class CommunityAppeal {
     }
 
     public String getCleaning() {
-        return Cleaning;
+        return cleaning;
     }
 
-    public void setCleaning(String Cleaning) {
-        this.Cleaning = Cleaning;
+    public void setCleaning(String cleaning) {
+        this.cleaning = cleaning;
     }
 
     public String getHunger() {
-        return Hunger;
+        return hunger;
     }
 
-    public void setHunger(String Hunger) {
-        this.Hunger = Hunger;
+    public void setHunger(String hunger) {
+        this.hunger = hunger;
     }
 
     public String getHealthIssues() {
-        return HealthIssues;
+        return healthIssues;
     }
 
-    public void setHealthIssues(String HealthIssues) {
-        this.HealthIssues = HealthIssues;
+    public void setHealthIssues(String healthIssues) {
+        this.healthIssues = healthIssues;
     }
 
     public String getPoverty() {
-        return Poverty;
+        return poverty;
     }
 
-    public void setPoverty(String Poverty) {
-        this.Poverty = Poverty;
+    public void setPoverty(String poverty) {
+        this.poverty = poverty;
     }
 
     public String getDescription() {
@@ -86,11 +83,11 @@ public class CommunityAppeal {
     }
 
     public String getContactNo() {
-        return ContactNo;
+        return contactNo;
     }
 
-    public void setContactNo(String ContactNo) {
-        this.ContactNo = ContactNo;
+    public void setContactNo(String contactNo) {
+        this.contactNo = contactNo;
     }
 
     public String getUserId() {
@@ -101,11 +98,8 @@ public class CommunityAppeal {
         this.userId = userId;
     }
 
-
-    public String getAppealFirstName()
-    {
+    public String getAppealFirstName() {
         return appealFirstName;
-
     }
 
     public void setAppealFirstName(String appealFirstName) {
@@ -135,8 +129,4 @@ public class CommunityAppeal {
     public void setTimestamp(String timestamp) {
         this.timestamp = timestamp;
     }
-
-
-
-
 }

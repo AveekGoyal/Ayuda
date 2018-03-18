@@ -84,7 +84,7 @@ public class CommunityDevelopmentDetailsActivity extends AppCompatActivity {
         {
             communityDevHungerCheckBox.setEnabled(false);
         }
-        if (getIntent().getStringExtra("Health Issues").equals("Yes")) {
+        if (getIntent().getStringExtra("HealthIssues").equals("Yes")) {
             communityDevHealthIssuesCheckBox.setChecked(true);
             communityDevHealthIssuesCheckBox.setEnabled(false);
         }
@@ -100,7 +100,7 @@ public class CommunityDevelopmentDetailsActivity extends AppCompatActivity {
         {
             communityDevPovertyCheckBox.setEnabled(false);
         }
-        communityDevDescPlainText.setText(String.format("Description: %s" , getIntent().getStringExtra("description")));
+        communityDevDescPlainText.setText(String.format("Description: %s" , getIntent().getStringExtra("appealTitle")));
         communityDevContactNoPlainText.setText(String.format("Contact Number : %s", getIntent().getStringExtra("ContactNo")));
 
         communityDevRejectButton.setOnClickListener(new View.OnClickListener() {

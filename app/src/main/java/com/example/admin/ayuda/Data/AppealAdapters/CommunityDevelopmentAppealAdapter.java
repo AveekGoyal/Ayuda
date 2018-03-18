@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.admin.ayuda.Activity.Appeal.CommunityDevelopmentDetailsActivity;
 import com.example.admin.ayuda.Model.CommunityAppeal;
 import com.example.admin.ayuda.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -24,9 +25,6 @@ import java.util.List;
 
 import static java.text.DateFormat.getDateInstance;
 
-/**
- * Created by HP on 3/18/2018.
- */
 
 public class CommunityDevelopmentAppealAdapter extends RecyclerView.Adapter<CommunityDevelopmentAppealAdapter.ViewHolder> {
 
@@ -102,7 +100,7 @@ public class CommunityDevelopmentAppealAdapter extends RecyclerView.Adapter<Comm
 
                     CommunityAppeal communityAppeal = communityAppealList.get(getAdapterPosition());
 
-                    Intent intent = new Intent(context, CommunityDevelopmentAppealAdapter.class);
+                    Intent intent = new Intent(context, CommunityDevelopmentDetailsActivity.class);
                     intent.putExtra("appealPic", communityAppealList.get(getAdapterPosition()).getPicProof());
                     intent.putExtra("appealTitle", communityAppealList.get(getAdapterPosition()).getDescription());
                     intent.putExtra("Cleaning", communityAppealList.get(getAdapterPosition()).getCleaning());
