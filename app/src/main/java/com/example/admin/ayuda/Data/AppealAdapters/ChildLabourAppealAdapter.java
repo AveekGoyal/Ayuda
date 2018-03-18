@@ -102,15 +102,13 @@ public class ChildLabourAppealAdapter extends RecyclerView.Adapter<ChildLabourAp
 
                     intent.putExtra("appealPic" , childAbuseAppealList.get(getAdapterPosition()).getPicProof());
                     intent.putExtra("appealTitle" , childAbuseAppealList.get(getAdapterPosition()).getDescription());
-                    intent.putExtra(("physicalAbuse" ), childAbuseAppealList.get(getAdapterPosition()).getPhysicalAbuse());
+                    intent.putExtra(("PhysicalAbuse" ), childAbuseAppealList.get(getAdapterPosition()).getPhysicalAbuse());
                     intent.putExtra("sexualAbuse" ,childAbuseAppealList.get(getAdapterPosition()).getSexualAbuse());
-                    intent.putExtra("psychologicalAbuse" , childAbuseAppealList.get(getAdapterPosition()).getPsychologicalAbuse());
+                    intent.putExtra("psycologicalAbuse" , childAbuseAppealList.get(getAdapterPosition()).getPsychologicalAbuse());
                     intent.putExtra("abandon" , childAbuseAppealList.get(getAdapterPosition()).getChildAbandon());
                     intent.putExtra("childMarriage" , childAbuseAppealList.get(getAdapterPosition()).getChildMarriage());
-                    intent.putExtra("childLabour" , childAbuseAppealList.get(getAdapterPosition()).getChildLabour());
                     intent.putExtra("appoxAge" , childAbuseAppealList.get(getAdapterPosition()).getChildApproxAge());
                     intent.putExtra("gender" , childAbuseAppealList.get(getAdapterPosition()).getGender());
-                    intent.putExtra("description",childAbuseAppealList.get(getAdapterPosition()).getDescription());
                     ctx.startActivity(intent);
 
 

@@ -152,4 +152,5 @@ public class ChildAbuseAppeals {
     public void setGender(String gender) {
         this.gender = gender;
     }
-}
+
+        }

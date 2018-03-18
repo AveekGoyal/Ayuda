@@ -4,7 +4,7 @@ public class DisasterAppeal {
 
     public String picProof;
     public String typeOfDisaster;
-    public String desc;
+    public String description;
     public String needFood;
     public String needWater;
     public String needShelter;
@@ -13,14 +13,21 @@ public class DisasterAppeal {
     public String needRehab;
     public String contactNo;
     public String altContactNo;
+    public String userId;
+    public String appealFirstName;
+    public String appealLastName;
+    public String appealImageDp;
+    public String timestamp;
+
 
     public DisasterAppeal() {
     }
 
-    public DisasterAppeal(String picProof, String typeOfDisaster, String desc, String needFood, String needWater, String needShelter, String needClothing, String needMedical, String needRehab, String contactNo, String altContactNo) {
+
+    public DisasterAppeal(String picProof, String typeOfDisaster, String description, String needFood, String needWater, String needShelter, String needClothing, String needMedical, String needRehab, String contactNo, String altContactNo, String userId, String timestamp, String appealFirstName, String appealLastName, String appealImageDp) {
         this.picProof = picProof;
         this.typeOfDisaster = typeOfDisaster;
-        this.desc = desc;
+        this.description = description;
         this.needFood = needFood;
         this.needWater = needWater;
         this.needShelter = needShelter;
@@ -29,6 +36,12 @@ public class DisasterAppeal {
         this.needRehab = needRehab;
         this.contactNo = contactNo;
         this.altContactNo = altContactNo;
+        this.userId = userId;
+        this.appealFirstName = appealFirstName;
+        this.appealLastName = appealLastName;
+        this.appealImageDp = appealImageDp;
+        this.timestamp = timestamp;
+
     }
 
     public String getPicProof() {
@@ -47,12 +60,12 @@ public class DisasterAppeal {
         this.typeOfDisaster = typeOfDisaster;
     }
 
-    public String getDesc() {
-        return desc;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setDescription (String description) {
+        this.description = description;
     }
 
     public String getNeedFood() {
@@ -118,4 +131,50 @@ public class DisasterAppeal {
     public void setAltContactNo(String altContactNo) {
         this.altContactNo = altContactNo;
     }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+
+    public String getAppealFirstName()
+    {
+        return appealFirstName;
+
+    }
+
+    public void setAppealFirstName(String appealFirstName) {
+        this.appealFirstName = appealFirstName;
+    }
+
+    public String getAppealLastName() {
+        return appealLastName;
+    }
+
+    public void setAppealLastName(String appealLastName) {
+        this.appealLastName = appealLastName;
+    }
+
+    public String getAppealImageDp() {
+        return appealImageDp;
+    }
+
+    public void setAppealImageDp(String appealImageDp) {
+        this.appealImageDp = appealImageDp;
+    }
+
+    public String getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(String timestamp) {
+        this.timestamp = timestamp;
+    }
+
+
+
 }
