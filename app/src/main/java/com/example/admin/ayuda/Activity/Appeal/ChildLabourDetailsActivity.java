@@ -5,9 +5,19 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.CheckBox;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
+import com.example.admin.ayuda.Data.AppealAdapters.ChildLabourAppealAdapter;
+import com.example.admin.ayuda.Model.ChildAbuseAppeals;
 import com.example.admin.ayuda.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.squareup.picasso.Picasso;
+
+import java.util.List;
 
 
 public class ChildLabourDetailsActivity extends AppCompatActivity {
@@ -20,6 +30,16 @@ public class ChildLabourDetailsActivity extends AppCompatActivity {
     private CheckBox childLabourAbandon;
     private CheckBox childLabourChildMarriage;
     private CheckBox childLabourChildLabour;
+    private TextView childLabourAproxAge;
+    private RadioButton childLabourMale;
+    private RadioButton childLabourFemale;
+    private DatabaseReference mDatabaseReference;
+    private FirebaseDatabase mDatabase;
+    private FirebaseUser mUser;
+    private FirebaseAuth mAuth;
+    private ChildLabourAppealAdapter childLabourAppealAdapter;
+    private List<ChildAbuseAppeals> childAbuseAppealsList;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -34,8 +54,91 @@ public class ChildLabourDetailsActivity extends AppCompatActivity {
         childLabourAbandon = findViewById(R.id.ChildLabourAbandon);
         childLabourChildLabour = findViewById(R.id.ChildLabourChildLabour);
         childLabourChildMarriage = findViewById(R.id.ChildLabourChildMarriage);
+        childLabourAproxAge = findViewById(R.id.ChildLabourApproxAgePlainText);
+        childLabourMale = findViewById(R.id.ChildLabourRadioMale);
+        childLabourFemale = findViewById(R.id.ChildLabourRadioFemale);
         
         //Setting CheckBox Uneditable so tha in view option user cannot edit them
+        mAuth = FirebaseAuth.getInstance();
+        mUser = mAuth.getCurrentUser();
+        mDatabase = FirebaseDatabase.getInstance();
+        mDatabaseReference = mDatabase.getReference().child("ChildLabourAppeal");
+        mDatabaseReference.keepSynced(true);
+
+        String imageUrl = getIntent().getStringExtra("appealPic");
+        Picasso.with(getApplicationContext()).load(imageUrl).into(childLabourPicProofImageView);
+        childLabourDescPlainText.setText(String.format("Description: %s " , getIntent().getStringExtra("description")));
+        if (getIntent().getStringExtra("physicalAbuse").equals("Yes")){
+            childLabourPhysicalAbuse.setChecked(true);
+            childLabourPhysicalAbuse.setEnabled(false);
+
+        }
+        else
+        {
+            childLabourPhysicalAbuse.setEnabled(false);
+        }
+        if (getIntent().getStringExtra("sexualAbuse").equals("Yes")){
+            childLabourSexualAbuse.setChecked(true);
+            childLabourSexualAbuse.setEnabled(false);
+        }
+        else
+        {
+            childLabourSexualAbuse.setEnabled(false);
+        }
+        if (getIntent().getStringExtra("psychologicalAbuse").equals("Yes")){
+            childLabourPsychologicalAbuse.setChecked(true);
+            childLabourPsychologicalAbuse.setEnabled(false);
+        }
+        else
+        {
+            childLabourPsychologicalAbuse.setEnabled(false);
+        }
+        if (getIntent().getStringExtra("abandon").equals("Yes")){
+            childLabourAbandon.setChecked(true);
+            childLabourAbandon.setEnabled(false);
+        }
+        else
+        {
+            childLabourAbandon.setEnabled(false);
+        }
+        if (getIntent().getStringExtra("childMarriage").equals("Yes")){
+            childLabourChildMarriage.setChecked(true);
+            childLabourChildMarriage.setEnabled(false);
+        }
+        else
+        {
+            childLabourChildMarriage.setEnabled(false);
+        }
+        if (getIntent().getStringExtra("childLabour").equals("Yes")){
+            childLabourChildLabour.setChecked(true);
+            childLabourChildLabour.setEnabled(false);
+        }
+        else
+        {
+            childLabourChildLabour.setEnabled(false);
+        }
+        childLabourAproxAge.setText(String.format(" : %s", getIntent().getStringExtra("appoxAge")));
+        if(getIntent().getStringExtra("gender").equals("Male"))
+        {
+            childLabourMale.setChecked(true);
+            childLabourMale.setEnabled(false);
+            childLabourFemale.setEnabled(false);
+        }
+        else
+        {
+            childLabourFemale.setChecked(true);
+            childLabourFemale.setEnabled(false);
+            childLabourMale.setEnabled(false);
+        }
+
+
+
+
+
+
+
+
+
 
 
     }

@@ -8,10 +8,10 @@ public class ChildAbuseAppeals {
     public String physicalAbuse;
     public String sexualAbuse;
     public String psychologicalAbuse;
-    public String abandon;
+    public String childAbandon;
     public String childLabour;
     public String childMarriage;
-    public String approxAge;
+    public String childApproxAge;
     public String gender;
     public String appealFirstName;
     public String appealLastName;
@@ -51,16 +51,16 @@ public class ChildAbuseAppeals {
         return timestamp;
     }
 
-    public ChildAbuseAppeals(String picProof, String description, String physicalAbuse, String sexualAbuse, String psychologicalAbuse, String abandon, String childLabour, String childMarriage, String approxAge, String gender, String appealFirstName, String appealLastName, String appealImageDp, String timestamp) {
+    public ChildAbuseAppeals(String picProof, String description, String physicalAbuse, String sexualAbuse, String psychologicalAbuse, String childAbandon, String childLabour, String childMarriage, String childApproxAge, String gender, String appealFirstName, String appealLastName, String appealImageDp, String timestamp) {
         this.picProof = picProof;
         this.description = description;
         this.physicalAbuse = physicalAbuse;
         this.sexualAbuse = sexualAbuse;
         this.psychologicalAbuse = psychologicalAbuse;
-        this.abandon = abandon;
+        this.childAbandon = childAbandon;
         this.childLabour = childLabour;
         this.childMarriage = childMarriage;
-        this.approxAge = approxAge;
+        this.childApproxAge = childApproxAge;
         this.gender = gender;
 
         this.appealFirstName = appealFirstName;
@@ -113,12 +113,12 @@ public class ChildAbuseAppeals {
         this.psychologicalAbuse = psychologicalAbuse;
     }
 
-    public String getAbandon() {
-        return abandon;
+    public String getChildAbandon() {
+        return childAbandon;
     }
 
-    public void setAbandon(String abandon) {
-        this.abandon = abandon;
+    public void setChildAbandon(String childAbandon) {
+        this.childAbandon = childAbandon;
     }
 
     public String getChildLabour() {
@@ -137,12 +137,12 @@ public class ChildAbuseAppeals {
         this.childMarriage = childMarriage;
     }
 
-    public String getApproxAge() {
-        return approxAge;
+    public String getChildApproxAge() {
+        return childApproxAge;
     }
 
-    public void setApproxAge(String approxAge) {
-        this.approxAge = approxAge;
+    public void setChildApproxAge(String childApproxAge) {
+        this.childApproxAge = childApproxAge;
     }
 
     public String getGender() {
