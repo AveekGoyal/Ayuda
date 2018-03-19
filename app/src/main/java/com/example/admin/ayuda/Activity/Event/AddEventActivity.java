@@ -24,6 +24,7 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.example.admin.ayuda.Activity.MainNavigationActivity;
+import com.example.admin.ayuda.Model.NgoAdmin;
 import com.example.admin.ayuda.R;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -313,13 +314,14 @@ public class AddEventActivity extends AppCompatActivity implements AdapterView.O
                        public void onDataChange(DataSnapshot dataSnapshot) {
                            String orgName = dataSnapshot.child(userId).child("orgName").getValue(String.class);
                            String imageUrl = dataSnapshot.child(userId).child("imageDp").getValue(String.class);
+                           NgoAdmin userDetails = new NgoAdmin(orgName,imageUrl);
 
                            DatabaseReference newEvent = mDatabaseReference.push();
                            Map<String, String> dataToSave = new HashMap<>();
 
 
-                           dataToSave.put("eventOrgName",orgName);
-                           dataToSave.put("eventOrgDp", imageUrl);
+                           dataToSave.put("eventOrgName",userDetails.getOrgName());
+                           dataToSave.put("eventOrgDp", userDetails.getImageDp());
                            dataToSave.put("eventTitle", eventTitle);
                            dataToSave.put("eventDescription", eventDescription);
                            dataToSave.put("eventStartTime", startTime);
