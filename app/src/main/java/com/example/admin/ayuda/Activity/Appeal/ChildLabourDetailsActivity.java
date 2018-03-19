@@ -78,7 +78,7 @@ public class ChildLabourDetailsActivity extends AppCompatActivity {
 
         String imageUrl = getIntent().getStringExtra("appealPic");
         Picasso.with(getApplicationContext()).load(imageUrl).into(childLabourPicProofImageView);
-        childLabourDescPlainText.setText(String.format("Description: %s " , getIntent().getStringExtra("description")));
+        childLabourDescPlainText.setText(String.format("Description: %s " , getIntent().getStringExtra("appealTitle")));
         if (getIntent().getStringExtra("physicalAbuse").equals("Yes")){
             childLabourPhysicalAbuse.setChecked(true);
             childLabourPhysicalAbuse.setEnabled(false);

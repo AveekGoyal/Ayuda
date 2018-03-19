@@ -27,9 +27,12 @@
                 />
 
             <Spinner
-                android:layout_width="200dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/EventListChooseCategorySpinner"></Spinner>
+                android:layout_weight="1"
+                android:id="@+id/EventListChooseCategorySpinner">
+
+            </Spinner>
 
         </LinearLayout>
 

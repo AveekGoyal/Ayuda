@@ -1,21 +1,18 @@
 package com.example.admin.ayuda.Activity.Appeal;
 
 import android.content.Intent;
-import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.example.admin.ayuda.Data.AppealAdapters.BloodBankAppealAdapter;
 import com.example.admin.ayuda.Data.AppealAdapters.ChildLabourAppealAdapter;
@@ -34,8 +31,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.StorageReference;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -93,13 +88,13 @@ public class AppealListFragment extends Fragment implements AdapterView.OnItemSe
         chooseSortCategory.setOnItemSelectedListener(this);
 
 
-        List categories = new ArrayList<>();
+        List<String> categories = new ArrayList<String>();
         categories.add("Blood Bank");
         categories.add("Disaster Management");
         categories.add("Old Age");
         categories.add("Child Abuse");
         categories.add("Community Development");
-        ArrayAdapter dataAdapter = new ArrayAdapter(getActivity(), android.R.layout.simple_spinner_item, categories);
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, categories);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         chooseSortCategory.setAdapter(dataAdapter);
         final String userId = mUser.getUid();
