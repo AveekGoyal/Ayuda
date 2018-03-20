@@ -30,7 +30,7 @@
                 android:layout_gravity="center"
                 android:src="@drawable/ic_account_circle_black_24dp" />
             <EditText
-                android:id="@+id/ProfileNameTextBox"
+                android:id="@+id/ProfileNameEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Name of the Applicant"
@@ -40,6 +40,7 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/ProfileContactNoEditText"
                 android:text="Contact Number"
                 android:textColor="#fff"
                 android:textStyle="bold"
@@ -47,6 +48,7 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/ProfileEmailIdEditText"
                 android:text="Email Address"
                 android:textColor="#fff"
                 android:textStyle="bold"
@@ -55,8 +57,25 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Location"
+                android:id="@+id/ProfileLocationEditText"
                 android:textColor="#fff"
                 android:textStyle="bold"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Edit Profile"
+                android:layout_gravity="center"
+                android:layout_marginTop="50dp"
+                android:id="@+id/ProfileEditButton"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Submit"
+                android:id="@+id/ProfileSubmitButton"/>
+
         </LinearLayout>
     </RelativeLayout>
 </LinearLayout>
