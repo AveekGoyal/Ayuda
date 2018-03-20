@@ -13,38 +13,37 @@
                        <LinearLayout
                            android:layout_width="match_parent"
                            android:layout_height="wrap_content"
-                           android:layout_gravity="center">
+                           android:layout_gravity="center"
+                           android:orientation="horizontal">
                            <TextView
-                               android:layout_width="wrap_content"
+                               android:layout_width="200dp"
                                android:layout_height="wrap_content"
-                               android:text="NEWS"
-                               android:layout_gravity="center"
+                               android:text="News"
                                android:textStyle="bold"
                                android:textSize="20dp"
-                               android:background="@color/colorPrimary"/>
-                           </LinearLayout>
-                           <LinearLayout
-                               android:layout_width="wrap_content"
-                               android:layout_height="wrap_content"
-                               >
-                               <TextView
-                                   android:layout_width="200dp"
+                               android:background="@color/colorPrimary"
+                               android:textColor="@color/white"/>
+
+                           <Spinner
+                               android:id="@+id/NewsListChooseCategorySpinner"
+                                   android:layout_width="0dp"
                                    android:layout_height="wrap_content"
-                                   android:text="Select Category"
-                                   />
-                               <Spinner
-                                   android:layout_width="wrap_content"
-                                   android:layout_height="wrap_content"></Spinner>
-                           </LinearLayout>
+                                    android:layout_weight="1">
 
-                       <android.support.v7.widget.RecyclerView
-                           android:layout_width="match_parent"
-                           android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
-
+                           </Spinner>
                        </LinearLayout>
 
+                       <android.support.v7.widget.RecyclerView
+                           android:id="@+id/newsListFragmentRecyclerView"
+                           android:layout_width="match_parent"
+                           android:layout_height="match_parent">
+
+                       </android.support.v7.widget.RecyclerView>
+
+                   </LinearLayout>
+
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floatingActionButton2"
+        android:id="@+id/NewsListFloatingActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
