@@ -24,6 +24,7 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.example.admin.ayuda.Activity.MainNavigationActivity;
+import com.example.admin.ayuda.Model.NgoAdmin;
 import com.example.admin.ayuda.R;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -188,7 +189,7 @@ public class AddEventActivity extends AppCompatActivity implements AdapterView.O
                         }
                         else
                         {
-                            startTime =String.format("%s : %s PM", selectedHour, selectedMinute);
+                            startTime =String.format("%s : %s AM", selectedHour, selectedMinute);
                             addEventStartTime.setText(String.format("%s : %s AM", selectedHour, selectedMinute));
                         }                    }
                 }, hour, minute, true);
@@ -213,7 +214,7 @@ public class AddEventActivity extends AppCompatActivity implements AdapterView.O
                         }
                         else
                         {
-                            endTime =String.format("%s : %s PM", selectedHour, selectedMinute);
+                            endTime =String.format("%s : %s AM", selectedHour, selectedMinute);
                             addEventEndTime.setText(String.format("%s : %s AM", selectedHour, selectedMinute));
                         }
 
@@ -247,7 +248,7 @@ public class AddEventActivity extends AppCompatActivity implements AdapterView.O
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         addEventChooseCategorySpinner.setAdapter(dataAdapter);
 
-
+        // Add Image code
         addEventPicProofImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -256,6 +257,8 @@ public class AddEventActivity extends AppCompatActivity implements AdapterView.O
                 startActivityForResult(galleryIntent,GALLERY_CODE);
             }
         });
+
+        // image code till here
 
         addEventVolunteerRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -313,13 +316,14 @@ public class AddEventActivity extends AppCompatActivity implements AdapterView.O
                        public void onDataChange(DataSnapshot dataSnapshot) {
                            String orgName = dataSnapshot.child(userId).child("orgName").getValue(String.class);
                            String imageUrl = dataSnapshot.child(userId).child("imageDp").getValue(String.class);
+                           NgoAdmin userDetails = new NgoAdmin(orgName,imageUrl);
 
                            DatabaseReference newEvent = mDatabaseReference.push();
                            Map<String, String> dataToSave = new HashMap<>();
 
 
-                           dataToSave.put("eventOrgName",orgName);
-                           dataToSave.put("eventOrgDp", imageUrl);
+                           dataToSave.put("eventOrgName",userDetails.getOrgName());
+                           dataToSave.put("eventOrgDp", userDetails.getImageDp());
                            dataToSave.put("eventTitle", eventTitle);
                            dataToSave.put("eventDescription", eventDescription);
                            dataToSave.put("eventStartTime", startTime);
@@ -366,6 +370,7 @@ public class AddEventActivity extends AppCompatActivity implements AdapterView.O
     }
 
 
+//Crop function
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -388,7 +393,7 @@ public class AddEventActivity extends AppCompatActivity implements AdapterView.O
             }
         }
     }
-
+// Crop function till here
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {

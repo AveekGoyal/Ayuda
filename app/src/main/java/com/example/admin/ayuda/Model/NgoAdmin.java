@@ -22,6 +22,11 @@ public class NgoAdmin {
     public NgoAdmin() {
     }
 
+    public NgoAdmin(String orgName, String imageDp) {
+        this.orgName = orgName;
+        this.imageDp = imageDp;
+    }
+
     public NgoAdmin(String appealFirstName, String appealLastName, String appealImageDp) {
         this.appealFirstName = appealFirstName;
         this.appealLastName = appealLastName;

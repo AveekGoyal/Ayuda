@@ -36,18 +36,13 @@
 
         </LinearLayout>
 
-        <GridView
-            android:id="@+id/recyclerView"
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/eventRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="50sp"
-            android:numColumns="2">
+            android:layout_marginBottom="20sp">
 
-
-
-
-
-        </GridView>
+        </android.support.v7.widget.RecyclerView>
 
     </LinearLayout>
 
