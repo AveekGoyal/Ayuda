@@ -189,7 +189,7 @@ public class AddEventActivity extends AppCompatActivity implements AdapterView.O
                         }
                         else
                         {
-                            startTime =String.format("%s : %s PM", selectedHour, selectedMinute);
+                            startTime =String.format("%s : %s AM", selectedHour, selectedMinute);
                             addEventStartTime.setText(String.format("%s : %s AM", selectedHour, selectedMinute));
                         }                    }
                 }, hour, minute, true);
@@ -214,7 +214,7 @@ public class AddEventActivity extends AppCompatActivity implements AdapterView.O
                         }
                         else
                         {
-                            endTime =String.format("%s : %s PM", selectedHour, selectedMinute);
+                            endTime =String.format("%s : %s AM", selectedHour, selectedMinute);
                             addEventEndTime.setText(String.format("%s : %s AM", selectedHour, selectedMinute));
                         }
 
@@ -248,7 +248,7 @@ public class AddEventActivity extends AppCompatActivity implements AdapterView.O
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         addEventChooseCategorySpinner.setAdapter(dataAdapter);
 
-
+        // Add Image code
         addEventPicProofImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -257,6 +257,8 @@ public class AddEventActivity extends AppCompatActivity implements AdapterView.O
                 startActivityForResult(galleryIntent,GALLERY_CODE);
             }
         });
+
+        // image code till here
 
         addEventVolunteerRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -368,6 +370,7 @@ public class AddEventActivity extends AppCompatActivity implements AdapterView.O
     }
 
 
+//Crop function
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -390,7 +393,7 @@ public class AddEventActivity extends AppCompatActivity implements AdapterView.O
             }
         }
     }
-
+// Crop function till here
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
