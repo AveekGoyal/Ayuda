@@ -56,7 +56,7 @@ public class StoryAdapter extends RecyclerView.Adapter<StoryAdapter.ViewHolder>{
 
         final String uId = mUser.getUid();
 
-        holder.storyUser.setText(String.format("By: %s" , story.getCaption()));
+        holder.storyUser.setText(String.format("By: %s" , uId));
         String image = story.getStoryImage();
         Picasso.with(context).load(image).into(holder.storyImage);
 
@@ -64,7 +64,7 @@ public class StoryAdapter extends RecyclerView.Adapter<StoryAdapter.ViewHolder>{
 
     @Override
     public int getItemCount() {
-        return 0;
+        return storyList.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
