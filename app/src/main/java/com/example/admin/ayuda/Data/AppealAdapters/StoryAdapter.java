@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.example.admin.ayuda.Activity.Story.StoryDetailsActivity;
 import com.example.admin.ayuda.Activity.Story.StoryListFragment;
 import com.example.admin.ayuda.Data.AppealAdapters.Event.EventAdapter;
+import com.example.admin.ayuda.Model.BloodBankAppeal;
 import com.example.admin.ayuda.Model.Event;
 import com.example.admin.ayuda.Model.Story;
 import com.example.admin.ayuda.R;
@@ -19,6 +20,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -45,6 +47,18 @@ public class StoryAdapter extends RecyclerView.Adapter<StoryAdapter.ViewHolder>{
 
     @Override
     public void onBindViewHolder(StoryAdapter.ViewHolder holder, int position) {
+
+        mAuth = FirebaseAuth.getInstance();
+        mUser = mAuth.getCurrentUser();
+        mDatabase= FirebaseDatabase.getInstance();
+        mDatabaseReference = mDatabase.getReference();
+        Story story = storyList.get(position);
+
+        final String uId = mUser.getUid();
+
+        holder.storyUser.setText(String.format("By: %s" , story.getCaption()));
+        String image = story.getStoryImage();
+        Picasso.with(context).load(image).into(holder.storyImage);
 
     }
 
