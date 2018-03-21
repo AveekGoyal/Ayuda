@@ -26,18 +26,20 @@
                 android:layout_height="wrap_content"
                 android:text="Category:  "/>
 
-            <Spinner
+            <TextView
                 android:id="@+id/EventDetailChooseCategory"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"></Spinner>
+                android:layout_height="wrap_content"
+                android:textSize="19dp"></TextView>
 
         </LinearLayout>
 
-        <EditText
+        <TextView
             android:id="@+id/EventDetailsTitlePlainText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Title"
+            android:textSize="19dp"
             android:inputType="text" />
 
         <LinearLayout
