@@ -65,28 +65,12 @@
         </RadioGroup>
 
 
-        <Button
-            android:id="@+id/loginGoogle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="25dp"
-            android:text="Google" />
-
-        <Button
-            android:id="@+id/loginFacebook"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginBottom="25dp"
-            android:text="Facebook" />
-
-
         <EditText
             android:id="@+id/loginEmailTextBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Email"
+            android:layout_marginTop="50dp"
             android:inputType="textEmailAddress" />
 
         <EditText
