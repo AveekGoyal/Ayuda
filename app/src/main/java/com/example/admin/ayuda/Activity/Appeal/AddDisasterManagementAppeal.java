@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.example.admin.ayuda.Activity.MainNavigationActivity;
 import com.example.admin.ayuda.Model.Members;
 import com.example.admin.ayuda.Model.NonMember;
@@ -104,6 +105,12 @@ public class AddDisasterManagementAppeal extends AppCompatActivity {
     }
 
     private void addDisasterManagementAppeal() {
+        new MaterialDialog.Builder(this)
+                .title("Uploading Appeal")
+                .content("Please Wait")
+                .progress(true, 0)
+                .show();
+
         final String description = addDisasterDescTextBox.getText().toString().trim();
         final String contactNo = addDisasterContactNoTextBox.getText().toString().trim();
         final String altContactNo = addDisasterAltContactNoTextBox.getText().toString().trim();

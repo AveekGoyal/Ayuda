@@ -184,9 +184,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="Submit"
-            android:layout_margin="5dp"/>
-        
-
+            android:layout_marginBottom="10dp"/>
 
     </LinearLayout>
 

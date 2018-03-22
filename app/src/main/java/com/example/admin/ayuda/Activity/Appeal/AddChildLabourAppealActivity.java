@@ -17,6 +17,7 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.example.admin.ayuda.Activity.MainNavigationActivity;
 import com.example.admin.ayuda.Model.Members;
 import com.example.admin.ayuda.Model.NonMember;
@@ -158,6 +159,13 @@ public class AddChildLabourAppealActivity extends AppCompatActivity {
     }
 
     private void addChildLAbourAppeal() {
+        new MaterialDialog.Builder(this)
+                .title("Uploading Appeal")
+                .content("Please Wait")
+                .progress(true, 0)
+                .show();
+
+
 
         final String desc = addChildLabourDescTextBox.getText().toString().trim();
 //        final String physicalStr = physical;
