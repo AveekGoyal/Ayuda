@@ -28,7 +28,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.HashMap;
 import java.util.Map;
 
-import cn.pedant.SweetAlert.SweetAlertDialog;
 
 /*
 This is Login Interface, we will ask for user type and then accordingly login the user based on Email and Password
