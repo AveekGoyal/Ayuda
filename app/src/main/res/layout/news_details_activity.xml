@@ -19,6 +19,7 @@
             android:id="@+id/NewsPicProofImageView"
             android:layout_width="200dp"
             android:layout_height="200dp"
+            android:scaleType="fitXY"
             android:src="@drawable/common_full_open_on_phone"
             android:layout_gravity="center"/>
 
