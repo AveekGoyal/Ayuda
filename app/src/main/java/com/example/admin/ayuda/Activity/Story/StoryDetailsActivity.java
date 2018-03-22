@@ -37,7 +37,7 @@ public class StoryDetailsActivity extends AppCompatActivity{
         mDatabaseReference = mDatabase.getReference().child("Story");
         mDatabaseReference.keepSynced(true);
 
-        String imageUrl = getIntent().getStringExtra("statusImage");
+        String imageUrl = getIntent().getStringExtra("storyImage");
         Picasso.with(getApplicationContext()).load(imageUrl).into(storyDetailPictureImageView);
 
         storyDetailCaptionPlainDetail.setText(String.format("%s" , getIntent().getStringExtra("caption")));
