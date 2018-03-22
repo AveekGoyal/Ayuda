@@ -14,6 +14,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.example.admin.ayuda.Activity.Appeal.AppealListFragment;
 import com.example.admin.ayuda.Activity.Event.EventListFragment;
 import com.example.admin.ayuda.Activity.Login.MainActivity;
@@ -80,6 +81,11 @@ public class MainNavigationActivity extends AppCompatActivity{
         switch (item.getItemId()) {
             case R.id.action_signout:
                 if (mAuth != null && mUser != null) {
+                    new MaterialDialog.Builder(this)
+                            .title("sign out")
+                            .content("Please Wait")
+                            .progress(true, 0)
+                            .show();
                     Toast.makeText(getApplicationContext(),"Sign out",Toast.LENGTH_LONG).show();
 
                     mAuth.signOut();

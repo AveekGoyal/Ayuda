@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.example.admin.ayuda.Activity.MainNavigationActivity;
 import com.example.admin.ayuda.Model.Members;
 import com.example.admin.ayuda.Model.NonMember;
@@ -97,6 +98,12 @@ public class AddCommunityDevelopmentAppealActivity extends AppCompatActivity {
 
 
     private void addCommunityDevelopmentAppeal() {
+        new MaterialDialog.Builder(this)
+                .title("Uploading Appeal")
+                .content("Please Wait")
+                .progress(true, 0)
+                .show();
+
         final String description = addCommunityDevDescTextBox.getText().toString().trim();
         final String ContactNo = addCommunityDevContactNoTextBox.getText().toString().trim();
 
