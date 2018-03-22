@@ -18,10 +18,12 @@ import com.example.admin.ayuda.Data.AppealAdapters.BloodBankAppealAdapter;
 import com.example.admin.ayuda.Data.AppealAdapters.ChildLabourAppealAdapter;
 import com.example.admin.ayuda.Data.AppealAdapters.CommunityDevelopmentAppealAdapter;
 import com.example.admin.ayuda.Data.AppealAdapters.DisasterManagementAppealAdapter;
+import com.example.admin.ayuda.Data.AppealAdapters.OldAgeHomeAppealAdapter;
 import com.example.admin.ayuda.Model.CommunityAppeal;
 import com.example.admin.ayuda.Model.DisasterAppeal;
 import com.example.admin.ayuda.Model.BloodBankAppeal;
 import com.example.admin.ayuda.Model.ChildAbuseAppeals;
+import com.example.admin.ayuda.Model.OldAgeHomeAppeal;
 import com.example.admin.ayuda.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -52,6 +54,8 @@ public class AppealListFragment extends Fragment implements AdapterView.OnItemSe
     private List<DisasterAppeal> disasterAppealList;
     private CommunityDevelopmentAppealAdapter communityDevelopmentAppealAdapter;
     private List<CommunityAppeal> communityAppealList;
+    private OldAgeHomeAppealAdapter oldAgeHomeAppealAdapter;
+    private List<OldAgeHomeAppeal> oldAgeHomeAppealList;
     String type=" ";
 
 
@@ -80,6 +84,7 @@ public class AppealListFragment extends Fragment implements AdapterView.OnItemSe
         childAbuseAppealsList = new ArrayList<>();
         disasterAppealList = new ArrayList<>();
         communityAppealList = new ArrayList<>();
+        oldAgeHomeAppealList = new ArrayList<>();
         recycler = view.findViewById(R.id.appealListFragmentRecyclerView);
         recycler.setHasFixedSize(true);
         recycler.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -186,7 +191,7 @@ public class AppealListFragment extends Fragment implements AdapterView.OnItemSe
         }
         if(categorySelected.equals("Old Age"))
         {
-
+            oldAgeHomeAppealList.clear();
             getOldAgeAppealData();
         }
         if(categorySelected.equals("Child Abuse"))
@@ -281,6 +286,38 @@ public class AppealListFragment extends Fragment implements AdapterView.OnItemSe
     }
 
     private void getOldAgeAppealData() {
+        FirebaseDatabase.getInstance().getReference().child("OldAgeAppeal").orderByChild("timestamp").addChildEventListener(new ChildEventListener() {
+
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                OldAgeHomeAppeal oldAgeHomeAppeal = dataSnapshot.getValue(OldAgeHomeAppeal.class);
+                oldAgeHomeAppealList.add(oldAgeHomeAppeal);
+                oldAgeHomeAppealAdapter = new OldAgeHomeAppealAdapter(getActivity(), oldAgeHomeAppealList);
+                recycler.setAdapter(oldAgeHomeAppealAdapter);
+                oldAgeHomeAppealAdapter.notifyDataSetChanged();
+
+
+            }
+
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
     }
 
     private void getDisasterManagementAppealData() {

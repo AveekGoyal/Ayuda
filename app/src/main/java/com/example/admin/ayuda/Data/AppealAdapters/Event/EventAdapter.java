@@ -1,6 +1,7 @@
 package com.example.admin.ayuda.Data.AppealAdapters.Event;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.admin.ayuda.Activity.Event.EventDetailsActivity;
 import com.example.admin.ayuda.Model.Event;
 import com.example.admin.ayuda.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -74,6 +76,30 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
             context = ctx;
             imageDp = itemView.findViewById(R.id.EventListPictureUploadImageView);
             eventTitle = itemView.findViewById(R.id.EventListTitlePlainText) ;
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Event event = eventList.get(getAdapterPosition());
+
+                    Intent intent =  new Intent(context , EventDetailsActivity.class);
+
+                    intent.putExtra("eventDescription" , eventList.get(getAdapterPosition()).getEventDescription());
+                    intent.putExtra("eventEndDate" , eventList.get(getAdapterPosition()).getEventEndDate());
+                    intent.putExtra("eventEndTime" , eventList.get(getAdapterPosition()).getEventEndTime());
+                    intent.putExtra("eventStartTime" , eventList.get(getAdapterPosition()).getEventStartTime());
+                    intent.putExtra("eventStartDate" , eventList.get(getAdapterPosition()).getEventStartDate());
+                    intent.putExtra("eventTitle" , eventList.get(getAdapterPosition()).getEventTitle());
+                    intent.putExtra("eventType" , eventList.get(getAdapterPosition()).getEventType());
+                    intent.putExtra("picProof" , eventList.get(getAdapterPosition()).getPicProof());
+                    intent.putExtra("sponsorRequired" , eventList.get(getAdapterPosition()).getSponsorRequired());
+                    intent.putExtra("volunteerRequired" , eventList.get(getAdapterPosition()).getVolunteerRequired());
+                    intent.putExtra("eventOrgName" , eventList.get(getAdapterPosition()).getEventOrgName());
+                    intent.putExtra("eventOrgDp" , eventList.get(getAdapterPosition()).getEventOrgDp());
+                    ctx.startActivity(intent);
+                }
+            });
         }
+
     }
 }

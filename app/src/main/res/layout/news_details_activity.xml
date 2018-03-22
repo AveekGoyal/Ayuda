@@ -16,6 +16,7 @@
             android:textStyle="bold"
             android:textSize="20dp"/>
         <ImageView
+            android:id="@+id/NewsPicProofImageView"
             android:layout_width="200dp"
             android:layout_height="200dp"
             android:src="@drawable/common_full_open_on_phone"
@@ -29,6 +30,7 @@
             android:layout_marginTop="10dp"/>
             />
         <TextView
+            android:id="@+id/NewsHeadlinePlainText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="headline"
@@ -39,10 +41,11 @@
         ]]>
 
         <TextView
+            android:id="@+id/NewsDescriptionPlainText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Description"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="10dp"
             android:textSize="15dp"
             />
         <LinearLayout
