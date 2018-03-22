@@ -87,6 +87,15 @@ public class MainNavigationActivity extends AppCompatActivity{
                     finish();
                 }
                 break;
+
+            case R.id.profile:
+                if (mAuth != null && mUser != null)
+                {
+                    Toast.makeText(getApplicationContext() , "Profile" , Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(MainNavigationActivity.this , ProfileActivity.class));
+
+                }
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
