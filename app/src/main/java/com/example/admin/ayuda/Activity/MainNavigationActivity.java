@@ -94,6 +94,7 @@ public class MainNavigationActivity extends AppCompatActivity{
                     Toast.makeText(getApplicationContext() , "Profile" , Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(MainNavigationActivity.this , ProfileActivity.class));
 
+
                 }
                 break;
         }

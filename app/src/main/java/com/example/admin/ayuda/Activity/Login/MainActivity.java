@@ -1,6 +1,7 @@
 package com.example.admin.ayuda.Activity.Login;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,6 +14,7 @@ import android.widget.ProgressBar;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.example.admin.ayuda.Activity.MainNavigationActivity;
 import com.example.admin.ayuda.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -25,6 +27,8 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 /*
 This is Login Interface, we will ask for user type and then accordingly login the user based on Email and Password
@@ -96,6 +100,7 @@ public class MainActivity extends AppCompatActivity {
                             public void onClick(View view) {
                                 String email = loginEmail.getText().toString();
                                 String password = loginPassword.getText().toString();
+
                                 loginNgoAdmin(email,password);
 
                             }
@@ -154,6 +159,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void loginMember(final String email, final String password) {
+        new MaterialDialog.Builder(this)
+                .title("Logging In")
+                .content("Please Wait")
+                .progress(true, 0)
+                .show();
+
 
         mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
             @Override
@@ -186,6 +197,7 @@ public class MainActivity extends AppCompatActivity {
 
                                 finish();
                             }
+
                         }
                     };
                 }
@@ -201,6 +213,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void loginNonMember(final String email, final String password) {
+        new MaterialDialog.Builder(this)
+                .title("Logging In")
+                .content("Please Wait")
+                .progress(true, 0)
+                .show();
+
         mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -245,8 +263,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void loginNgoAdmin(final String email, final String password) {
-
-
+        new MaterialDialog.Builder(this)
+                .title("Logging In")
+                .content("Please Wait")
+                .progress(true, 0)
+                .show();
         mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
