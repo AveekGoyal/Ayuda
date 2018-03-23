@@ -51,7 +51,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:text="@string/male" />
+                    android:text="Male" />
 
                 <RadioButton
                     android:id="@+id/MemRegRadioFemale"
@@ -111,7 +111,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/organisation_name" />
+                android:textSize="15dp"
+                android:text="Organisation Name" />
 
             <Spinner
                 android:id="@+id/MemRegOrgNameSpinner"

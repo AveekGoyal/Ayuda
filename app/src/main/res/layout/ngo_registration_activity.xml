@@ -40,7 +40,7 @@
             android:id="@+id/NgoRegPanNoTextBox"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="Pan Number of Applicant Organization"
+            android:hint="Pan No. of Applicant Organization"
             android:inputType="text" />
 
         <LinearLayout
@@ -184,7 +184,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="Submit"
-            android:layout_margin="5dp"/>
+            android:layout_marginBottom="25dp" />
         
 
 

@@ -9,12 +9,15 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.admin.ayuda.Activity.MainNavigationActivity;
+import com.example.admin.ayuda.Data.AppealAdapters.BloodBankAppealAdapter;
 import com.example.admin.ayuda.Model.Members;
 import com.example.admin.ayuda.Model.NgoAdmin;
 import com.example.admin.ayuda.Model.NonMember;
@@ -51,6 +54,7 @@ public class AddBloodBankAppealActivity extends AppCompatActivity {
     private EditText addBloodHospitalAddressTextBox;
     private EditText addBloodPlateletsCountTextBox;
     private EditText addBloodAmountNeededTextBox;
+    private Spinner addBloodGroupSpinner;
     private Button  addBloodSubmitButton;
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabaseReference;
@@ -76,6 +80,7 @@ public class AddBloodBankAppealActivity extends AppCompatActivity {
         addBloodHospitalContactNoTextBox = findViewById(R.id.AddBloodHospitalContactNoTextBox);
         addBloodHospitalAddressTextBox = findViewById(R.id.AddBloodHospitalAddressTextBox);
         addBloodPlateletsCountTextBox = findViewById(R.id.AddBloodPlateletsCountTextBox);
+        addBloodGroupSpinner = findViewById(R.id.AddBloodGroupSpinner);
         addBloodAmountNeededTextBox = findViewById(R.id.AddBloodAmountNeededTextBox);
         addBloodSubmitButton = findViewById(R.id.AddBloodSubmitButton);
 
@@ -102,6 +107,11 @@ public class AddBloodBankAppealActivity extends AppCompatActivity {
             }
         });
 
+        // Add values in Blood Group Spinner
+        String[] bloodgroup = {"O+" , "A+" , "B+" , "AB+" , "A-" , "B-" , "AB-"};
+        ArrayAdapter<String> adapterbloodgroup = new ArrayAdapter<>(this , android.R.layout.simple_spinner_dropdown_item , bloodgroup);
+        addBloodGroupSpinner.setAdapter(adapterbloodgroup);
+
 
     }
 
@@ -115,6 +125,7 @@ public class AddBloodBankAppealActivity extends AppCompatActivity {
         final String hospitalContactNo = addBloodHospitalContactNoTextBox.getText().toString().trim();
         final String hospitalAddress = addBloodHospitalAddressTextBox.getText().toString().trim();
         final String plateletsCount = addBloodPlateletsCountTextBox.getText().toString().trim();
+        final String bloodGroup = addBloodGroupSpinner.getSelectedItem().toString().trim();
         final String bloodAmountNeeded = addBloodAmountNeededTextBox.getText().toString().trim();
 
 
@@ -122,7 +133,7 @@ public class AddBloodBankAppealActivity extends AppCompatActivity {
                 !TextUtils.isEmpty(hospitalName) &&
                 !TextUtils.isEmpty(hospitalContactNo) &&
                 !TextUtils.isEmpty(hospitalAddress) &&
-                !TextUtils.isEmpty(bloodAmountNeeded) )
+                !TextUtils.isEmpty(bloodAmountNeeded) && !TextUtils.isEmpty(bloodGroup) )
         {
 
             StorageReference filePath = mStorage.child("BloodBankAppeal_Images").child(resultUri.getLastPathSegment());
@@ -162,6 +173,7 @@ public class AddBloodBankAppealActivity extends AppCompatActivity {
                                         dataToSave.put("hospitalContactNo", hospitalContactNo);
                                         dataToSave.put("hospitalAddress", hospitalAddress);
                                         dataToSave.put("plateletsCount", plateletsCount);
+                                        dataToSave.put("bloodGroup", bloodGroup);
                                         dataToSave.put("amountNeeded", bloodAmountNeeded);
                                         dataToSave.put("picProof", downloadUrl.toString());
                                         dataToSave.put("timestamp", String.valueOf(java.lang.System.currentTimeMillis()));
@@ -194,6 +206,7 @@ public class AddBloodBankAppealActivity extends AppCompatActivity {
                                 dataToSave.put("hospitalContactNo", hospitalContactNo);
                                 dataToSave.put("hospitalAddress", hospitalAddress);
                                 dataToSave.put("plateletsCount", plateletsCount);
+                                dataToSave.put("bloodGroup", bloodGroup);
                                 dataToSave.put("amountNeeded", bloodAmountNeeded);
                                 dataToSave.put("picProof", downloadUrl.toString());
                                 dataToSave.put("timestamp", String.valueOf(java.lang.System.currentTimeMillis()));

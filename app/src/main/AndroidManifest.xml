@@ -9,11 +9,12 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="Ayuda"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light">
-        <activity android:name=".Activity.Login.MainActivity">
+
+    <activity android:name=".Activity.Login.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,52 +23,77 @@
 
 
         </activity>
-        <activity android:name=".Activity.Login.NgoRegistrationActivity">
+        <activity android:name=".Activity.Login.NgoRegistrationActivity"
+            android:label="NGO Registration">
 
 
         </activity>
-        <activity android:name=".Activity.Login.NonMemberRegistrationActivity">
+        <activity android:name=".Activity.Login.NonMemberRegistrationActivity"
+            android:label="Non Member Registration">
 
 
         </activity>
         <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity"/>
 
-        <activity android:name=".Activity.Login.MemberRegistrationActivity">
+        <activity android:name=".Activity.Login.MemberRegistrationActivity"
+            android:label="Member Registration">
 
         </activity>
-        <activity android:name=".Activity.Login.ForgotPasswordActivity" />
+        <activity android:name=".Activity.Login.ForgotPasswordActivity"
+            android:label="Forgot Password"/>
         <activity android:name=".Activity.MainNavigationActivity">
 
         </activity>
-        <activity android:name=".Activity.News.AddNewsActivity" />
-        <activity android:name=".Activity.News.NewsDetailsActivity" />
-        <activity android:name=".Activity.Story.AddStoryActivity" />
-        <activity android:name=".Activity.Story.StoryDetailsActivity" />
-        <activity android:name=".Activity.Event.AddEventActivity" >
+        <activity android:name=".Activity.News.AddNewsActivity"
+            android:label="Add News"/>
+        <activity android:name=".Activity.News.NewsDetailsActivity"
+            android:label="News Details"/>
+        <activity android:name=".Activity.Story.AddStoryActivity"
+            android:label="Add Story"/>
+        <activity android:name=".Activity.Story.StoryDetailsActivity"
+            android:label="Story Details"/>
+        <activity android:name=".Activity.Event.AddEventActivity"
+            android:label="Add Event">
 
         </activity>
 
-        <activity android:name=".Activity.Event.EventDetailsActivity" />
-        <activity android:name=".Activity.Appeal.ChooseAppealCategoryActivity" />
-        <activity android:name=".Activity.Appeal.AddBloodBankAppealActivity" />
-        <activity android:name=".Activity.Appeal.BloodBankAppealDetailActivity" />
+        <activity android:name=".Activity.Event.EventDetailsActivity"
+            android:label="Event Details"/>
+        <activity android:name=".Activity.Appeal.ChooseAppealCategoryActivity"
+            android:label="Choose Category"/>
+        <activity android:name=".Activity.Appeal.AddBloodBankAppealActivity"
+            android:label="Add Blood Bank Appeal"/>
+        <activity android:name=".Activity.Appeal.BloodBankAppealDetailActivity"
+            android:label="Details"/>
         <activity android:name=".Activity.Appeal.BloodBankPopupActivity" />
-        <activity android:name=".Activity.Appeal.AddDisasterManagementAppeal" />
-        <activity android:name=".Activity.Appeal.DisasterManagementAppealDetailsActivity" />
-        <activity android:name=".Activity.Appeal.AddOldAgeAppealActivity" />
-        <activity android:name=".Activity.Appeal.OldAgeAppealDetailsActivity" />
+        <activity android:name=".Activity.Appeal.AddDisasterManagementAppeal"
+            android:label="Add Disaster Management Appeal"/>
+        <activity android:name=".Activity.Appeal.DisasterManagementAppealDetailsActivity" android:label="Details" />
+        <activity android:name=".Activity.Appeal.AddOldAgeAppealActivity"
+            android:label="Add Old Age Appeal"/>
+        <activity android:name=".Activity.Appeal.OldAgeAppealDetailsActivity"
+            android:label="Details"/>
         <activity android:name=".Activity.Appeal.OldAgePopupActivity" />
-        <activity android:name=".Activity.Appeal.AddChildLabourAppealActivity" />
-        <activity android:name=".Activity.Appeal.ChildLabourDetailsActivity" />
+        <activity android:name=".Activity.Appeal.AddChildLabourAppealActivity"
+            android:label="Add Child Labour Appeal"/>
+        <activity android:name=".Activity.Appeal.ChildLabourDetailsActivity"
+            android:label="Details"/>
         <activity android:name=".Activity.Appeal.ChildLabourPopupActivity" />
-        <activity android:name=".Activity.Appeal.AddCommunityDevelopmentAppealActivity" />
-        <activity android:name=".Activity.Appeal.CommunityDevelopmentDetailsActivity" />
+        <activity android:name=".Activity.Appeal.AddCommunityDevelopmentAppealActivity"
+            android:label="Add Community Development Appeal"/>
+        <activity android:name=".Activity.Appeal.CommunityDevelopmentDetailsActivity"
+            android:label="Details"/>
         <activity android:name=".Activity.Appeal.CommunityDevelopmentPopupActivity" />
-        <activity android:name=".Activity.Appeal.AppealsAcceptedByNgoActivity" />
-        <activity android:name=".Activity.Appeal.AppealsStatusForUserActivity" />
-        <activity android:name=".Activity.Appeal.AppealStatusDetailsActivity" />
-        <activity android:name=".Activity.ProfileActivity" />
-        <activity android:name=".Activity.Event.EventUploadedByNgo" />
+        <activity android:name=".Activity.Appeal.AppealsAcceptedByNgoActivity"
+            android:label="Appeals Accepted By NGO"/>
+        <activity android:name=".Activity.Appeal.AppealsStatusForUserActivity"
+            android:label="Appeal Status"/>
+        <activity android:name=".Activity.Appeal.AppealStatusDetailsActivity"
+            android:label="Status Details"/>
+        <activity android:name=".Activity.ProfileActivity"
+            android:label="Profile"/>
+        <activity android:name=".Activity.Event.EventUploadedByNgo"
+            android:label="Events Uploaded By NGO"/>
     </application>
 
 </manifest>
