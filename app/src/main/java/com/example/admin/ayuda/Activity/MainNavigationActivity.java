@@ -88,7 +88,7 @@ public class MainNavigationActivity extends AppCompatActivity{
                 }
                 break;
 
-            case R.id.profile:
+            case R.id.action_profile:
                 if (mAuth != null && mUser != null)
                 {
                     Toast.makeText(getApplicationContext() , "Profile" , Toast.LENGTH_SHORT).show();
@@ -96,6 +96,22 @@ public class MainNavigationActivity extends AppCompatActivity{
 
                 }
                 break;
+
+            case R.id.action_contactus:
+                Toast.makeText(getApplicationContext(), "Contact Us" , Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.action_inviteus:
+                Toast.makeText(getApplicationContext(), "Invite Us", Toast.LENGTH_SHORT).show();
+
+            case R.id.action_acceptedAppeals:
+                Toast.makeText(getApplicationContext(), "Accepted Appeals" , Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.action_appealsUploaded:
+                Toast.makeText(getApplicationContext(), "Appeals Uploaded" , Toast.LENGTH_SHORT).show();
+                break;
+
         }
         return super.onOptionsItemSelected(item);
     }
