@@ -18,6 +18,7 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.example.admin.ayuda.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -30,8 +31,11 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.tapadoo.alerter.Alerter;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
+
+import es.dmoral.toasty.Toasty;
 
 public class MemberRegistrationActivity extends AppCompatActivity{
 
@@ -145,6 +149,11 @@ public class MemberRegistrationActivity extends AppCompatActivity{
     }
 
     private void createMemberAccount() {
+        new MaterialDialog.Builder(this)
+                .title("Creating Account")
+                .content("Please Wait")
+                .progress(true, 0)
+                .show();
 
         final String firstName = memRegFirstNameTextBox.getText().toString().trim();
         final String lastName = memRegLastNameTextBox.getText().toString().trim();
@@ -206,14 +215,20 @@ public class MemberRegistrationActivity extends AppCompatActivity{
 
                           currentUserDb.child("imageDp").setValue(downloadUrl.toString());
                           currentUserDb.child("type").setValue("Member");
-                          Toast.makeText(getApplicationContext(), " Account Created Successfully", Toast.LENGTH_LONG).show();
-                          FirebaseUser user = mAuth.getCurrentUser();
+                          Toasty.success(getApplicationContext(), "Account Created Successfully!", Toast.LENGTH_SHORT, true).show();                          FirebaseUser user = mAuth.getCurrentUser();
                           user.sendEmailVerification().addOnCompleteListener(MemberRegistrationActivity.this, new OnCompleteListener<Void>() {
                               @Override
                               public void onComplete(@NonNull Task<Void> task) {
                                   if (task.isSuccessful())
                                   {
-                                      Toast.makeText(getApplicationContext(), "Verification Email Sent", Toast.LENGTH_LONG).show();
+                                      Toasty.info(getApplicationContext(), "Verification email sent Successfully", Toast.LENGTH_SHORT, true).show();
+
+
+                                  }
+                                  else
+                                  {
+
+                                      Toasty.error(getApplicationContext(), "Verification email failed. Please check your email", Toast.LENGTH_SHORT, true).show();
                                   }
                               }
                           });
