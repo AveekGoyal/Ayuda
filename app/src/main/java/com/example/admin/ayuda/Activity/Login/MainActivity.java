@@ -209,7 +209,7 @@ public class MainActivity extends AppCompatActivity {
         final MaterialDialog materialDialog=new MaterialDialog.Builder(MainActivity.this)
                 .title("Logging In")
                 .content("Please Wait")
-                .progress(true, 0)
+                .progress(true, 0 )
                 .show();
 
 
