@@ -16,6 +16,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.example.admin.ayuda.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -28,8 +29,11 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.tapadoo.alerter.Alerter;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
+
+import es.dmoral.toasty.Toasty;
 
 public class NonMemberRegistrationActivity extends AppCompatActivity {
 
@@ -114,6 +118,12 @@ public class NonMemberRegistrationActivity extends AppCompatActivity {
     }
 
     private void createNonMemberAccount() {
+        final MaterialDialog materialDialog = new MaterialDialog.Builder(this)
+                .title("Creating Account")
+                .content("Please Wait")
+                .progress(true, 0)
+                .show();
+
 
         final String firstName = nonMemRegFirstNameTextBox.getText().toString().trim();
         final String lastName = nonMemRegLastNameTextBox.getText().toString().trim();
@@ -160,20 +170,30 @@ public class NonMemberRegistrationActivity extends AppCompatActivity {
                                 }
                                 currentUserDb.child("imageDp").setValue(downloadUrl.toString());
                                 currentUserDb.child("type").setValue("NonMember");
-                                Toast.makeText(getApplicationContext(), "Account Created Succesfuly", Toast.LENGTH_SHORT).show();
+                                Toasty.success(getApplicationContext(), "Account Created Successfully!", Toast.LENGTH_SHORT, true).show();
+
                                 FirebaseUser user = mAuth.getCurrentUser();
                                 user.sendEmailVerification().addOnCompleteListener(NonMemberRegistrationActivity.this, new OnCompleteListener<Void>() {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
-                                        if (task.isSuccessful()) {
-                                            Toast.makeText(getApplicationContext(), "Verification Email Sent", Toast.LENGTH_LONG).show();
+                                        if (task.isSuccessful())
+                                        {
+                                            Toasty.info(getApplicationContext(), "Verification email sent Successfully", Toast.LENGTH_SHORT, true).show();
+
+
+                                        }
+                                        else
+                                        {
+                                            materialDialog.cancel();
+                                            Toasty.error(getApplicationContext(), "Verification email failed. Please check your email", Toast.LENGTH_SHORT, true).show();
                                         }
                                     }
                                 });
-
                                 Intent intent = new Intent(NonMemberRegistrationActivity.this, MainActivity.class );
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                 startActivity(intent);
+
+
 
                             }
 

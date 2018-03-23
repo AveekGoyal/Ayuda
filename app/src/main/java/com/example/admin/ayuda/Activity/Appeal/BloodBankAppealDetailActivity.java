@@ -2,6 +2,7 @@ package com.example.admin.ayuda.Activity.Appeal;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -9,6 +10,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.afollestad.materialdialogs.MaterialDialog;
+import com.example.admin.ayuda.Activity.Login.MainActivity;
 import com.example.admin.ayuda.Activity.MainNavigationActivity;
 import com.example.admin.ayuda.Data.AppealAdapters.BloodBankAppealAdapter;
 import com.example.admin.ayuda.Model.BloodBankAppeal;
@@ -24,7 +27,9 @@ import com.squareup.picasso.Picasso;
 
 import org.w3c.dom.Text;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.TimeoutException;
 
 public class BloodBankAppealDetailActivity extends AppCompatActivity {
@@ -48,6 +53,8 @@ public class BloodBankAppealDetailActivity extends AppCompatActivity {
     private BloodBankAppealAdapter bloodBankAppealAdapter;
     private List<BloodBankAppeal> bloodBankAppealList;
     String type=" ";
+    String adminEmail = " ";
+    String adminOrgName = " ";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -93,6 +100,8 @@ public class BloodBankAppealDetailActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 type =  dataSnapshot.child("type").getValue(String.class);
+                adminEmail = dataSnapshot.child("email").getValue(String.class);
+                adminOrgName = dataSnapshot.child("orgName").getValue(String.class);
                 if(type == null)
                 {
                     bloodBankAcceptButton.setEnabled(false);
@@ -106,6 +115,35 @@ public class BloodBankAppealDetailActivity extends AppCompatActivity {
                             startActivity(new Intent(BloodBankAppealDetailActivity.this, MainNavigationActivity.class));
                         }
                     });
+
+                    bloodBankAcceptButton.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            new MaterialDialog.Builder(BloodBankAppealDetailActivity.this)
+                                    .title("Accepting Appeal")
+                                    .content("Please Wait")
+                                    .progress(true, 0)
+                                    .show();
+                            mDatabaseReference = FirebaseDatabase.getInstance().getReference().child("Ngo_Appeals");
+                            DatabaseReference appealAcceptByNgo = mDatabaseReference.push();
+                            Map<String, String> dataToSave = new HashMap<>();
+                            dataToSave.put("adminOrgName", adminOrgName);
+                            dataToSave.put("adminEmail", adminEmail);
+                            dataToSave.put("adminUserId", userId);
+                            dataToSave.put("appealTimestamp",getIntent().getStringExtra("timestamp") );
+                            dataToSave.put("appealImageDp", getIntent().getStringExtra("appealPic") );
+                            dataToSave.put("appealName", getIntent().getStringExtra("patientName"));
+                            appealAcceptByNgo.setValue(dataToSave);
+
+                            bloodBankAcceptButton.setEnabled(false);
+
+                            startActivity(new Intent(BloodBankAppealDetailActivity.this, MainNavigationActivity.class));
+
+                        }
+                    });
+
+
+
 
 
                 }
