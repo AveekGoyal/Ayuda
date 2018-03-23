@@ -11,6 +11,7 @@
     <ImageView
         android:id="@+id/NgoEventUploadPicImageView"
         android:layout_width="100dp"
+        android:scaleType="fitXY"
         android:layout_height="100dp"
         app:srcCompat="@android:drawable/ic_menu_view" />
 

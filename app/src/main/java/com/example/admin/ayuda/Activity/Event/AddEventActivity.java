@@ -23,6 +23,7 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.example.admin.ayuda.Activity.MainNavigationActivity;
 import com.example.admin.ayuda.Model.NgoAdmin;
 import com.example.admin.ayuda.R;
@@ -300,7 +301,13 @@ public class AddEventActivity extends AppCompatActivity implements AdapterView.O
     }
 
     private void addEvent() {
-       final String eventTitle = addEventTitleTextBox.getText().toString().trim();
+        new MaterialDialog.Builder(this)
+                .title("Uploading Event")
+                .content("Please Wait")
+                .progress(true, 0)
+                .show();
+
+        final String eventTitle = addEventTitleTextBox.getText().toString().trim();
        final String eventDescription = addEventDescriptionTextBox.getText().toString().trim();
 
        if (!TextUtils.isEmpty(eventTitle) && !TextUtils.isEmpty(eventDescription))

@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.example.admin.ayuda.Activity.MainNavigationActivity;
 import com.example.admin.ayuda.Model.NonMember;
 import com.example.admin.ayuda.R;
@@ -101,6 +102,12 @@ public class AddOldAgeAppealActivity extends AppCompatActivity {
     }
 
     private void addOldAgeAppeal() {
+        new MaterialDialog.Builder(this)
+                .title("Uploading Appeal")
+                .content("Please Wait")
+                .progress(true, 0)
+                .show();
+
 
         final String homeDescription = addOldAgeHomeDescriptionTextBox.getText().toString().trim();
         final String homeAddress = addOldAgeHomeDescriptionTextBox.getText().toString().trim();

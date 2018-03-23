@@ -13,6 +13,7 @@ import android.widget.ImageButton;
 
 import com.example.admin.ayuda.Activity.MainNavigationActivity;
 import com.example.admin.ayuda.Model.Members;
+import com.example.admin.ayuda.Model.NgoAdmin;
 import com.example.admin.ayuda.Model.NonMember;
 import com.example.admin.ayuda.R;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -94,7 +95,6 @@ public class AddStoryActivity extends AppCompatActivity {
                     final Uri downloadUrl = taskSnapshot.getDownloadUrl();
 
                     DatabaseReference getUserType = FirebaseDatabase.getInstance().getReference().child("NonMember");
-
                     getUserType.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
@@ -102,8 +102,7 @@ public class AddStoryActivity extends AppCompatActivity {
                             String fName = dataSnapshot.child(userId).child("firstName").getValue(String.class);
                             String lname = dataSnapshot.child(userId).child("lastName").getValue(String.class);
                             String imageUrl = dataSnapshot.child(userId).child("imageDp").getValue(String.class);
-
-                            final NonMember userDetail = new NonMember(fName, lname, imageUrl);
+                            NonMember nonMemberDetails = new NonMember(fName, lname,imageUrl);
                             if (fName == null && lname == null && imageUrl == null) {
                                 DatabaseReference getMemberDetails = FirebaseDatabase.getInstance().getReference().child("Member");
                                 getMemberDetails.addValueEventListener(new ValueEventListener() {
@@ -113,22 +112,50 @@ public class AddStoryActivity extends AppCompatActivity {
                                         String lname = dataSnapshot.child(userId).child("lastName").getValue(String.class);
                                         String imageUrl = dataSnapshot.child(userId).child("imageDp").getValue(String.class);
                                         Members memberDetails = new Members(fName, lname, imageUrl);
+                                        if (fName == null && lname == null && imageUrl == null)
+                                        {
+                                            DatabaseReference getAdminDetails = FirebaseDatabase.getInstance().getReference().child("NgoAdmin");
+                                            getAdminDetails.addValueEventListener(new ValueEventListener() {
+                                                @Override
+                                                public void onDataChange(DataSnapshot dataSnapshot) {
+                                                    String orgName = dataSnapshot.child(userId).child("orgName").getValue(String.class);
+                                                    String imageUrl = dataSnapshot.child(userId).child("imageDp").getValue(String.class);
+                                                    NgoAdmin adminDetails = new NgoAdmin(orgName, imageUrl);
+                                                    DatabaseReference newStory = mDatabaseReference.push();
+                                                    Map<String, String> dataToSave = new HashMap<>();
+                                                    dataToSave.put("storyImage", downloadUrl.toString());
+                                                    dataToSave.put("caption", storyTitle);
+                                                    dataToSave.put("orgName", adminDetails.getOrgName() );
+                                                    dataToSave.put("imageDp", adminDetails.getImageDp());
+                                                    dataToSave.put("timestamp", String.valueOf(java.lang.System.currentTimeMillis()));
+                                                    newStory.setValue(dataToSave);
+                                                    startActivity(new Intent(AddStoryActivity.this, MainNavigationActivity.class));
 
-                                        DatabaseReference newStory = mDatabaseReference.push();
-                                        Map<String, String> dataToSave = new HashMap<>();
+                                                }
 
-                                        dataToSave.put("statusImage" , downloadUrl.toString());
-                                        dataToSave.put("caption" , storyTitle);
-                                        dataToSave.put("firstName" , userDetail.getAppealFirstName());
-                                        dataToSave.put("lastName" , userDetail.getAppealLastName());
-                                        dataToSave.put("imageDp" , userDetail.getAppealImageDp());
+                                                @Override
+                                                public void onCancelled(DatabaseError databaseError) {
 
-                                        newStory.setValue(dataToSave);
-                                        startActivity(new Intent(AddStoryActivity.this , MainNavigationActivity.class));
-                                        finish();
+                                                }
+                                            });
+                                        }
+                                        else
+                                        {
+                                            DatabaseReference newStory = mDatabaseReference.push();
+                                            Map<String, String> dataToSave = new HashMap<>();
+                                            dataToSave.put("storyImage" , downloadUrl.toString());
+                                            dataToSave.put("caption" , storyTitle);
+                                            dataToSave.put("firstName" , memberDetails.getFirstName());
+                                            dataToSave.put("lastName" , memberDetails.getLastName());
+                                            dataToSave.put("imageDp" , memberDetails.getDpImage());
+                                            dataToSave.put("timestamp", String.valueOf(java.lang.System.currentTimeMillis()));
+                                            newStory.setValue(dataToSave);
+                                            startActivity(new Intent(AddStoryActivity.this , MainNavigationActivity.class));
+                                            finish();
+
+                                        }
 
                                     }
-
                                     @Override
                                     public void onCancelled(DatabaseError databaseError) {
 
@@ -139,13 +166,12 @@ public class AddStoryActivity extends AppCompatActivity {
                             {
                                 DatabaseReference newStory = mDatabaseReference.push();
                                 Map<String, String> dataToSave = new HashMap<>();
-
-                                dataToSave.put("statusImage" , downloadUrl.toString());
+                                dataToSave.put("storyImage" , downloadUrl.toString());
                                 dataToSave.put("caption" , storyTitle);
-                                dataToSave.put("firstName" , userDetail.getAppealFirstName());
-                                dataToSave.put("lastName" , userDetail.getAppealLastName());
-                                dataToSave.put("imageDp" , userDetail.getAppealImageDp());
-
+                                dataToSave.put("firstName" , nonMemberDetails.getFirstName());
+                                dataToSave.put("lastName" , nonMemberDetails.getLastName());
+                                dataToSave.put("imageDp" , nonMemberDetails.getDpImage());
+                                dataToSave.put("timestamp", String.valueOf(java.lang.System.currentTimeMillis()));
                                 newStory.setValue(dataToSave);
                                 startActivity(new Intent(AddStoryActivity.this , MainNavigationActivity.class));
                                 finish();

@@ -17,6 +17,7 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.example.admin.ayuda.Activity.MainNavigationActivity;
 import com.example.admin.ayuda.Model.Members;
 import com.example.admin.ayuda.Model.NonMember;
@@ -158,6 +159,13 @@ public class AddChildLabourAppealActivity extends AppCompatActivity {
     }
 
     private void addChildLAbourAppeal() {
+        new MaterialDialog.Builder(this)
+                .title("Uploading Appeal")
+                .content("Please Wait")
+                .progress(true, 0)
+                .show();
+
+
 
         final String desc = addChildLabourDescTextBox.getText().toString().trim();
 //        final String physicalStr = physical;
@@ -275,29 +283,29 @@ public class AddChildLabourAppealActivity extends AppCompatActivity {
                             dataToSave.put("gender", male);
                             dataToSave.put("picProof", downloadUrl.toString());
                             if (addChildLabourSexualAbuse.isChecked())
-                                dataToSave.put("SexualAbuse", "Yes");
+                                dataToSave.put("sexualAbuse", "Yes");
                             else
-                                dataToSave.put("SexualAbuse", "No");
+                                dataToSave.put("sexualAbuse", "No");
 
                             if (addChildLabourPhysicalAbuse.isSelected())
-                                dataToSave.put("PhysicalAbuse", "Yes");
+                                dataToSave.put("physicalAbuse", "Yes");
                             else
-                                dataToSave.put("PhysicalAbuse", "No");
+                                dataToSave.put("physicalAbuse", "No");
 
                             if (addChildLabourPsychologicalAbuse.isChecked())
-                                dataToSave.put("psycologicalAbuse", "Yes");
+                                dataToSave.put("psychologicalAbuse", "Yes");
                             else
-                                dataToSave.put("psycologicalAbuse", "No");
+                                dataToSave.put("psychologicalAbuse", "No");
 
                             if (addChildLabourAbandon.isChecked())
-                                dataToSave.put("ChildLabour", "Yes");
+                                dataToSave.put("childLabour", "Yes");
                             else
-                                dataToSave.put("ChildLabour", "No");
+                                dataToSave.put("childLabour", "No");
 
                             if (addChildLabourChildMarriage.isChecked())
-                                dataToSave.put("ChildMarriage", "Yes");
+                                dataToSave.put("childMarriage", "Yes");
                             else
-                                dataToSave.put("ChildMarriage", "No");
+                                dataToSave.put("childMarriage", "No");
 
                             if (male.equals("Male"))
                                 dataToSave.put("gender", "Male");

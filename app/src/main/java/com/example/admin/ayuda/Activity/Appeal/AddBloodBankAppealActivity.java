@@ -16,6 +16,7 @@ import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.example.admin.ayuda.Activity.MainNavigationActivity;
 import com.example.admin.ayuda.Data.AppealAdapters.BloodBankAppealAdapter;
 import com.example.admin.ayuda.Model.Members;
@@ -116,6 +117,12 @@ public class AddBloodBankAppealActivity extends AppCompatActivity {
     }
 
     private void addBloodBankAppeal() {
+        new MaterialDialog.Builder(this)
+                .title("Uploading Appeal")
+                .content("Please Wait")
+                .progress(true, 0)
+                .show();
+
 
         final String patientName = addBloodPatientNameTextBox.getText().toString().trim();
         final String familyMemName = addBloodFamilyMemberNameTextBox.getText().toString().trim();

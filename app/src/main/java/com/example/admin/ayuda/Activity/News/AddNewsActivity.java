@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.VideoView;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.example.admin.ayuda.Activity.MainNavigationActivity;
 import com.example.admin.ayuda.Model.NgoAdmin;
 import com.example.admin.ayuda.R;
@@ -91,6 +92,12 @@ public class AddNewsActivity extends AppCompatActivity implements AdapterView.On
     }
 
     private void addNews() {
+        new MaterialDialog.Builder(this)
+                .title("Uploading News")
+                .content("Please Wait")
+                .progress(true, 0)
+                .show();
+
 
         final String newsHeadline = addNewsHeadlineTextBox.getText().toString().trim();
         final String newsDescription = addNewsDescriptionTextBox.getText().toString().trim();

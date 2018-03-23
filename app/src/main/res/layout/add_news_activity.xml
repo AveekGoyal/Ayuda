@@ -15,6 +15,7 @@
             android:id="@+id/AddNewsPicProofImageButton"
             android:layout_width="match_parent"
             android:layout_height="350dp"
+            android:scaleType="fitXY"
             app:srcCompat="@android:drawable/presence_video_away" />
 
         <LinearLayout

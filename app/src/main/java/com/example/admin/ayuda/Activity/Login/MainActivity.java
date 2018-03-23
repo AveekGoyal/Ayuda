@@ -1,8 +1,6 @@
 package com.example.admin.ayuda.Activity.Login;
 
-import android.app.ActionBar;
 import android.content.Intent;
-import android.graphics.drawable.ColorDrawable;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -50,16 +48,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         loginButton = findViewById(R.id.loginLoginButton);
         loginEmail=findViewById(R.id.loginEmailTextBox);
         loginPassword=findViewById(R.id.loginPasswordTextBox);
         loginRadioGroup=findViewById(R.id.loginRadioGroup);
         loginCreateButton = findViewById(R.id.loginNewUserRegButton);
         mProgress=findViewById(R.id.progressBar2);
-
-        // ActionBar bar = getActionBar();
-
-        // getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorPrimary)));
 
         mAuth = FirebaseAuth.getInstance();
         mAuthListener = new FirebaseAuth.AuthStateListener() {
