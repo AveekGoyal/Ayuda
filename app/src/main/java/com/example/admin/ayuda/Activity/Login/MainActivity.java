@@ -43,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
     private EditText loginPassword;
     private Button loginButton;
     private Button loginCreateButton;
-    private ProgressBar mProgress;
 
 
 
@@ -57,7 +56,6 @@ public class MainActivity extends AppCompatActivity {
         loginPassword=findViewById(R.id.loginPasswordTextBox);
         loginRadioGroup=findViewById(R.id.loginRadioGroup);
         loginCreateButton = findViewById(R.id.loginNewUserRegButton);
-        mProgress=findViewById(R.id.progressBar2);
 
         mAuth = FirebaseAuth.getInstance();
         mAuthListener = new FirebaseAuth.AuthStateListener() {
@@ -138,9 +136,6 @@ public class MainActivity extends AppCompatActivity {
                             public void onClick(View view) {
                                 String email = loginEmail.getText().toString();
                                 String password = loginPassword.getText().toString();
-                                mProgress.setIndeterminate(true);
-
-                                mProgress.setVisibility(View.VISIBLE);
                                 loginNonMember(email,password);
 
 
