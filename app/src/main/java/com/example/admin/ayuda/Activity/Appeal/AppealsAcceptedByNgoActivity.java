@@ -43,17 +43,21 @@ public class AppealsAcceptedByNgoActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.AppealAcceptedRecyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+
         mDatabase.getReference().child("Ngo_Appeals").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Iterator<DataSnapshot> items = dataSnapshot.getChildren().iterator();
+
                 while (items.hasNext())
                 {
+
                     DataSnapshot item = items.next();
                     String adminUserId = item.child("adminUserId").getValue(String.class);
                     if (adminUserId.equals(userId))
                     {
                         appealAcceptedByNgo();
+
 
                     }
 

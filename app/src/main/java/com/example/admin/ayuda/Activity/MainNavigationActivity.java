@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.example.admin.ayuda.Activity.Appeal.AppealListFragment;
+import com.example.admin.ayuda.Activity.Appeal.AppealsAcceptedByNgoActivity;
 import com.example.admin.ayuda.Activity.Event.EventListFragment;
 import com.example.admin.ayuda.Activity.Login.MainActivity;
 import com.example.admin.ayuda.Activity.News.NewsListFragment;
@@ -105,7 +106,7 @@ public class MainNavigationActivity extends AppCompatActivity{
                 Toast.makeText(getApplicationContext(), "Invite Us", Toast.LENGTH_SHORT).show();
 
             case R.id.action_acceptedAppeals:
-                Toast.makeText(getApplicationContext(), "Accepted Appeals" , Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getApplicationContext(), AppealsAcceptedByNgoActivity.class));
                 break;
 
             case R.id.action_appealsUploaded:

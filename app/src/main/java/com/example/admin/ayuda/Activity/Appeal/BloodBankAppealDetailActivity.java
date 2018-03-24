@@ -19,6 +19,7 @@ import android.widget.TextView;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.example.admin.ayuda.Activity.Login.MainActivity;
 import com.example.admin.ayuda.Activity.MainNavigationActivity;
+import com.example.admin.ayuda.Data.AppealAdapters.AppealAcceptedByNgoAdapter;
 import com.example.admin.ayuda.Data.AppealAdapters.BloodBankAppealAdapter;
 import com.example.admin.ayuda.Model.BloodBankAppeal;
 import com.example.admin.ayuda.R;
@@ -202,10 +203,8 @@ public class BloodBankAppealDetailActivity extends AppCompatActivity {
                             dataToSave.put("appealImageDp", getIntent().getStringExtra("appealPic") );
                             dataToSave.put("appealName", getIntent().getStringExtra("patientName"));
                             appealAcceptByNgo.setValue(dataToSave);
-
-                            bloodBankAcceptButton.setEnabled(false);
-
                             startActivity(new Intent(BloodBankAppealDetailActivity.this, MainNavigationActivity.class));
+                            finish();
 
                         }
                     });

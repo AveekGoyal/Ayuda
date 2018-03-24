@@ -2,7 +2,9 @@ package com.example.admin.ayuda.Activity.Login;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.provider.MediaStore;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -11,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
@@ -24,9 +27,12 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.tapadoo.alerter.Alerter;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import es.dmoral.toasty.Toasty;
 
 
 /*
@@ -46,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
         loginPassword=findViewById(R.id.loginPasswordTextBox);
         loginRadioGroup=findViewById(R.id.loginRadioGroup);
         loginCreateButton = findViewById(R.id.loginNewUserRegButton);
+
 
         mAuth = FirebaseAuth.getInstance();
         mAuthListener = new FirebaseAuth.AuthStateListener() {
@@ -78,6 +86,41 @@ public class MainActivity extends AppCompatActivity {
             }
         };
 
+        final RadioButton loginAdmin = findViewById(R.id.loginRadioAdmin);
+        final RadioButton loginMember = findViewById(R.id.loginRadioMember);
+        final RadioButton loginNonMember = findViewById(R.id.loginRadioNonMember);
+        loginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!loginAdmin.isChecked() && !loginMember.isChecked() && !loginNonMember.isChecked())
+                {
+                    Alerter.create(MainActivity.this)
+                            .setTitle("Error Logging In")
+                            .setText("User Type is not selected. Please select your user type.")
+                            .setDuration(10000)
+                            .show();
+                }
+
+            }
+        });
+        loginCreateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!loginAdmin.isChecked() && !loginMember.isChecked() && !loginNonMember.isChecked())
+                {
+                    Alerter.create(MainActivity.this)
+                            .setTitle("Error Creating Account")
+                            .setText("User Type is not selected. Please select your user type.")
+                            .setDuration(10000)
+                            .show();
+                }
+
+            }
+        });
+
+
+
+
 
         loginRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -87,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
                         loginCreateButton.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                               startActivity(new Intent(MainActivity.this , NgoRegistrationActivity.class));
+                                startActivity(new Intent(MainActivity.this , NgoRegistrationActivity.class));
 
                             }
                         });
@@ -99,6 +142,9 @@ public class MainActivity extends AppCompatActivity {
                                 String password = loginPassword.getText().toString();
 
                                 loginNgoAdmin(email,password);
+
+
+
 
                             }
                         });
@@ -117,7 +163,10 @@ public class MainActivity extends AppCompatActivity {
                             public void onClick(View view) {
                                 String email = loginEmail.getText().toString();
                                 String password = loginPassword.getText().toString();
+
                                 loginMember(email,password);
+
+
                             }
                         });
 
@@ -136,13 +185,18 @@ public class MainActivity extends AppCompatActivity {
                             public void onClick(View view) {
                                 String email = loginEmail.getText().toString();
                                 String password = loginPassword.getText().toString();
+
+
                                 loginNonMember(email,password);
+
+
+
 
 
 
                             }
                         });
-                        
+
                         break;
 
                 }
@@ -153,11 +207,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void loginMember(final String email, final String password) {
-        new MaterialDialog.Builder(this)
+        final MaterialDialog materialDialog=new MaterialDialog.Builder(MainActivity.this)
                 .title("Logging In")
                 .content("Please Wait")
-                .progress(true, 0 )
+                .progress(true, 0)
                 .show();
+
 
 
         mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
@@ -167,6 +222,8 @@ public class MainActivity extends AppCompatActivity {
 
                 if (task.isSuccessful())
                 {
+
+
 
 
                     mAuthListener = new FirebaseAuth.AuthStateListener() {
@@ -191,13 +248,30 @@ public class MainActivity extends AppCompatActivity {
 
                                 finish();
                             }
+                            else
+                            {
+                                materialDialog.cancel();
+                                Alerter.create(MainActivity.this)
+                                        .setTitle("Error Logging In")
+                                        .setText("Your Email is not Verified")
+                                        .setDuration(10000)
+                                        .show();
+
+                            }
 
                         }
                     };
                 }
                 else
                 {
-                    Toast.makeText(getApplicationContext(),"Task Unsuccessful", Toast.LENGTH_LONG).show();
+                    materialDialog.cancel();
+                    Alerter.create(MainActivity.this)
+                            .setTitle("Error Logging In")
+                            .setText("Your Email or Password is Incorrect")
+                            .setDuration(10000)
+                            .show();
+
+
                 }
             }
 
@@ -207,11 +281,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void loginNonMember(final String email, final String password) {
-        new MaterialDialog.Builder(this)
+        final MaterialDialog materialDialog=new MaterialDialog.Builder(MainActivity.this)
                 .title("Logging In")
                 .content("Please Wait")
                 .progress(true, 0)
                 .show();
+
+
 
         mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
             @Override
@@ -243,12 +319,29 @@ public class MainActivity extends AppCompatActivity {
                                 startActivity(new Intent(MainActivity.this, MainNavigationActivity.class));
                                 finish();
                             }
+                            else
+                            {
+                                materialDialog.cancel();
+                                Alerter.create(MainActivity.this)
+                                        .setTitle("Error Logging In")
+                                        .setText("Your Email is not Verified")
+                                        .setDuration(10000)
+                                        .show();
+
+                            }
                         }
                     };
                 }
                 else
                 {
-                    Toast.makeText(getApplicationContext(),"Task Unsuccessful", Toast.LENGTH_LONG).show();
+                    materialDialog.cancel();
+                    Alerter.create(MainActivity.this)
+                            .setTitle("Error Logging In")
+                            .setText("Your Email or Password is Incorrect")
+                            .setDuration(10000)
+                            .show();
+
+
                 }
             }
 
@@ -257,21 +350,24 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void loginNgoAdmin(final String email, final String password) {
-        new MaterialDialog.Builder(this)
+        final MaterialDialog materialDialog=new MaterialDialog.Builder(MainActivity.this)
                 .title("Logging In")
                 .content("Please Wait")
                 .progress(true, 0)
                 .show();
+
+
         mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                Toast.makeText(getApplicationContext(),"Task Successfull",Toast.LENGTH_LONG).show();
+
 
                 if (task.isSuccessful())
                 {
 
 
-                   mAuthListener = new FirebaseAuth.AuthStateListener() {
+
+                    mAuthListener = new FirebaseAuth.AuthStateListener() {
                         @Override
                         public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
 
@@ -292,12 +388,30 @@ public class MainActivity extends AppCompatActivity {
                                 startActivity(new Intent(MainActivity.this, MainNavigationActivity.class));
                                 finish();
                             }
+                            else
+                            {
+                                materialDialog.cancel();
+                                Alerter.create(MainActivity.this)
+                                        .setTitle("Error Logging In")
+                                        .setText("Your Email is not Verified")
+                                        .setDuration(10000)
+                                        .show();
+
+                            }
                         }
                     };
                 }
                 else
                 {
-                    Toast.makeText(getApplicationContext(),"Task Unsuccessful", Toast.LENGTH_LONG).show();
+                    materialDialog.cancel();
+                    Alerter.create(MainActivity.this)
+                            .setTitle("Error Logging In")
+                            .setText("Your Email or Password is Incorrect")
+                            .setDuration(10000)
+                            .show();
+
+
+
                 }
             }
         });
