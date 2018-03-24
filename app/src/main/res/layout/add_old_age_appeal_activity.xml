@@ -21,8 +21,8 @@
             android:id="@+id/AddOldAgeHomeDescriptionTextBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Name and Age for all members"
-            android:inputType="textMultiLine"
+            android:hint="Name of OldAge house"
+            android:inputType="text"
              />
 
         <EditText
