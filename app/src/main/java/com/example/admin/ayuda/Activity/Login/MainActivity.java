@@ -1,12 +1,17 @@
 package com.example.admin.ayuda.Activity.Login;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,6 +20,11 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.net.ConnectivityManager;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -64,6 +74,25 @@ public class MainActivity extends AppCompatActivity {
         loginRadioGroup=findViewById(R.id.loginRadioGroup);
         loginCreateButton = findViewById(R.id.loginNewUserRegButton);
 
+        //Check Internet Connectivity
+        boolean connected = false;
+        ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+        if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
+                connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
+            //we are connected to a network
+            connected = true;
+        }
+        else
+            connected = false;
+
+        if(connected == false)
+        {
+            Alerter.create(MainActivity.this)
+                    .setTitle("Error Please Connect To internet Account")
+                    .setText("This app requires a active internet connection to work.")
+                    .setDuration(10000)
+                    .show();
+        }
 
         mAuth = FirebaseAuth.getInstance();
         mAuthListener = new FirebaseAuth.AuthStateListener() {
@@ -141,7 +170,18 @@ public class MainActivity extends AppCompatActivity {
                                 String email = loginEmail.getText().toString();
                                 String password = loginPassword.getText().toString();
 
-                                loginNgoAdmin(email,password);
+
+                                if(TextUtils.isEmpty(email) && TextUtils.isEmpty(password) )
+                                {
+                                    Alerter.create(MainActivity.this)
+                                            .setTitle("Empty Fields")
+                                            .setText("Please Enter You email and Password.")
+                                            .setDuration(10000)
+                                            .show();
+                                }
+                                else {
+                                    loginNgoAdmin(email,password);
+                                }
 
 
 
@@ -163,9 +203,17 @@ public class MainActivity extends AppCompatActivity {
                             public void onClick(View view) {
                                 String email = loginEmail.getText().toString();
                                 String password = loginPassword.getText().toString();
-
-                                loginMember(email,password);
-
+                                if(TextUtils.isEmpty(email) && TextUtils.isEmpty(password) )
+                                {
+                                    Alerter.create(MainActivity.this)
+                                            .setTitle("Empty Fields")
+                                            .setText("Please Enter You email and Password.")
+                                            .setDuration(10000)
+                                            .show();
+                                }
+                                else {
+                                    loginMember(email, password);
+                                }
 
                             }
                         });
@@ -186,9 +234,17 @@ public class MainActivity extends AppCompatActivity {
                                 String email = loginEmail.getText().toString();
                                 String password = loginPassword.getText().toString();
 
-
-                                loginNonMember(email,password);
-
+                                if(TextUtils.isEmpty(email) && TextUtils.isEmpty(password) )
+                                {
+                                    Alerter.create(MainActivity.this)
+                                            .setTitle("Empty Fields")
+                                            .setText("Please Enter You email and Password.")
+                                            .setDuration(10000)
+                                            .show();
+                                }
+                                else {
+                                    loginNonMember(email, password);
+                                }
 
 
 
@@ -435,7 +491,25 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
- /*
-    Non-member login method - he/she can login from google or facebook
-     */
+ //Check Internet connectivity
+
+//
+//    public class CheckConnectivity extends BroadcastReceiver {
+//
+//        @Override
+//        public void onReceive(Context context, Intent arg1) {
+//
+//            boolean isConnected = arg1.getBooleanExtra(ConnectivityManager.EXTRA_NO_CONNECTIVITY, false);
+//            if(isConnected){
+//                Alerter.create(MainActivity.this)
+//                        .setTitle("Error Please Connect To internet Account")
+//                        .setText("This app requires a active internet connection to work.")
+//                        .setDuration(10000)
+//                        .show();
+//            }
+//            else{
+//                Toast.makeText(context, "Internet Connected", Toast.LENGTH_LONG).show();
+//            }
+//        }
+//    }
 }
