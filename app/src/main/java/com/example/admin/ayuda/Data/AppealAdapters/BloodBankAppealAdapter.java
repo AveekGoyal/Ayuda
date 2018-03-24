@@ -63,7 +63,6 @@ public class BloodBankAppealAdapter extends RecyclerView.Adapter<BloodBankAppeal
         BloodBankAppeal bloodBankAppeal = bloodBankAppealList.get(position);
         String imageUrl= null;
 
-        final String uId = mUser.getUid();
 
 
 
@@ -120,9 +119,11 @@ public class BloodBankAppealAdapter extends RecyclerView.Adapter<BloodBankAppeal
                      intent.putExtra("hospitalName",bloodBankAppealList.get(getAdapterPosition()).getHospitakName());
                      intent.putExtra("hospitalContactNo",bloodBankAppealList.get(getAdapterPosition()).getHospitalContactNo());
                      intent.putExtra("plateletsCount",bloodBankAppealList.get(getAdapterPosition()).getPlateletsCount());
+                     intent.putExtra("bloodGroup", bloodBankAppealList.get(getAdapterPosition()).getBloodGroup());
                      intent.putExtra("bloodAmountNeeded",bloodBankAppealList.get(getAdapterPosition()).getAmountNeeded());
                      intent.putExtra("patientName",bloodBankAppealList.get(getAdapterPosition()).getPatientName());
                      intent.putExtra("hospitalAddress",bloodBankAppealList.get(getAdapterPosition()).getHospitalAddress());
+                     intent.putExtra("timestamp",bloodBankAppealList.get(getAdapterPosition()).getTimestamp());
                      ctx.startActivity(intent);
 
 

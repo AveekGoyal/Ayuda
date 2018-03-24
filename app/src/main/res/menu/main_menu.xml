@@ -1,11 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_profile"
+        android:title="Profile" />
+
+    <item
+        android:id="@+id/action_contactus"
+        android:title="Contact Us"/>
+
+    <item
+        android:id="@+id/action_inviteus"
+        android:title="Invite Us"/>
+
+    <item
+        android:id="@+id/action_acceptedAppeals"
+        android:title="Accepted Appeals"/>
+
+    <item
+        android:id="@+id/action_appealsUploaded"
+        android:title="Appeals Uploaded" />
+
     <item android:id="@+id/action_signout"
         android:title="Sign Out"
         app:showAsAction="never"/>
-    <item android:id="@+id/profile"
-        android:title="Profile"
-        app:showAsAction="never" />
+
+
+
 
 </menu>

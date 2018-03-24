@@ -14,7 +14,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.afollestad.materialdialogs.MaterialDialog;
 import com.example.admin.ayuda.Activity.Appeal.AppealListFragment;
 import com.example.admin.ayuda.Activity.Event.EventListFragment;
 import com.example.admin.ayuda.Activity.Login.MainActivity;
@@ -81,11 +80,6 @@ public class MainNavigationActivity extends AppCompatActivity{
         switch (item.getItemId()) {
             case R.id.action_signout:
                 if (mAuth != null && mUser != null) {
-                    new MaterialDialog.Builder(this)
-                            .title("sign out")
-                            .content("Please Wait")
-                            .progress(true, 0)
-                            .show();
                     Toast.makeText(getApplicationContext(),"Sign out",Toast.LENGTH_LONG).show();
 
                     mAuth.signOut();
@@ -94,15 +88,30 @@ public class MainNavigationActivity extends AppCompatActivity{
                 }
                 break;
 
-            case R.id.profile:
+            case R.id.action_profile:
                 if (mAuth != null && mUser != null)
                 {
                     Toast.makeText(getApplicationContext() , "Profile" , Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(MainNavigationActivity.this , ProfileActivity.class));
 
-
                 }
                 break;
+
+            case R.id.action_contactus:
+                Toast.makeText(getApplicationContext(), "Contact Us" , Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.action_inviteus:
+                Toast.makeText(getApplicationContext(), "Invite Us", Toast.LENGTH_SHORT).show();
+
+            case R.id.action_acceptedAppeals:
+                Toast.makeText(getApplicationContext(), "Accepted Appeals" , Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.action_appealsUploaded:
+                Toast.makeText(getApplicationContext(), "Appeals Uploaded" , Toast.LENGTH_SHORT).show();
+                break;
+
         }
         return super.onOptionsItemSelected(item);
     }

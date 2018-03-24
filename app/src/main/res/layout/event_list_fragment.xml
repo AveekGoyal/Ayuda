@@ -22,7 +22,8 @@
                 android:text="Event:"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:background="@color/colorPrimary"
+                android:textAlignment="center"
+                android:background="@color/endblue"
                 android:textColor="@color/white"
                 />
 

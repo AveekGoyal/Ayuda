@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.example.admin.ayuda.Activity.MainNavigationActivity;
 import com.example.admin.ayuda.Model.Members;
 import com.example.admin.ayuda.Model.NgoAdmin;
@@ -84,7 +85,13 @@ public class AddStoryActivity extends AppCompatActivity {
 
 
     private void addStory()
+
     {
+        new MaterialDialog.Builder(this)
+                .title("Uploading Story")
+                .content("Please Wait")
+                .progress(true, 0)
+                .show();
         final String storyTitle = addStoryCaptionTextBox.getText().toString().trim();
         if(!TextUtils.isEmpty(storyTitle))
         {

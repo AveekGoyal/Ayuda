@@ -116,6 +116,7 @@ public class DisasterManagementAppealAdapter extends RecyclerView.Adapter<Disast
                     intent.putExtra("needClothing", disasterAppealList.get(getAdapterPosition()).getNeedClothing());
                     intent.putExtra("needMedicalFacilities", disasterAppealList.get(getAdapterPosition()).getNeedMedical());
                     intent.putExtra("needRehabilitation", disasterAppealList.get(getAdapterPosition()).getNeedRehab());
+                    intent.putExtra("typeOfDisaster" , disasterAppealList.get(getAdapterPosition()).getTypeOfDisaster());
                     intent.putExtra("contactNo", disasterAppealList.get(getAdapterPosition()).getContactNo());
                     intent.putExtra("altContactNo", disasterAppealList.get(getAdapterPosition()).getAltContactNo());
                     ctx.startActivity(intent);

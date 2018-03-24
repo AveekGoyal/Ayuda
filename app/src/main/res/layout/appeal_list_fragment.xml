@@ -20,8 +20,9 @@
                 android:id="@+id/AppealTitle"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:background="@color/colorPrimary"
+                android:background="@color/endblue"
                 android:text="Appeal"
+                android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 android:textStyle="bold">

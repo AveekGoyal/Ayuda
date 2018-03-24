@@ -39,6 +39,7 @@ public class DisasterManagementAppealDetailsActivity extends AppCompatActivity {
     private CheckBox disasterMgmtNeedMedical;
     private CheckBox disasterMgmtNeedClothing;
     private CheckBox disasterMgmtNeedRehab;
+    private TextView disasterMgmtTypeOfDisaster;
     private TextView disasterMgmtContactNoPlainText;
     private TextView disasterMgmtAltContactNoPlainText;
     private Button disasterMgmtSafetyButton;
@@ -66,6 +67,7 @@ public class DisasterManagementAppealDetailsActivity extends AppCompatActivity {
         disasterMgmtNeedClothing = findViewById(R.id.DisasterMgmtNeedClothing);
         disasterMgmtNeedMedical = findViewById(R.id.DisasterMgmtNeedMedical);
         disasterMgmtNeedRehab = findViewById(R.id.DisasterMgmtNeedRehab);
+        disasterMgmtTypeOfDisaster = findViewById(R.id.AddDisasterAltContactNoTextBox);
         disasterMgmtContactNoPlainText = findViewById(R.id.DisasterMgmtContactNoPlainText);
         disasterMgmtAltContactNoPlainText = findViewById(R.id.DisasterMgmtAltContactNoPlainText);
         disasterMgmtSafetyButton = findViewById(R.id.DisasterMgmtSafetyButton);
@@ -130,7 +132,7 @@ public class DisasterManagementAppealDetailsActivity extends AppCompatActivity {
         {
             disasterMgmtNeedRehab.setEnabled(false);
         }
-
+        disasterMgmtTypeOfDisaster.setText(String.format(" : %s", getIntent().getStringExtra("typeOfDisaster")));
         disasterMgmtContactNoPlainText.setText(String.format("Contact Number : %s", getIntent().getStringExtra("contactNo")));
         disasterMgmtAltContactNoPlainText.setText(String.format("Alternate Number: %s", getIntent().getStringExtra("altContactNo")));
 

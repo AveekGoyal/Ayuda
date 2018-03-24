@@ -7,10 +7,12 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -45,6 +47,7 @@ public class AddDisasterManagementAppeal extends AppCompatActivity {
     private CheckBox addDisasterNeedClothing;
     private CheckBox addDisasterNeedMedical;
     private CheckBox addDisasterNeedRehab;
+    private Spinner addTypeOfDisasterSpinner;
     private  EditText addDisasterContactNoTextBox;
     private EditText addDisasterAltContactNoTextBox;
     private Button addDisasterSafetyButton;
@@ -73,6 +76,7 @@ public class AddDisasterManagementAppeal extends AppCompatActivity {
         addDisasterNeedClothing = findViewById(R.id.AddDisasterNeedClothing);
         addDisasterNeedMedical = findViewById(R.id.AddDisasterNeedMedical);
         addDisasterNeedRehab = findViewById(R.id.AddDisasterNeedRehab);
+        addTypeOfDisasterSpinner = findViewById(R.id.AddDisasterTypeOfDisasterSpinner);
         addDisasterContactNoTextBox = findViewById(R.id.AddDisasterContactNoTextBox);
         addDisasterAltContactNoTextBox = findViewById(R.id.AddDisasterAltContactNoTextBox);
         addDisasterSafetyButton = findViewById(R.id.AddDisasterSafetyButton);
@@ -101,6 +105,10 @@ public class AddDisasterManagementAppeal extends AppCompatActivity {
             }
         });
 
+        // Add values in Type of Disaster Spinner
+        String[] typeofdisaster = {"Floods","Earthquakes","Drought","Cyclone","Storm","Wildfire"};
+        ArrayAdapter<String> adaptertypeofdisaster = new ArrayAdapter<>(this , android.R.layout.simple_spinner_dropdown_item , typeofdisaster);
+        addTypeOfDisasterSpinner.setAdapter(adaptertypeofdisaster);
 
     }
 
@@ -114,8 +122,9 @@ public class AddDisasterManagementAppeal extends AppCompatActivity {
         final String description = addDisasterDescTextBox.getText().toString().trim();
         final String contactNo = addDisasterContactNoTextBox.getText().toString().trim();
         final String altContactNo = addDisasterAltContactNoTextBox.getText().toString().trim();
+        final String typeOfDisaster = addTypeOfDisasterSpinner.getSelectedItem().toString().trim();
 
-        if (!TextUtils.isEmpty(description) && !TextUtils.isEmpty(contactNo)) {
+        if (!TextUtils.isEmpty(description) && !TextUtils.isEmpty(contactNo) && !TextUtils.isEmpty(typeOfDisaster)) {
             StorageReference filePath = mStorage.child("DisasterManagementAppeal_Images").child(resultUri.getLastPathSegment());
             filePath.putFile(resultUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
 
@@ -178,6 +187,7 @@ public class AddDisasterManagementAppeal extends AppCompatActivity {
                             } else {
                                 dataToSave.put("needRehab", "No");
                             }
+                            dataToSave.put("typeOfDisaster", typeOfDisaster);
                             dataToSave.put("contactNo", contactNo);
                             dataToSave.put("altContactNo", altContactNo);
                             dataToSave.put("picProof", downloadUrl.toString());
@@ -233,6 +243,7 @@ public class AddDisasterManagementAppeal extends AppCompatActivity {
                                 } else {
                                     dataToSave.put("needRehab", "No");
                                 }
+                                dataToSave.put("typeOfDisaster", typeOfDisaster);
                                 dataToSave.put("contactNo", contactNo);
                                 dataToSave.put("altContactNo", altContactNo);
                                 dataToSave.put("picProof", downloadUrl.toString());
