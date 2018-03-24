@@ -17,7 +17,11 @@
         android:theme="@style/Theme.AppCompat.Light">
 
     <activity android:name=".Activity.Login.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
 
         </activity>
@@ -52,11 +56,6 @@
             android:label="Story Details"/>
         <activity android:name=".Activity.Event.AddEventActivity"
             android:label="Add Event">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
         </activity>
 
