@@ -8,9 +8,6 @@ import android.os.Handler;
 import com.example.admin.ayuda.Activity.Login.MainActivity;
 import com.example.admin.ayuda.R;
 
-/**
- * Created by HP on 3/24/2018.
- */
 
 public class SplashScreenActivity extends Activity {
 
@@ -28,7 +25,7 @@ public class SplashScreenActivity extends Activity {
                 startActivity(intent);
                 finish();
             }
-        },5000);
+        },3000);
 
     }
 }
