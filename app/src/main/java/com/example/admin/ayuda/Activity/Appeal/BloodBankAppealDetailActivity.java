@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.example.admin.ayuda.Activity.Login.MainActivity;
@@ -39,6 +40,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeoutException;
+
+import es.dmoral.toasty.Toasty;
 
 import static android.icu.lang.UProperty.INT_START;
 
@@ -237,6 +240,7 @@ public class BloodBankAppealDetailActivity extends AppCompatActivity {
 
                                     }
                                 });
+                                Toasty.info(getApplicationContext() , "Appeal Accepted." ,Toast.LENGTH_SHORT).show();
                                 startActivity(new Intent(BloodBankAppealDetailActivity.this, MainNavigationActivity.class));
                                 finish();
 
