@@ -3,25 +3,23 @@
 
     <item
         android:id="@+id/appealFragment"
-        android:icon="@drawable/ic_account_box_black_24dp"
-        android:title="Appeal">
-    </item>
+        android:icon="@drawable/ic_font_download_black_24dp"
+        android:title="Appeal"></item>
     <item
         android:id="@+id/eventFragment"
-        android:icon="@drawable/ic_account_circle_black_24dp"
-        android:title="Event"
-        >
+        android:icon="@drawable/ic_event_note_black_24dp"
+        android:title="Event">
 
     </item>
     <item
         android:id="@+id/storyFragment"
-        android:icon="@drawable/ic_assignment_ind_black_24dp"
+        android:icon="@drawable/ic_weekend_black_24dp"
         android:title="Story">
 
     </item>
     <item
         android:id="@+id/newsFragment"
-        android:icon="@mipmap/ic_launcher_round"
+        android:icon="@drawable/ic_library_books_black_24dp"
         android:title="News">
 
     </item>

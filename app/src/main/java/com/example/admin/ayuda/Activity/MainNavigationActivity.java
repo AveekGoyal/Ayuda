@@ -145,8 +145,17 @@ public class MainNavigationActivity extends AppCompatActivity{
                 }
                 break;
 
+            case R.id.leaderboard:
+                if (mAuth != null && mUser != null)
+                {
+                    Toast.makeText(getApplicationContext() , "leader" , Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(MainNavigationActivity.this , LeaderBoard.class));
+
+                }
+                break;
+
             case R.id.action_contactus:
-                Toast.makeText(getApplicationContext(), "Contact Us" , Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(MainNavigationActivity.this , ContactUs.class));
                 break;
 
             case R.id.action_inviteus:
