@@ -119,6 +119,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Safety Procedures"
+            android:background="#009688"
             android:layout_gravity="center"
             android:layout_marginBottom="25dp" />
 
@@ -127,6 +128,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/Submit"
+            android:background="#009688"
             android:layout_gravity="right"
             android:layout_marginBottom="25dp" />
 

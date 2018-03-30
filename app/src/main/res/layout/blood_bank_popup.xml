@@ -22,6 +22,7 @@
             android:id="@+id/BloodBankPopupProceedButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="#009688"
             android:text="Proceed"
             android:layout_marginLeft="100dp"/>
 
@@ -29,6 +30,7 @@
             android:id="@+id/BloodBankPopupRejectButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="#009688"
             android:text="Reject"
             android:layout_marginLeft="50dp"/>
 

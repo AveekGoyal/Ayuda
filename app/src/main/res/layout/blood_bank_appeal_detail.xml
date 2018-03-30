@@ -8,7 +8,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:background="@color/TBlue"
         android:orientation="vertical">
 
         <ImageView
@@ -32,7 +31,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="20sp"
-            android:textStyle="bold"
             android:textColor="@color/Black"
             android:text="Family Information:"
             />
@@ -68,7 +66,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="3dp"
-            android:textStyle="bold"
             android:textSize="20sp"
             android:textColor="@color/Black"
             android:text="Hospital Information:"
@@ -156,6 +153,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Accept"
+            android:background="#009688"
             android:layout_marginBottom="25dp" />
 
         <Button
@@ -163,6 +161,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Reject"
+            android:background="#009688"
             android:layout_marginBottom="25dp"
             android:layout_marginLeft="60dp"/>
 

@@ -35,10 +35,8 @@
             android:layout_height="wrap_content"
             android:text="headline"
             android:textSize="15dp"
-            android:layout_marginTop="10dp"/><![CDATA[
-            />
+            android:layout_marginTop="10dp"/>
 
-        ]]>
 
         <TextView
             android:id="@+id/NewsDescriptionPlainText"
@@ -54,21 +52,12 @@
             android:orientation="horizontal">
 
             <TextView
+                android:id="@+id/NewsDateTextBox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Date:"
                 android:layout_marginTop="10dp"
                 android:textSize="15dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Selected Date"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="5dp"
-                />
-
-
 
         </LinearLayout>
 
