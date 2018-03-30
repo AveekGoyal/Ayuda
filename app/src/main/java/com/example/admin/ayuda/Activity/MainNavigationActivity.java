@@ -14,6 +14,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+//For static navigation bar
+import android.support.design.internal.BottomNavigationItemView;
+import android.support.design.internal.BottomNavigationMenuView;
+import android.support.design.widget.BottomNavigationView;
+import android.util.Log;
+import java.lang.reflect.Field;
+
+
 import com.example.admin.ayuda.Activity.Appeal.AppealListFragment;
 import com.example.admin.ayuda.Activity.Appeal.AppealsAcceptedByNgoActivity;
 import com.example.admin.ayuda.Activity.Appeal.AppealsStatusForUserActivity;
@@ -40,6 +48,7 @@ public class MainNavigationActivity extends AppCompatActivity{
     private FirebaseUser mUser;
     String userId=" ";
 
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +58,29 @@ public class MainNavigationActivity extends AppCompatActivity{
         mAuth =FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
         userId = mUser.getUid();
+//        disableShiftMode(bottomNavigationView);
+
+//        BottomNavigationMenuView menuView = (BottomNavigationMenuView) bottomNavigationView.getChildAt(0);
+//        try {
+//            Field shiftingMode = menuView.getClass().getDeclaredField("mShiftingMode");
+//            shiftingMode.setAccessible(true);
+//            shiftingMode.setBoolean(menuView, false);
+//            shiftingMode.setAccessible(false);
+//            for (int i = 0; i < menuView.getChildCount(); i++) {
+//                BottomNavigationItemView item = (BottomNavigationItemView) menuView.getChildAt(i);
+//                //noinspection RestrictedApi
+//                item.setShiftingMode(false);
+//                // set once again checked value, so view will be updated
+//                //noinspection RestrictedApi
+//                item.setChecked(item.getItemData().isChecked());
+//            }
+//        } catch (NoSuchFieldException e) {
+//            Log.e("BNVHelper", "Unable to get shift mode field", e);
+//        } catch (IllegalAccessException e) {
+//            Log.e("BNVHelper", "Unable to change value of shift mode", e);
+//        }
+
+
 
         bottomNavigationView.setOnNavigationItemSelectedListener
                 (new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -193,4 +225,30 @@ public class MainNavigationActivity extends AppCompatActivity{
         return super.onOptionsItemSelected(item);
     }
 
+
 }
+
+//
+//class BottomNavigationViewHelper {
+//    public static void disableShiftMode(BottomNavigationView view) {
+//
+//        try {
+//            Field shiftingMode = menuView.getClass().getDeclaredField("mShiftingMode");
+//            shiftingMode.setAccessible(true);
+//            shiftingMode.setBoolean(menuView, false);
+//            shiftingMode.setAccessible(false);
+//            for (int i = 0; i < menuView.getChildCount(); i++) {
+//                BottomNavigationItemView item = (BottomNavigationItemView) menuView.getChildAt(i);
+//                //noinspection RestrictedApi
+//                item.setShiftingMode(false);
+//                // set once again checked value, so view will be updated
+//                //noinspection RestrictedApi
+//                item.setChecked(item.getItemData().isChecked());
+//            }
+//        } catch (NoSuchFieldException e) {
+//            Log.e("BNVHelper", "Unable to get shift mode field", e);
+//        } catch (IllegalAccessException e) {
+//            Log.e("BNVHelper", "Unable to change value of shift mode", e);
+//        }
+//    }
+//}

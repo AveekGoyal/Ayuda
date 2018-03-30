@@ -32,6 +32,9 @@ import com.tapadoo.alerter.Alerter;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import es.dmoral.toasty.Toasty;
 
 
@@ -56,6 +59,8 @@ public class NgoRegistrationActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseDatabase mDatabase;
     private DatabaseReference mDatabaseReference;
+    private FirebaseDatabase mDatabaseOrgName;
+    private DatabaseReference mDatabaseReferenceOrgName;
     private StorageReference mStorageReference;
     private Uri resultUri= null;
     private String male =" ";
@@ -86,6 +91,8 @@ public class NgoRegistrationActivity extends AppCompatActivity {
 
         mDatabase = FirebaseDatabase.getInstance();
         mDatabaseReference= mDatabase.getReference().child("NgoAdmin");
+
+
         mAuth = FirebaseAuth.getInstance();
         mStorageReference = FirebaseStorage.getInstance().getReference().child("NgoAdmin_Pics");
 
@@ -213,6 +220,13 @@ public class NgoRegistrationActivity extends AppCompatActivity {
                                         }
                                     }
                                 });
+
+                                DatabaseReference mOrgName = FirebaseDatabase.getInstance().getReference().child("orgName");
+                                DatabaseReference orgname = mOrgName.push();
+                                Map<String, String> dataToSave = new HashMap<>();
+                                dataToSave.put("emailId" , adminEmail);
+                                dataToSave.put("orgName" , orgName);
+                                orgname.setValue(dataToSave);
 
                                 Intent intent = new Intent(NgoRegistrationActivity.this, MainActivity.class );
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

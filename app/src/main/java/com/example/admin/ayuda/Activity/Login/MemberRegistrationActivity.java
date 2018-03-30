@@ -9,6 +9,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,6 +20,8 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.example.admin.ayuda.Model.Ngo_Appeals;
+import com.example.admin.ayuda.Model.OrgName;
 import com.example.admin.ayuda.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -26,14 +29,21 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.tapadoo.alerter.Alerter;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 import es.dmoral.toasty.Toasty;
 
@@ -64,6 +74,8 @@ public class MemberRegistrationActivity extends AppCompatActivity{
     private String male= " ";
     private String female= " ";
     private final static int GALLERY_CODE = 1;
+    public List<String> orgNameList;
+    public String orgNameSelected= " ";
 
 
     @Override
@@ -88,6 +100,7 @@ public class MemberRegistrationActivity extends AppCompatActivity{
         memRegSubmitButton = findViewById(R.id.MemRegSubmitButton);
         memRegPincodeTextBox = findViewById(R.id.MemRegPincodeTextBox);
         memberRadioGrGroup = findViewById(R.id.MemberRadioGrGroup);
+
 
 
         mDatabase =FirebaseDatabase.getInstance();
@@ -138,11 +151,39 @@ public class MemberRegistrationActivity extends AppCompatActivity{
         ArrayAdapter<String> adapterstate = new ArrayAdapter<String>(this , android.R.layout.simple_spinner_dropdown_item , states);
         memRegStateSpinner.setAdapter(adapterstate);
 
-        String[] org = {"Goonj" , "HelpingBrainz" , "Red Cross Society"};
+        String[] org = {"Helping Hands","Helping Ngo" , "Helping People" , "new world"};
         ArrayAdapter<String> adapterorg = new ArrayAdapter<String>(this , android.R.layout.simple_spinner_dropdown_item , org);
         memRegOrgNameSpinner.setAdapter(adapterorg);
 
+        orgNameList = new ArrayList<>();
+        mDatabase.getReference().child("orgName").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Iterator<DataSnapshot> items = dataSnapshot.getChildren().iterator();
+                orgNameList.clear();
+                while(items.hasNext()){
+                    DataSnapshot item = items.next();
+                    String name = item.child("orgName").getValue(String.class);
+                    orgNameList.add(name);
+                }
 
+            }
+
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+
+//        ArrayAdapter<OrgName> adapter =
+//                new ArrayAdapter<OrgName>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, orgNameList);
+//        memRegOrgNameSpinner.setAdapter(adapter);
+//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_item, orgNameList);
+//        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        memRegOrgNameSpinner.setAdapter(dataAdapter);
 
 
 
@@ -179,7 +220,7 @@ public class MemberRegistrationActivity extends AppCompatActivity{
         }
         else if(!TextUtils.isEmpty(firstName) && !TextUtils.isEmpty(lastName) && !TextUtils.isEmpty(email) &&
         !TextUtils.isEmpty(number) && !TextUtils.isEmpty(address) && !TextUtils.isEmpty(pincode)
-        && !TextUtils.isEmpty(city) && !TextUtils.isEmpty(state) && !TextUtils.isEmpty(org))
+        && !TextUtils.isEmpty(city) && !TextUtils.isEmpty(state) && !TextUtils.isEmpty(orgNameSelected))
         {
 
           mAuth.createUserWithEmailAndPassword(email , pwd).addOnCompleteListener(MemberRegistrationActivity.this, new OnCompleteListener<AuthResult>() {
