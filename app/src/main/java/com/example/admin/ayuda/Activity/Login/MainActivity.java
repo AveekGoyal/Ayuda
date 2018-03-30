@@ -264,7 +264,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void loginMember(final String email, final String password) {
         final MaterialDialog materialDialog=new MaterialDialog.Builder(MainActivity.this)
-                .title("Logging In")
+                .title("Authenticating..")
                 .content("Please Wait")
                 .progress(true, 0)
                 .show();
@@ -335,7 +335,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void loginNonMember(final String email, final String password) {
         final MaterialDialog materialDialog=new MaterialDialog.Builder(MainActivity.this)
-                .title("Logging In")
+                .title("Authenticating..")
                 .content("Please Wait")
                 .progress(true, 0)
                 .show();
@@ -404,7 +404,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void loginNgoAdmin(final String email, final String password) {
         final MaterialDialog materialDialog=new MaterialDialog.Builder(MainActivity.this)
-                .title("Logging In")
+                .title("Authenticating..")
                 .content("Please Wait")
                 .progress(true, 0)
                 .show();
