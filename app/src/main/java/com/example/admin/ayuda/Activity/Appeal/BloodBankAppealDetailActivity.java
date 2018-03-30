@@ -35,6 +35,7 @@ import com.squareup.picasso.Picasso;
 import org.w3c.dom.Text;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeoutException;
@@ -65,6 +66,8 @@ public class BloodBankAppealDetailActivity extends AppCompatActivity {
     String type=" ";
     String adminEmail = " ";
     String adminOrgName = " ";
+    String adminContactNo=" ";
+    String isAppealAccepted = "No";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -90,7 +93,6 @@ public class BloodBankAppealDetailActivity extends AppCompatActivity {
         mDatabase = FirebaseDatabase.getInstance();
         mDatabaseReference = mDatabase.getReference().child("BloodBankAppeals");
         mDatabaseReference.keepSynced(true);
-
         String imageUrl = getIntent().getStringExtra("appealPic");
         Picasso.with(getApplicationContext()).load(imageUrl).into(bloodPicProofImageView);
         //bloodBankPatientName.setText(String.format("Patient Name : %s", getIntent().getStringExtra("patientName")));
@@ -171,6 +173,7 @@ public class BloodBankAppealDetailActivity extends AppCompatActivity {
                 type =  dataSnapshot.child("type").getValue(String.class);
                 adminEmail = dataSnapshot.child("email").getValue(String.class);
                 adminOrgName = dataSnapshot.child("orgName").getValue(String.class);
+                adminContactNo = dataSnapshot.child("mobileNumber").getValue(String.class);
                 if(type == null)
                 {
                     bloodBankAcceptButton.setEnabled(false);
@@ -178,40 +181,67 @@ public class BloodBankAppealDetailActivity extends AppCompatActivity {
                 }
                 else if(type.equals("NgoAdmin"))
                 {
-                    bloodBankRejectButton.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            startActivity(new Intent(BloodBankAppealDetailActivity.this, MainNavigationActivity.class));
-                        }
-                    });
+                    if (getIntent().getStringExtra("isAccepted").equals("Yes"))
+                    {
+                        bloodBankAcceptButton.setEnabled(false);
+                        bloodBankRejectButton.setEnabled(false);
+                    }
+                    else
+                    {
+                        bloodBankRejectButton.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                startActivity(new Intent(BloodBankAppealDetailActivity.this, MainNavigationActivity.class));
+                            }
+                        });
 
-                    bloodBankAcceptButton.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            new MaterialDialog.Builder(BloodBankAppealDetailActivity.this)
-                                    .title("Accepting Appeal")
-                                    .content("Please Wait")
-                                    .progress(true, 0)
-                                    .show();
-                            mDatabaseReference = FirebaseDatabase.getInstance().getReference().child("Ngo_Appeals");
-                            DatabaseReference appealAcceptByNgo = mDatabaseReference.push();
-                            Map<String, String> dataToSave = new HashMap<>();
-                            dataToSave.put("adminOrgName", adminOrgName);
-                            dataToSave.put("adminEmail", adminEmail);
-                            dataToSave.put("adminUserId", userId);
-                            dataToSave.put("appealTimestamp",getIntent().getStringExtra("timestamp") );
-                            dataToSave.put("appealImageDp", getIntent().getStringExtra("appealPic") );
-                            dataToSave.put("appealName", getIntent().getStringExtra("patientName"));
-                            appealAcceptByNgo.setValue(dataToSave);
-                            startActivity(new Intent(BloodBankAppealDetailActivity.this, MainNavigationActivity.class));
-                            finish();
+                        bloodBankAcceptButton.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                new MaterialDialog.Builder(BloodBankAppealDetailActivity.this)
+                                        .title("Accepting Appeal")
+                                        .content("Please Wait")
+                                        .progress(true, 0)
+                                        .show();
+                                mDatabaseReference = FirebaseDatabase.getInstance().getReference().child("Ngo_Appeals");
+                                DatabaseReference appealAcceptByNgo = mDatabaseReference.push();
+                                Map<String, String> dataToSave = new HashMap<>();
+                                dataToSave.put("adminOrgName", adminOrgName);
+                                dataToSave.put("adminEmail", adminEmail);
+                                dataToSave.put("adminUserId", userId);
+                                dataToSave.put("adminContactNo", adminContactNo);
+                                dataToSave.put("appealTimestamp",getIntent().getStringExtra("timestamp") );
+                                dataToSave.put("appealImageDp", getIntent().getStringExtra("appealPic") );
+                                dataToSave.put("appealName", getIntent().getStringExtra("patientName"));
+                                appealAcceptByNgo.setValue(dataToSave);
 
-                        }
-                    });
+                                final DatabaseReference isAccepted = FirebaseDatabase.getInstance().getReference().child("BloodBankAppeals");
+                                isAccepted.addValueEventListener(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(DataSnapshot dataSnapshot) {
+                                        for (DataSnapshot item : dataSnapshot.getChildren()) {
+                                            String timestamp = item.child("timestamp").getValue(String.class);
+                                            if (timestamp.equals(getIntent().getStringExtra("timestamp"))) {
+                                                item.getRef().child("isAccepted").setValue("Yes");
 
+                                            }
 
+                                        }
 
+                                    }
 
+                                    @Override
+                                    public void onCancelled(DatabaseError databaseError) {
+
+                                    }
+                                });
+                                startActivity(new Intent(BloodBankAppealDetailActivity.this, MainNavigationActivity.class));
+                                finish();
+
+                            }
+                        });
+
+                    }
 
                 }
 

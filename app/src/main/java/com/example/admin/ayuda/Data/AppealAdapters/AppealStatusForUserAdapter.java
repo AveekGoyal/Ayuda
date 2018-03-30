@@ -16,14 +16,13 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
-import java.util.Date;
 import java.util.List;
 
-import static java.text.DateFormat.getDateInstance;
+/**
+ * Created by Admin on 25-Mar-18.
+ */
 
-
-public class AppealAcceptedByNgoAdapter extends RecyclerView.Adapter<AppealAcceptedByNgoAdapter.ViewHolder> {
-
+public class AppealStatusForUserAdapter extends RecyclerView.Adapter<AppealStatusForUserAdapter.ViewHolder> {
     private Context context;
     private List<Ngo_Appeals> ngo_appealsList;
     private FirebaseDatabase mDatabase;
@@ -31,32 +30,31 @@ public class AppealAcceptedByNgoAdapter extends RecyclerView.Adapter<AppealAccep
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabaseReference;
 
-    public AppealAcceptedByNgoAdapter(Context context, List<Ngo_Appeals> ngo_appealsList) {
+
+    public AppealStatusForUserAdapter(Context context, List<Ngo_Appeals> ngo_appealsList) {
         this.context = context;
         this.ngo_appealsList = ngo_appealsList;
     }
 
     @Override
-    public AppealAcceptedByNgoAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public AppealStatusForUserAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.appeal_status_for_user_cardview, parent,false);
 
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.appeal_accepted_by_ngo_cardview, parent,false);
-
-        return new ViewHolder(view,context);
+        return new ViewHolder(view, context);
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
-
+    public void onBindViewHolder(AppealStatusForUserAdapter.ViewHolder holder, int position) {
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance();
         mDatabaseReference = mDatabase.getReference();
         Ngo_Appeals ngo_appeals = ngo_appealsList.get(position);
         holder.appealTitle.setText(String.format("%s", ngo_appeals.getAppealName()));
-        java.text.DateFormat dateFormat = getDateInstance();
-        String formattedDate = dateFormat.format(new Date(Long.valueOf(ngo_appeals.getAppealTimestamp())).getTime());
-        holder.timestamp.setText(String.format("%s",formattedDate));
         String imageUrl = ngo_appeals.getAppealImageDp();
-        Picasso.with(context).load(imageUrl).into(holder.imageDp);
+        Picasso.with(context).load(imageUrl).into(holder.imageView);
+        holder.orgName.setText(String.format("%s", ngo_appeals.getAdminOrgName()));
+        holder.contactNo.setText(String.format("%s", ngo_appeals.getAdminContactNo()));
+
 
     }
 
@@ -66,18 +64,17 @@ public class AppealAcceptedByNgoAdapter extends RecyclerView.Adapter<AppealAccep
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        public ImageView imageDp;
+        public ImageView imageView;
+        public TextView orgName;
+        public TextView contactNo;
         public TextView appealTitle;
-        public TextView timestamp;
-
-
         public ViewHolder(View itemView, Context ctx) {
             super(itemView);
-            context= ctx;
-            imageDp = itemView.findViewById(R.id.AppealAcceptedPicImageView);
-            appealTitle = itemView.findViewById(R.id.AppealAcceptedTitlePlainText);
-            timestamp = itemView.findViewById(R.id.AppealAcceptedAppealTimestampPlainText);
-
+            context = ctx;
+            imageView = itemView.findViewById(R.id.AppealStatusPicImageView);
+            appealTitle = itemView.findViewById(R.id.AppealStatusTitlePlainText);
+            orgName = itemView.findViewById(R.id.AppealStatusOrgName);
+            contactNo = itemView.findViewById(R.id.AppealStatusContactNo);
         }
     }
 }

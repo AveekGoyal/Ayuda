@@ -65,6 +65,7 @@ public class AddBloodBankAppealActivity extends AppCompatActivity {
     private Uri mImageUri;
     private Uri resultUri;
     private String userId;
+    private String isAppealAccepted = "No";
 
 
     @Override
@@ -92,6 +93,7 @@ public class AddBloodBankAppealActivity extends AppCompatActivity {
         mDatabaseReference = FirebaseDatabase.getInstance().getReference().child("BloodBankAppeals");
 
 
+        //Image Button to select Pic from Gallery
         addBloodPicProofImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -101,6 +103,7 @@ public class AddBloodBankAppealActivity extends AppCompatActivity {
             }
         });
 
+        //On click submit button
         addBloodSubmitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -115,6 +118,8 @@ public class AddBloodBankAppealActivity extends AppCompatActivity {
 
 
     }
+
+    // Adding blood bank appeal
 
     private void addBloodBankAppeal() {
         new MaterialDialog.Builder(this)
@@ -136,6 +141,7 @@ public class AddBloodBankAppealActivity extends AppCompatActivity {
         final String bloodAmountNeeded = addBloodAmountNeededTextBox.getText().toString().trim();
 
 
+        // Checking for empty fields
         if(!TextUtils.isEmpty(familyMemName) && !TextUtils.isEmpty(familyMemContactNo) &&
                 !TextUtils.isEmpty(hospitalName) &&
                 !TextUtils.isEmpty(hospitalContactNo) &&
@@ -143,11 +149,14 @@ public class AddBloodBankAppealActivity extends AppCompatActivity {
                 !TextUtils.isEmpty(bloodAmountNeeded) && !TextUtils.isEmpty(bloodGroup) )
         {
 
+
+
             StorageReference filePath = mStorage.child("BloodBankAppeal_Images").child(resultUri.getLastPathSegment());
             filePath.putFile(resultUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(final UploadTask.TaskSnapshot taskSnapshot) {
                     final Uri downloadUrl = taskSnapshot.getDownloadUrl();
+                    // For Non Member user
                     DatabaseReference getUserDetails= FirebaseDatabase.getInstance().getReference().child("NonMember");
                     getUserDetails.addValueEventListener(new ValueEventListener() {
                         @Override
@@ -157,6 +166,7 @@ public class AddBloodBankAppealActivity extends AppCompatActivity {
                             String imageUrl = dataSnapshot.child(userId).child("imageDp").getValue(String.class);
                             NonMember userDetail = new NonMember(fName, lname, imageUrl);
                             if (fName == null && lname == null && imageUrl == null) {
+                                // For Member User
                                 DatabaseReference getMemberDetails = FirebaseDatabase.getInstance().getReference().child("Member");
                                 getMemberDetails.addValueEventListener(new ValueEventListener() {
                                     @Override
@@ -184,6 +194,8 @@ public class AddBloodBankAppealActivity extends AppCompatActivity {
                                         dataToSave.put("amountNeeded", bloodAmountNeeded);
                                         dataToSave.put("picProof", downloadUrl.toString());
                                         dataToSave.put("timestamp", String.valueOf(java.lang.System.currentTimeMillis()));
+                                        dataToSave.put("isAccepted",isAppealAccepted);
+                                        dataToSave.put("appealUserId", userId);
                                         newBloodAppeal.setValue(dataToSave);
                                         startActivity(new Intent(AddBloodBankAppealActivity.this, MainNavigationActivity.class));
                                         finish();
@@ -217,6 +229,8 @@ public class AddBloodBankAppealActivity extends AppCompatActivity {
                                 dataToSave.put("amountNeeded", bloodAmountNeeded);
                                 dataToSave.put("picProof", downloadUrl.toString());
                                 dataToSave.put("timestamp", String.valueOf(java.lang.System.currentTimeMillis()));
+                                dataToSave.put("isAccepted",isAppealAccepted);
+                                    dataToSave.put("appealUserId", userId);
                                 newBloodAppeal.setValue(dataToSave);
                                 startActivity(new Intent(AddBloodBankAppealActivity.this, MainNavigationActivity.class));
                                 finish();
@@ -232,7 +246,6 @@ public class AddBloodBankAppealActivity extends AppCompatActivity {
                     });
 
 
-                    //String userId = mAuth.getCurrentUser().getUid();
 
                 }
             });
@@ -243,6 +256,7 @@ public class AddBloodBankAppealActivity extends AppCompatActivity {
 
     }
 
+    // Image Crop Function
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

@@ -108,6 +108,8 @@ public class CommunityDevelopmentAppealAdapter extends RecyclerView.Adapter<Comm
                     intent.putExtra("HealthIssues", communityAppealList.get(getAdapterPosition()).getHealthIssues());
                     intent.putExtra("Poverty", communityAppealList.get(getAdapterPosition()).getPoverty());
                     intent.putExtra("ContactNo", communityAppealList.get(getAdapterPosition()).getContactNo());
+                    intent.putExtra("timestamp",communityAppealList.get(getAdapterPosition()).getTimestamp());
+                    intent.putExtra("isAccepted",communityAppealList.get(getAdapterPosition()).getIsAccepted());
                     ctx.startActivity(intent);
 
                 }

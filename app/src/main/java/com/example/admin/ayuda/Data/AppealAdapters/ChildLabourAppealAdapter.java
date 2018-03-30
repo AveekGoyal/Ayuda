@@ -110,6 +110,8 @@ public class ChildLabourAppealAdapter extends RecyclerView.Adapter<ChildLabourAp
                     intent.putExtra("childMarriage" , childAbuseAppealList.get(getAdapterPosition()).getChildMarriage());
                     intent.putExtra("appoxAge" , childAbuseAppealList.get(getAdapterPosition()).getChildApproxAge());
                     intent.putExtra("gender" , childAbuseAppealList.get(getAdapterPosition()).getGender());
+                    intent.putExtra("timestamp",childAbuseAppealList.get(getAdapterPosition()).getTimestamp());
+                    intent.putExtra("isAccepted",childAbuseAppealList.get(getAdapterPosition()).getIsAccepted());
                     ctx.startActivity(intent);
 
 

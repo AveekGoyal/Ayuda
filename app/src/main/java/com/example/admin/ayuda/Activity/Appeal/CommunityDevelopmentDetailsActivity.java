@@ -10,17 +10,23 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.example.admin.ayuda.Activity.MainNavigationActivity;
 import com.example.admin.ayuda.Data.AppealAdapters.CommunityDevelopmentAppealAdapter;
 import com.example.admin.ayuda.Model.CommunityAppeal;
 import com.example.admin.ayuda.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class CommunityDevelopmentDetailsActivity extends AppCompatActivity {
 
@@ -40,6 +46,11 @@ public class CommunityDevelopmentDetailsActivity extends AppCompatActivity {
     private FirebaseDatabase mDatabase;
     private CommunityDevelopmentAppealAdapter communityDevelopmentAppealAdapter;
     private List<CommunityAppeal> communityAppealList;
+    String type=" ";
+    String adminEmail = " ";
+    String adminOrgName = " ";
+    String isAppealAccepted = "No";
+    String adminContactNo=" ";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -109,6 +120,96 @@ public class CommunityDevelopmentDetailsActivity extends AppCompatActivity {
                 startActivity(new Intent(CommunityDevelopmentDetailsActivity.this, MainNavigationActivity.class));
             }
         });
+
+        final String userId = mUser.getUid();
+        DatabaseReference getType = FirebaseDatabase.getInstance().getReference().child("NgoAdmin").child(userId);
+        getType.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                type =  dataSnapshot.child("type").getValue(String.class);
+                adminEmail = dataSnapshot.child("email").getValue(String.class);
+                adminOrgName = dataSnapshot.child("orgName").getValue(String.class);
+                adminContactNo = dataSnapshot.child("mobileNumber").getValue(String.class);
+                if(type == null)
+                {
+                    communityDevAcceptButton.setEnabled(false);
+                    communityDevRejectButton.setEnabled(false);
+                }
+                else if(type.equals("NgoAdmin"))
+                {
+                    if (getIntent().getStringExtra("isAccepted").equals("Yes"))
+                    {
+                        communityDevAcceptButton.setEnabled(false);
+                        communityDevRejectButton.setEnabled(false);
+                    }
+                    else
+                    {
+                        communityDevRejectButton.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                startActivity(new Intent(CommunityDevelopmentDetailsActivity.this, MainNavigationActivity.class));
+                            }
+                        });
+
+                        communityDevAcceptButton.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                new MaterialDialog.Builder(CommunityDevelopmentDetailsActivity.this)
+                                        .title("Accepting Appeal")
+                                        .content("Please Wait")
+                                        .progress(true, 0)
+                                        .show();
+                                mDatabaseReference = FirebaseDatabase.getInstance().getReference().child("Ngo_Appeals");
+                                DatabaseReference appealAcceptByNgo = mDatabaseReference.push();
+                                Map<String, String> dataToSave = new HashMap<>();
+                                dataToSave.put("adminOrgName", adminOrgName);
+                                dataToSave.put("adminEmail", adminEmail);
+                                dataToSave.put("adminUserId", userId);
+                                dataToSave.put("adminContactNo", adminContactNo);
+                                dataToSave.put("appealTimestamp",getIntent().getStringExtra("timestamp") );
+                                dataToSave.put("appealImageDp", getIntent().getStringExtra("appealPic") );
+                                dataToSave.put("appealName", getIntent().getStringExtra("appealTitle"));
+                                appealAcceptByNgo.setValue(dataToSave);
+
+                                final DatabaseReference isAccepted = FirebaseDatabase.getInstance().getReference().child("CommunityDevelopmentAppeals");
+                                isAccepted.addValueEventListener(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(DataSnapshot dataSnapshot) {
+                                        for (DataSnapshot item : dataSnapshot.getChildren()) {
+                                            String timestamp = item.child("timestamp").getValue(String.class);
+                                            if (timestamp.equals(getIntent().getStringExtra("timestamp"))) {
+                                                item.getRef().child("isAccepted").setValue("Yes");
+
+                                            }
+
+                                        }
+
+                                    }
+
+                                    @Override
+                                    public void onCancelled(DatabaseError databaseError) {
+
+                                    }
+                                });
+                                startActivity(new Intent(CommunityDevelopmentDetailsActivity.this, MainNavigationActivity.class));
+                                finish();
+
+                            }
+                        });
+
+                    }
+
+                }
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+
 
 
     }

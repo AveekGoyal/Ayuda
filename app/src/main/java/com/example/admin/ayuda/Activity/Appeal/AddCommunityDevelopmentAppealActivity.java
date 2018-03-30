@@ -54,6 +54,7 @@ public class AddCommunityDevelopmentAppealActivity extends AppCompatActivity {
     private Uri mImageUri;
     private Uri resultUri;
     private String userId;
+    private String isAppealAccepted = "No";
 
 
     @Override
@@ -141,6 +142,7 @@ public class AddCommunityDevelopmentAppealActivity extends AppCompatActivity {
                                         dataToSave.put("appealLastName", memberDetails.getAppealLastName());
                                         dataToSave.put("appealImageDp", memberDetails.getAppealImageDp());
                                         dataToSave.put("description", description);
+                                        dataToSave.put("isAccepted",isAppealAccepted);
                                         if (addCommunityDevCleaningCheckBox.isChecked()) {
                                             dataToSave.put("cleaning", "Yes");
                                         } else {
@@ -163,6 +165,7 @@ public class AddCommunityDevelopmentAppealActivity extends AppCompatActivity {
                                         }
 
                                         dataToSave.put("contactNo", ContactNo);
+                                        dataToSave.put("appealUserId", userId);
                                         dataToSave.put("picProof", downloadUrl.toString());
                                         dataToSave.put("timestamp", String.valueOf(System.currentTimeMillis()));
                                         newCommunityAppeal.setValue(dataToSave);
@@ -185,6 +188,7 @@ public class AddCommunityDevelopmentAppealActivity extends AppCompatActivity {
                                 dataToSave.put("appealLastName", userDetail.getAppealLastName());
                                 dataToSave.put("appealImageDp", userDetail.getAppealImageDp());
                                 dataToSave.put("description", description);
+                                dataToSave.put("isAccepted",isAppealAccepted);
                                 if (addCommunityDevCleaningCheckBox.isChecked()) {
                                     dataToSave.put("cleaning", "Yes");
                                 } else {
@@ -207,6 +211,7 @@ public class AddCommunityDevelopmentAppealActivity extends AppCompatActivity {
                                 }
 
                                 dataToSave.put("contactNo", ContactNo);
+                                dataToSave.put("appealUserId", userId);
                                 dataToSave.put("picProof", downloadUrl.toString());
                                 dataToSave.put("timestamp", String.valueOf(java.lang.System.currentTimeMillis()));
                                 newCommunityAppeal.setValue(dataToSave);

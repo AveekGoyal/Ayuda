@@ -110,6 +110,8 @@ public class OldAgeHomeAppealAdapter extends RecyclerView.Adapter<OldAgeHomeAppe
                     intent.putExtra("financialNeeds", oldAgeHomeAppealList.get(getAdapterPosition()).getFinancialNeeds());
                     intent.putExtra("medicalNeeds", oldAgeHomeAppealList.get(getAdapterPosition()).getMedicalNeeds());
                     intent.putExtra("livelihoodNeeds", oldAgeHomeAppealList.get(getAdapterPosition()).getLivelihoodNeeds());
+                    intent.putExtra("timestamp",oldAgeHomeAppealList.get(getAdapterPosition()).getTimestamp());
+                    intent.putExtra("isAccepted",oldAgeHomeAppealList.get(getAdapterPosition()).getIsAccepted());
                     ctx.startActivity(intent);
                 }
             });

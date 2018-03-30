@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.example.admin.ayuda.Activity.MainNavigationActivity;
 import com.example.admin.ayuda.Data.AppealAdapters.ChildLabourAppealAdapter;
 import com.example.admin.ayuda.Model.ChildAbuseAppeals;
@@ -24,7 +25,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 public class ChildLabourDetailsActivity extends AppCompatActivity {
@@ -48,6 +51,12 @@ public class ChildLabourDetailsActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private ChildLabourAppealAdapter childLabourAppealAdapter;
     private List<ChildAbuseAppeals> childAbuseAppealsList;
+    String type=" ";
+    String adminEmail = " ";
+    String adminOrgName = " ";
+    String isAppealAccepted = "No";
+    String adminContactNo=" ";
+
 
 
     @Override
@@ -149,7 +158,10 @@ public class ChildLabourDetailsActivity extends AppCompatActivity {
         getType.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                String type = dataSnapshot.child("type").getValue(String.class);
+                type = dataSnapshot.child("type").getValue(String.class);
+                adminEmail = dataSnapshot.child("email").getValue(String.class);
+                adminOrgName = dataSnapshot.child("orgName").getValue(String.class);
+                adminContactNo = dataSnapshot.child("mobileNumber").getValue(String.class);
                 if(type == null)
                 {
                     childLabourAcceptButton.setEnabled(false);
@@ -157,12 +169,67 @@ public class ChildLabourDetailsActivity extends AppCompatActivity {
                 }
                 else if(type.equals("NgoAdmin"))
                 {
-                    childLabourRejectButton.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            startActivity(new Intent(ChildLabourDetailsActivity.this, MainNavigationActivity.class));
-                        }
-                    });
+                    if (getIntent().getStringExtra("isAccepted").equals("Yes"))
+                    {
+                        childLabourRejectButton.setEnabled(false);
+                        childLabourAcceptButton.setEnabled(false);
+                    }
+                    else
+                    {
+                        childLabourRejectButton.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                startActivity(new Intent(ChildLabourDetailsActivity.this, MainNavigationActivity.class));
+                            }
+                        });
+
+                        childLabourAcceptButton.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                new MaterialDialog.Builder(ChildLabourDetailsActivity.this)
+                                        .title("Accepting Appeal")
+                                        .content("Please Wait")
+                                        .progress(true,0)
+                                        .show();
+
+                                mDatabaseReference = FirebaseDatabase.getInstance().getReference().child("Ngo_Appeals");
+                                DatabaseReference appealAcceptByNgo = mDatabaseReference.push();
+                                Map<String, String> dataToSave = new HashMap<>();
+                                dataToSave.put("adminOrgName", adminOrgName);
+                                dataToSave.put("adminEmail", adminEmail);
+                                dataToSave.put("adminUserId", userId);
+                                dataToSave.put("adminContactNo", adminContactNo);
+                                dataToSave.put("appealTimestamp",getIntent().getStringExtra("timestamp") );
+                                dataToSave.put("appealImageDp", getIntent().getStringExtra("appealPic") );
+                                dataToSave.put("appealName", getIntent().getStringExtra("appealTitle"));
+                                appealAcceptByNgo.setValue(dataToSave);
+                                FirebaseDatabase.getInstance().getReference().child("ChildLabourAppeal").addValueEventListener(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(DataSnapshot dataSnapshot) {
+                                        for(DataSnapshot item : dataSnapshot.getChildren())
+                                        {
+                                            String timestamp = item.child("timestamp").getValue(String.class);
+                                            if (timestamp.equals(getIntent().getStringExtra("timestamp")))
+                                            {
+                                                item.getRef().child("isAccepted").setValue("Yes");
+                                            }
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onCancelled(DatabaseError databaseError) {
+
+                                    }
+                                });
+                                startActivity(new Intent(ChildLabourDetailsActivity.this, MainNavigationActivity.class));
+                                finish();
+
+
+                            }
+                        });
+
+                    }
+
 
 
                 }

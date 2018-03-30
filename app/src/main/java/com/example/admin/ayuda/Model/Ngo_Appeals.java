@@ -11,6 +11,7 @@ public class Ngo_Appeals {
     public String appealImageDp;
     public String appealName;
     public String appealTimestamp;
+    public String adminContactNo;
 
 
     public Ngo_Appeals() {
@@ -22,13 +23,21 @@ public class Ngo_Appeals {
         this.appealTimestamp = appealTimestamp;
     }
 
-    public Ngo_Appeals(String adminEmail, String adminOrgName, String adminUserId, String appealImageDp, String appealName, String appealTimestamp) {
+    public Ngo_Appeals(String adminOrgName, String appealImageDp, String appealName, String adminContactNo) {
+        this.adminOrgName = adminOrgName;
+        this.appealImageDp = appealImageDp;
+        this.appealName = appealName;
+        this.adminContactNo = adminContactNo;
+    }
+
+    public Ngo_Appeals(String adminEmail, String adminContactNo, String adminOrgName, String adminUserId, String appealImageDp, String appealName, String appealTimestamp) {
         this.adminEmail = adminEmail;
         this.adminOrgName = adminOrgName;
         this.adminUserId = adminUserId;
         this.appealImageDp = appealImageDp;
         this.appealName = appealName;
         this.appealTimestamp = appealTimestamp;
+        this.adminContactNo =adminContactNo;
     }
 
     public String getAdminEmail() {
@@ -77,6 +86,14 @@ public class Ngo_Appeals {
 
     public void setAppealTimestamp(String appealTimestamp) {
         this.appealTimestamp = appealTimestamp;
+    }
+
+    public String getAdminContactNo() {
+        return adminContactNo;
+    }
+
+    public void setAdminContactNo(String adminContactNo) {
+        this.adminContactNo = adminContactNo;
     }
 }
 

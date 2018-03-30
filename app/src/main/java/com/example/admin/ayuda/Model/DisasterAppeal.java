@@ -18,13 +18,15 @@ public class DisasterAppeal {
     public String appealLastName;
     public String appealImageDp;
     public String timestamp;
+    public String isAccepted;
+
 
 
     public DisasterAppeal() {
     }
 
 
-    public DisasterAppeal(String picProof, String typeOfDisaster, String description, String needFood, String needWater, String needShelter, String needClothing, String needMedical, String needRehab, String contactNo, String altContactNo, String userId, String timestamp, String appealFirstName, String appealLastName, String appealImageDp) {
+    public DisasterAppeal(String picProof,String isAccepted, String typeOfDisaster, String description, String needFood, String needWater, String needShelter, String needClothing, String needMedical, String needRehab, String contactNo, String altContactNo, String userId, String timestamp, String appealFirstName, String appealLastName, String appealImageDp) {
         this.picProof = picProof;
         this.typeOfDisaster = typeOfDisaster;
         this.description = description;
@@ -41,6 +43,8 @@ public class DisasterAppeal {
         this.appealLastName = appealLastName;
         this.appealImageDp = appealImageDp;
         this.timestamp = timestamp;
+        this.isAccepted = isAccepted;
+
 
     }
 
@@ -175,6 +179,11 @@ public class DisasterAppeal {
         this.timestamp = timestamp;
     }
 
+    public String getIsAccepted() {
+        return isAccepted;
+    }
 
-
+    public void setIsAccepted(String isAccepted) {
+        this.isAccepted = isAccepted;
+    }
 }

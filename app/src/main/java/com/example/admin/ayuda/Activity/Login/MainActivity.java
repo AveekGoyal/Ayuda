@@ -279,9 +279,6 @@ public class MainActivity extends AppCompatActivity {
                 if (task.isSuccessful())
                 {
 
-
-
-
                     mAuthListener = new FirebaseAuth.AuthStateListener() {
                         @Override
                         public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {

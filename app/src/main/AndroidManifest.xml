@@ -101,6 +101,10 @@
             android:label="Profile"/>
         <activity android:name=".Activity.Event.EventUploadedByNgo"
             android:label="Events Uploaded By NGO"/>
+        <activity android:name=".Activity.InvitePeople"
+            android:label="Invite Friends">
+
+        </activity>
     </application>
 
 </manifest>

@@ -14,12 +14,13 @@ public class CommunityAppeal {
     public String appealLastName;
     public String appealImageDp;
     public String timestamp;
+    public String isAccepted;
 
 
     public CommunityAppeal() {
     }
 
-    public CommunityAppeal(String picProof, String cleaning, String hunger, String healthIssues, String poverty, String description, String contactNo, String userId, String appealFirstName, String appealLastName, String appealImageDp, String timestamp) {
+    public CommunityAppeal(String picProof,String isAccepted, String cleaning, String hunger, String healthIssues, String poverty, String description, String contactNo, String userId, String appealFirstName, String appealLastName, String appealImageDp, String timestamp) {
         this.picProof = picProof;
         this.cleaning = cleaning;
         this.hunger = hunger;
@@ -32,6 +33,7 @@ public class CommunityAppeal {
         this.appealLastName = appealLastName;
         this.appealImageDp = appealImageDp;
         this.timestamp = timestamp;
+        this.isAccepted = isAccepted;
     }
 
     public String getPicProof() {
@@ -128,5 +130,13 @@ public class CommunityAppeal {
 
     public void setTimestamp(String timestamp) {
         this.timestamp = timestamp;
+    }
+
+    public String getIsAccepted() {
+        return isAccepted;
+    }
+
+    public void setIsAccepted(String isAccepted) {
+        this.isAccepted = isAccepted;
     }
 }

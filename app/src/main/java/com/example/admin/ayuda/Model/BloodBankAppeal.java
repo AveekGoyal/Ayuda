@@ -18,11 +18,12 @@ public class BloodBankAppeal {
     public String appealFirstName;
     public String appealLastName;
     public String appealImageDp;
+    public String isAccepted;
 
     public BloodBankAppeal() {
     }
 
-    public BloodBankAppeal(String picProof, String patientName, String familyMemberName, String familyMemberContactNo, String familyMemberAltContactNo, String hospitalName, String hospitalContactNo, String hospitalAddress, String plateletsCount, String amountNeeded, String bloodGroup, String userId, String timestamp, String appealFirstName, String appealLastName, String appealImageDp) {
+    public BloodBankAppeal(String picProof,String isAccepted, String patientName, String familyMemberName, String familyMemberContactNo, String familyMemberAltContactNo, String hospitalName, String hospitalContactNo, String hospitalAddress, String plateletsCount, String amountNeeded, String bloodGroup, String userId, String timestamp, String appealFirstName, String appealLastName, String appealImageDp) {
         this.picProof = picProof;
         this.patientName = patientName;
         this.familyMemberName = familyMemberName;
@@ -39,6 +40,8 @@ public class BloodBankAppeal {
         this.appealFirstName = appealFirstName;
         this.appealLastName = appealLastName;
         this.appealImageDp = appealImageDp;
+        this.isAccepted = isAccepted;
+
     }
 
     public String getPicProof() {
@@ -175,5 +178,13 @@ public class BloodBankAppeal {
 
     public void setAppealImageDp(String appealImageDp) {
         this.appealImageDp = appealImageDp;
+    }
+
+    public String getIsAccepted() {
+        return isAccepted;
+    }
+
+    public void setIsAccepted(String isAccepted) {
+        this.isAccepted = isAccepted;
     }
 }

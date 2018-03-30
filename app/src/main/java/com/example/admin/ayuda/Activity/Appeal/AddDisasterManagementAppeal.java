@@ -60,6 +60,7 @@ public class AddDisasterManagementAppeal extends AppCompatActivity {
     private Uri mImageUri;
     private Uri resultUri;
     private String userId;
+    private String isAppealAccepted = "No";
 
 
 
@@ -155,6 +156,7 @@ public class AddDisasterManagementAppeal extends AppCompatActivity {
                             dataToSave.put("appealFirstName", memberDetails.getAppealFirstName());
                             dataToSave.put("appealLastName", memberDetails.getAppealLastName());
                             dataToSave.put("appealImageDp", memberDetails.getAppealImageDp());
+                            dataToSave.put("isAccepted",isAppealAccepted);
                             dataToSave.put("description", description);
 
                             if (addDisasterNeedFood.isChecked()) {
@@ -189,6 +191,7 @@ public class AddDisasterManagementAppeal extends AppCompatActivity {
                             }
                             dataToSave.put("typeOfDisaster", typeOfDisaster);
                             dataToSave.put("contactNo", contactNo);
+                            dataToSave.put("appealUserId", userId);
                             dataToSave.put("altContactNo", altContactNo);
                             dataToSave.put("picProof", downloadUrl.toString());
                             dataToSave.put("timestamp", String.valueOf(java.lang.System.currentTimeMillis()));
@@ -211,6 +214,7 @@ public class AddDisasterManagementAppeal extends AppCompatActivity {
                                 dataToSave.put("appealFirstName", userDetail.getAppealFirstName());
                                 dataToSave.put("appealLastName", userDetail.getAppealLastName());
                                 dataToSave.put("appealImageDp", userDetail.getAppealImageDp());
+                                dataToSave.put("isAccepted",isAppealAccepted);
                                 dataToSave.put("description", description);
 
                                 if (addDisasterNeedFood.isChecked()) {
@@ -246,6 +250,7 @@ public class AddDisasterManagementAppeal extends AppCompatActivity {
                                 dataToSave.put("typeOfDisaster", typeOfDisaster);
                                 dataToSave.put("contactNo", contactNo);
                                 dataToSave.put("altContactNo", altContactNo);
+                                dataToSave.put("appealUserId", userId);
                                 dataToSave.put("picProof", downloadUrl.toString());
                                 dataToSave.put("timestamp", String.valueOf(java.lang.System.currentTimeMillis()));
                                 newDisasterAppeal.setValue(dataToSave);

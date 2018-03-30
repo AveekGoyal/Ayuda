@@ -72,6 +72,7 @@ public class AddChildLabourAppealActivity extends AppCompatActivity {
     private String abandon = "No";
     private String childLabour = "No";
     private String childMarriage = "No";
+    private String isAppealAccepted = "No";
     private Spinner addChildLabourChildAgeSpinner;
 
 
@@ -245,6 +246,8 @@ public class AddChildLabourAppealActivity extends AppCompatActivity {
                                             dataToSave.put("gender", "Male");
                                         else if (female.equals("Female"))
                                             dataToSave.put("gender", "Female");
+                                        dataToSave.put("isAccepted",isAppealAccepted);
+                                        dataToSave.put("appealUserId", userId);
 
 
                                         dataToSave.put("timestamp", String.valueOf(java.lang.System.currentTimeMillis()));
@@ -311,6 +314,8 @@ public class AddChildLabourAppealActivity extends AppCompatActivity {
                                 dataToSave.put("gender", "Male");
                             else if (female.equals("Female"))
                                 dataToSave.put("gender", "Female");
+                                dataToSave.put("isAccepted",isAppealAccepted);
+                                dataToSave.put("appealUserId", userId);
 
 
                             dataToSave.put("timestamp", String.valueOf(java.lang.System.currentTimeMillis()));

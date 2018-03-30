@@ -48,23 +48,27 @@ public class AppealsAcceptedByNgoActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Iterator<DataSnapshot> items = dataSnapshot.getChildren().iterator();
-
+                ngo_appealsList.clear();
                 while (items.hasNext())
                 {
-
                     DataSnapshot item = items.next();
                     String adminUserId = item.child("adminUserId").getValue(String.class);
+//                    String appealImageDp = item.child("appealImageDp").getValue(String.class);
+//                    String appealName = item.child("appealName").getValue(String.class);
+//                    String appealTimestamp = item.child("appealTimestamp").getValue(String.class);
                     if (adminUserId.equals(userId))
                     {
-                        appealAcceptedByNgo();
-
-
+                        String appealImageDp = item.child("appealImageDp").getValue(String.class);
+                        String appealName = item.child("appealName").getValue(String.class);
+                        String appealTimestamp = item.child("appealTimestamp").getValue(String.class);
+                        Ngo_Appeals entry = new Ngo_Appeals(appealImageDp,appealName,appealTimestamp);
+                        ngo_appealsList.add(entry);
                     }
 
                 }
+                appealAcceptedByNgo();
+
             }
-
-
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
@@ -72,19 +76,11 @@ public class AppealsAcceptedByNgoActivity extends AppCompatActivity {
             }
         });
 
-
-
-
-
-
-
     }
     private void appealAcceptedByNgo() {
         FirebaseDatabase.getInstance().getReference().child("Ngo_Appeals").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                Ngo_Appeals ngo_appeals = dataSnapshot.getValue(Ngo_Appeals.class);
-                ngo_appealsList.add(ngo_appeals);
                 appealAcceptedByNgoAdapter = new AppealAcceptedByNgoAdapter(getApplicationContext(),ngo_appealsList);
                 recyclerView.setAdapter(appealAcceptedByNgoAdapter);
                 appealAcceptedByNgoAdapter.notifyDataSetChanged();

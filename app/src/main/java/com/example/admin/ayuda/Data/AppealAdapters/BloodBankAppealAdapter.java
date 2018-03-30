@@ -74,7 +74,6 @@ public class BloodBankAppealAdapter extends RecyclerView.Adapter<BloodBankAppeal
         String formattedDate = dateFormat.format(new Date(Long.valueOf(bloodBankAppeal.getTimestamp())).getTime());
         holder.appealDate.setText(String.format("Created On%s", formattedDate));
         imageUrl =bloodBankAppeal.getPicProof();
-
         Picasso.with(context).load(imageUrl).into(holder.appealPic);
 
 
@@ -124,6 +123,7 @@ public class BloodBankAppealAdapter extends RecyclerView.Adapter<BloodBankAppeal
                      intent.putExtra("patientName",bloodBankAppealList.get(getAdapterPosition()).getPatientName());
                      intent.putExtra("hospitalAddress",bloodBankAppealList.get(getAdapterPosition()).getHospitalAddress());
                      intent.putExtra("timestamp",bloodBankAppealList.get(getAdapterPosition()).getTimestamp());
+                     intent.putExtra("isAccepted",bloodBankAppealList.get(getAdapterPosition()).getIsAccepted());
                      ctx.startActivity(intent);
 
 

@@ -17,6 +17,7 @@ public class ChildAbuseAppeals {
     public String appealLastName;
     public String appealImageDp;
     public String timestamp;
+    public String isAccepted;
 
 
 
@@ -51,7 +52,7 @@ public class ChildAbuseAppeals {
         return timestamp;
     }
 
-    public ChildAbuseAppeals(String picProof, String description, String physicalAbuse, String sexualAbuse, String psychologicalAbuse, String childAbandon, String childLabour, String childMarriage, String childApproxAge, String gender, String appealFirstName, String appealLastName, String appealImageDp, String timestamp) {
+    public ChildAbuseAppeals(String picProof,String isAccepted, String description, String physicalAbuse, String sexualAbuse, String psychologicalAbuse, String childAbandon, String childLabour, String childMarriage, String childApproxAge, String gender, String appealFirstName, String appealLastName, String appealImageDp, String timestamp) {
         this.picProof = picProof;
         this.description = description;
         this.physicalAbuse = physicalAbuse;
@@ -62,7 +63,7 @@ public class ChildAbuseAppeals {
         this.childMarriage = childMarriage;
         this.childApproxAge = childApproxAge;
         this.gender = gender;
-
+        this.isAccepted = isAccepted;
         this.appealFirstName = appealFirstName;
         this.appealLastName = appealLastName;
         this.appealImageDp = appealImageDp;
@@ -153,4 +154,11 @@ public class ChildAbuseAppeals {
         this.gender = gender;
     }
 
-        }
+    public String getIsAccepted() {
+        return isAccepted;
+    }
+
+    public void setIsAccepted(String isAccepted) {
+        this.isAccepted = isAccepted;
+    }
+}

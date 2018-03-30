@@ -14,12 +14,13 @@ public class OldAgeHomeAppeal {
     public String appealLastName;
     public String appealImageDp;
     public String timestamp;
+    public String isAccepted;
 
 
     public OldAgeHomeAppeal() {
     }
 
-    public OldAgeHomeAppeal(String picProof, String description, String address, String financialNeeds, String medicalNeeds, String livelihoodNeeds, String userId, String appealFirstName, String appealLastName, String appealImageDp, String timestamp) {
+    public OldAgeHomeAppeal(String picProof,String isAccepted, String description, String address, String financialNeeds, String medicalNeeds, String livelihoodNeeds, String userId, String appealFirstName, String appealLastName, String appealImageDp, String timestamp) {
         this.picProof = picProof;
         this.description = description;
         this.address = address;
@@ -31,6 +32,7 @@ public class OldAgeHomeAppeal {
         this.appealLastName = appealLastName;
         this.appealImageDp = appealImageDp;
         this.timestamp = timestamp;
+        this.isAccepted = isAccepted;
     }
 
 
@@ -120,6 +122,14 @@ public class OldAgeHomeAppeal {
 
     public void setTimestamp(String timestamp) {
         this.timestamp = timestamp;
+    }
+
+    public String getIsAccepted() {
+        return isAccepted;
+    }
+
+    public void setIsAccepted(String isAccepted) {
+        this.isAccepted = isAccepted;
     }
 }
 
