@@ -8,6 +8,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -92,6 +93,14 @@ public class NgoRegistrationActivity extends AppCompatActivity {
         mDatabase = FirebaseDatabase.getInstance();
         mDatabaseReference= mDatabase.getReference().child("NgoAdmin");
 
+        //Add VAlues in Spinner
+        String[] cities = {"Panipat" , "Meerut" , "Pune" , "Saharanpur"};
+        ArrayAdapter<String> adaptercity = new ArrayAdapter<String>(this , android.R.layout.simple_spinner_dropdown_item , cities);
+        ngoRegCitySpinner.setAdapter(adaptercity);
+
+        String[] states = {"Haryana" , "Uttar Pradesh" , "Punjab" , "J&K"};
+        ArrayAdapter<String> adapterstate = new ArrayAdapter<String>(this , android.R.layout.simple_spinner_dropdown_item , states);
+        ngoRegStateSpinner.setAdapter(adapterstate);
 
         mAuth = FirebaseAuth.getInstance();
         mStorageReference = FirebaseStorage.getInstance().getReference().child("NgoAdmin_Pics");
@@ -153,6 +162,8 @@ public class NgoRegistrationActivity extends AppCompatActivity {
         final String webLink =ngoRegWebsiteLink.getText().toString().trim();
         final String ngoAddress = ngoRegAddress.getText().toString().trim();
         final String pinCode =ngoRegPinCode.getText().toString().trim();
+        final String city =  ngoRegCitySpinner.getSelectedItem().toString().trim();
+        final String state = ngoRegStateSpinner.getSelectedItem().toString().trim();
 
 
         if (password.length() < 6)
@@ -199,6 +210,8 @@ public class NgoRegistrationActivity extends AppCompatActivity {
                                 currentUserDb.child("websiteLink").setValue(webLink);
                                 currentUserDb.child("ngoAddress").setValue(ngoAddress);
                                 currentUserDb.child("ngoPinCode").setValue(pinCode);
+                                currentUserDb.child("city").setValue(city);
+                                currentUserDb.child("state").setValue(state);
                                 currentUserDb.child("type").setValue("NgoAdmin");
                                 currentUserDb.child("imageDp").setValue(downloadUrl.toString());
                                 currentUserDb.child("type").setValue("NgoAdmin");
