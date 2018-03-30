@@ -309,6 +309,10 @@ public class AddChildLabourAppealActivity extends AppCompatActivity {
                                 dataToSave.put("childMarriage", "Yes");
                             else
                                 dataToSave.put("childMarriage", "No");
+                                if(addChildLabourAbandon.isChecked())
+                                    dataToSave.put("childAbandon","Yes");
+                                else
+                                    dataToSave.put("childAbandon", "No");
 
                             if (male.equals("Male"))
                                 dataToSave.put("gender", "Male");

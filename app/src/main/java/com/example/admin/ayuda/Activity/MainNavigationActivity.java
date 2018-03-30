@@ -197,7 +197,7 @@ public class MainNavigationActivity extends AppCompatActivity{
                         String type = dataSnapshot.child("type").getValue(String.class);
                         if(type == null)
                         {
-                            startActivity(new Intent(getApplicationContext(), AppealsAcceptedByNgoActivity.class));
+                            startActivity(new Intent(getApplicationContext(), AppealsStatusForUserActivity.class));
 
 
                         }

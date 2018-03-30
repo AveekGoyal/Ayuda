@@ -169,6 +169,8 @@ public class BloodBankAppealDetailActivity extends AppCompatActivity {
 
 
 
+        bloodBankAcceptButton.setEnabled(true);
+        bloodBankRejectButton.setEnabled(true);
 
         final String userId = mUser.getUid();
         DatabaseReference getType = FirebaseDatabase.getInstance().getReference().child("NgoAdmin").child(userId);
