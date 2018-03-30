@@ -113,7 +113,7 @@ public class AddOldAgeAppealActivity extends AppCompatActivity {
 
 
         final String homeDescription = addOldAgeHomeDescriptionTextBox.getText().toString().trim();
-        final String homeAddress = addOldAgeHomeDescriptionTextBox.getText().toString().trim();
+        final String homeAddress = addOldAgeHomeAddressTextBox.getText().toString().trim();
         final String financial = financialNeeds;
         final String medical = medicalNeeds;
         final String livelihood = livelihoodNeeds;

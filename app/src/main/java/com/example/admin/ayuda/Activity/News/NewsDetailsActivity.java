@@ -1,9 +1,13 @@
 package com.example.admin.ayuda.Activity.News;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.text.SpannableStringBuilder;
+import android.text.Spanned;
+import android.text.style.StyleSpan;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -55,8 +59,21 @@ public class NewsDetailsActivity extends AppCompatActivity {
         //setText to all TextView to show data to user.
         String imageUrl = getIntent().getStringExtra("newsPic");
         Picasso.with(getApplicationContext()).load(imageUrl).into(newsPicProofImageView);
-        newsHeadlinePlainText.setText(String.format("Headline : %s", getIntent().getStringExtra("newsHeadline")));
-        newsDescriptionPlainText.setText(String.format("Description : %s", getIntent().getStringExtra("newsDescription")));
+
+        String boldText1 = "Headline :";
+        String normalText1 = (String.format(getIntent().getStringExtra("newsHeadline")));
+        SpannableStringBuilder str1 = new SpannableStringBuilder(boldText1 + normalText1);
+        str1.setSpan(new StyleSpan(Typeface.BOLD), 0, boldText1.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        newsHeadlinePlainText.setText(str1);
+
+
+        String boldText2 = "Description :";
+        String normalText2 = (String.format(getIntent().getStringExtra("newsDescription")));
+        SpannableStringBuilder str2 = new SpannableStringBuilder(boldText2 + normalText2);
+        str2.setSpan(new StyleSpan(Typeface.BOLD), 0, boldText2.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        newsDescriptionPlainText.setText(str2);
+
+
         newsDateTextBox.setText(String.format("Date : %s", getIntent().getStringExtra("newsDate")));
 
 

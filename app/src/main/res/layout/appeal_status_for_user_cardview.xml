@@ -97,6 +97,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
         android:background="#009688"
+        android:textColor="@color/white"
         android:text="Status"/>
 
 

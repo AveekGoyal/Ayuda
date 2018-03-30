@@ -1,9 +1,13 @@
 package com.example.admin.ayuda.Activity.Appeal;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.text.SpannableStringBuilder;
+import android.text.Spanned;
+import android.text.style.StyleSpan;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -90,7 +94,14 @@ public class ChildLabourDetailsActivity extends AppCompatActivity {
 
         String imageUrl = getIntent().getStringExtra("appealPic");
         Picasso.with(getApplicationContext()).load(imageUrl).into(childLabourPicProofImageView);
-        childLabourDescPlainText.setText(String.format("Description: %s " , getIntent().getStringExtra("appealTitle")));
+
+        String boldText1 = "Description :";
+        String normalText1 = (String.format(getIntent().getStringExtra("appealTitle")));
+        SpannableStringBuilder str1 = new SpannableStringBuilder(boldText1 + normalText1);
+        str1.setSpan(new StyleSpan(Typeface.BOLD), 0, boldText1.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        childLabourDescPlainText.setText(str1);
+
+
         if (getIntent().getStringExtra("physicalAbuse").equals("Yes")){
             childLabourPhysicalAbuse.setChecked(true);
             childLabourPhysicalAbuse.setEnabled(false);

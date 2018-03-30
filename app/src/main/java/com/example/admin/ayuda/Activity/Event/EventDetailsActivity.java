@@ -1,9 +1,13 @@
 package com.example.admin.ayuda.Activity.Event;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.text.SpannableStringBuilder;
+import android.text.Spanned;
+import android.text.style.StyleSpan;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -69,7 +73,7 @@ public class EventDetailsActivity extends AppCompatActivity {
 
 
         //For Going waala spinner
-        String[] status = {"Intrested" , "Going" , "Not Going"};
+        String[] status = {"Interested" , "Going" , "Not Going"};
         ArrayAdapter<String> adapterStatus = new ArrayAdapter<String>(this , android.R.layout.simple_spinner_dropdown_item , status);
         eventDetailGoingSpinner.setAdapter(adapterStatus);
 
@@ -84,13 +88,25 @@ public class EventDetailsActivity extends AppCompatActivity {
         Picasso.with(getApplicationContext()).load(imageUrl).into(eventDetailsPictureImageView);
 
         //Event Category Will come here
-        eventDetailsTitlePlainText.setText(String.format("Title : %s" , getIntent().getStringExtra("eventTitle")));
+
+        String boldText1 = "Title :";
+        String normalText1 = (String.format(getIntent().getStringExtra("eventTitle")));
+        SpannableStringBuilder str1 = new SpannableStringBuilder(boldText1 + normalText1);
+        str1.setSpan(new StyleSpan(Typeface.BOLD), 0, boldText1.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        eventDetailsTitlePlainText.setText(str1);
+
+        String boldText2 = "Description :";
+        String normalText2 = (String.format(getIntent().getStringExtra("eventDescription")));
+        SpannableStringBuilder str2 = new SpannableStringBuilder(boldText2 + normalText2);
+        str2.setSpan(new StyleSpan(Typeface.BOLD), 0, boldText2.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        eventDetailsDescriptionPlainText.setText(str2);
+
         eventDetailsStartDateTextBox.setText(String.format("%s", getIntent().getStringExtra("eventStartDate")));
         eventDetailsStartTimeTextBox.setText(String.format("%s" , getIntent().getStringExtra("eventStartTime")));
         eventDetailsEndDateTextBox.setText(String.format("%s" , getIntent().getStringExtra("eventEndDate")));
         eventDetailsEndTimeTextBox.setText(String.format("%s" , getIntent().getStringExtra("eventEndTime")));
         eventDetailChooseCategory.setText(String.format("%s" , getIntent().getStringExtra("eventType")));
-        eventDetailsDescriptionPlainText.setText(String.format("Description: %s" , getIntent().getStringExtra("eventDescription")));
+
         if(getIntent().getStringExtra("volunteerRequired").equals("Yes")){
             eventDetailsSponsorRadioNo.setChecked(false);
             eventDetailsVolunteerRadioYes.setChecked(true);

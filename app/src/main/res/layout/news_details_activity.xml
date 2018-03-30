@@ -23,17 +23,10 @@
             android:layout_gravity="center"/>
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="organisation name"
-            android:textSize="15dp"
-            android:layout_marginTop="10dp"/>
-            />
-        <TextView
             android:id="@+id/NewsHeadlinePlainText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="headline"
+            android:hint="headline"
             android:textSize="15dp"
             android:layout_marginTop="10dp"/>
 
@@ -42,7 +35,7 @@
             android:id="@+id/NewsDescriptionPlainText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Description"
+            android:hint="Description"
             android:layout_marginTop="10dp"
             android:textSize="15dp"
             />

@@ -1,9 +1,14 @@
 package com.example.admin.ayuda.Activity.Appeal;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
+import android.text.Spanned;
+import android.text.style.StyleSpan;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -114,8 +119,18 @@ public class CommunityDevelopmentDetailsActivity extends AppCompatActivity {
         {
             communityDevPovertyCheckBox.setEnabled(false);
         }
-        communityDevDescPlainText.setText(String.format("Description: %s" , getIntent().getStringExtra("appealTitle")));
-        communityDevContactNoPlainText.setText(String.format("Contact Number : %s", getIntent().getStringExtra("ContactNo")));
+
+        String boldText1 = "Description :";
+        String normalText1 = (String.format(getIntent().getStringExtra("appealTitle")));
+        SpannableStringBuilder str1 = new SpannableStringBuilder(boldText1 + normalText1);
+        str1.setSpan(new StyleSpan(Typeface.BOLD), 0, boldText1.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        communityDevDescPlainText.setText(str1);
+
+        String boldText2 = "Contact Number : ";
+        String normalText2 = (String.format(getIntent().getStringExtra("ContactNo")));
+        SpannableStringBuilder str2 = new SpannableStringBuilder(boldText2 + normalText2);
+        str2.setSpan(new StyleSpan(Typeface.BOLD), 0, boldText2.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        communityDevContactNoPlainText.setText(str2);
 
         communityDevRejectButton.setOnClickListener(new View.OnClickListener() {
             @Override
