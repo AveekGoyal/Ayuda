@@ -20,6 +20,7 @@ import com.example.admin.ayuda.Activity.Event.EventListFragment;
 import com.example.admin.ayuda.Activity.Login.MainActivity;
 import com.example.admin.ayuda.Activity.News.NewsListFragment;
 import com.example.admin.ayuda.Activity.Story.StoryListFragment;
+import com.example.admin.ayuda.Invite;
 import com.example.admin.ayuda.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -103,8 +104,14 @@ public class MainNavigationActivity extends AppCompatActivity{
                 break;
 
             case R.id.action_inviteus:
-                Toast.makeText(getApplicationContext(), "Invite Us", Toast.LENGTH_SHORT).show();
 
+                if (mAuth != null && mUser != null)
+                {
+                    Toast.makeText(getApplicationContext() , "INVITE US" , Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(MainNavigationActivity.this , InvitePeople.class));
+
+                }
+                break;
             case R.id.action_acceptedAppeals:
                 startActivity(new Intent(getApplicationContext(), AppealsAcceptedByNgoActivity.class));
                 break;
