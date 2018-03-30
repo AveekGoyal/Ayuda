@@ -123,6 +123,12 @@ public class BloodBankAppealDetailActivity extends AppCompatActivity {
         SpannableStringBuilder str4 = new SpannableStringBuilder(boldText4 + normalText4);
         str4.setSpan(new StyleSpan(Typeface.BOLD), 0, boldText4.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         bloodBankFamilyMemberAltContactNoPlainText.setText(str4);
+
+        String boldText9 = "Hospital Address :";
+        String normalText9 = (String.format(getIntent().getStringExtra("hospitalAddress")));
+        SpannableStringBuilder str9 = new SpannableStringBuilder(boldText9 + normalText9);
+        str9.setSpan(new StyleSpan(Typeface.BOLD), 0, boldText9.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        bloodBankHospitalAddressPlainText.setText(str9);
         String boldText5 = "Hospital Name : ";
         String normalText5 = (String.format(getIntent().getStringExtra("hospitalName")));
         SpannableStringBuilder str5 = new SpannableStringBuilder(boldText5 + normalText5);
@@ -138,16 +144,12 @@ public class BloodBankAppealDetailActivity extends AppCompatActivity {
         SpannableStringBuilder str7 = new SpannableStringBuilder(boldText7 + normalText7);
         str2.setSpan(new StyleSpan(Typeface.BOLD), 0, boldText7.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         bloodBankPlateletsCountPlainText.setText(str7);
-        String boldText8 = "Amount Needed :";
+        String boldText8 = "Amount Needed (If you know) :";
         String normalText8 = (String.format(getIntent().getStringExtra("bloodAmountNeeded")));
         SpannableStringBuilder str8 = new SpannableStringBuilder(boldText8 + normalText8);
         str8.setSpan(new StyleSpan(Typeface.BOLD), 0, boldText8.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-        bloodBankFamilyMemberNamePlainText.setText(str8);
-        String boldText9 = "Hospital Address :";
-        String normalText9 = (String.format(getIntent().getStringExtra("hospitalAddress")));
-        SpannableStringBuilder str9 = new SpannableStringBuilder(boldText9 + normalText9);
-        str9.setSpan(new StyleSpan(Typeface.BOLD), 0, boldText9.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-        bloodBankHospitalAddressPlainText.setText(str9);
+        bloodBankAmountNeededPlainText.setText(str8);
+
         bloodBankGroup.setText(String.format(": %s" , getIntent().getStringExtra("bloodGroup")));
         //String boldText10 = "Blood Group : ";
         //String normalText10 = (String.format(getIntent().getStringExtra("bloodGroup")));
