@@ -10,6 +10,7 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.example.admin.ayuda.Activity.MainNavigationActivity;
@@ -28,6 +29,8 @@ import com.squareup.picasso.Picasso;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import es.dmoral.toasty.Toasty;
 
 
 public class ChildLabourDetailsActivity extends AppCompatActivity {
@@ -221,6 +224,7 @@ public class ChildLabourDetailsActivity extends AppCompatActivity {
 
                                     }
                                 });
+                                Toasty.info(getApplicationContext() , "Appeal Accepted." , Toast.LENGTH_SHORT).show();
                                 startActivity(new Intent(ChildLabourDetailsActivity.this, MainNavigationActivity.class));
                                 finish();
 
