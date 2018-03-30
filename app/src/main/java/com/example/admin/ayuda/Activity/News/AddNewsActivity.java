@@ -66,13 +66,15 @@ public class AddNewsActivity extends AppCompatActivity implements AdapterView.On
         addNewsDescriptionTextBox = findViewById(R.id.AddNewsDescriptionTextBox);
         addNewsUploadButton = findViewById(R.id.AddNewsUploadButton);
 
-
+        //connecting firebase variables with code
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
         userId = mUser.getUid();
         mStorage = FirebaseStorage.getInstance().getReference();
         mDatabaseReference = FirebaseDatabase.getInstance().getReference().child("News");
 
+
+        //Add image from imageButton opens gallery image picker.
         addNewsPicProofImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -82,6 +84,8 @@ public class AddNewsActivity extends AppCompatActivity implements AdapterView.On
             }
         });
 
+
+        //Add news Submit Button Code Goes here.
         addNewsUploadButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -92,6 +96,8 @@ public class AddNewsActivity extends AppCompatActivity implements AdapterView.On
     }
 
     private void addNews() {
+
+        //Popup progress bar when news is being upload.
         new MaterialDialog.Builder(this)
                 .title("Uploading News")
                 .content("Please Wait")
@@ -102,12 +108,15 @@ public class AddNewsActivity extends AppCompatActivity implements AdapterView.On
         final String newsHeadline = addNewsHeadlineTextBox.getText().toString().trim();
         final String newsDescription = addNewsDescriptionTextBox.getText().toString().trim();
 
+        //Checking if Required fields are empty or not. If Not then upload process will start.
         if (!TextUtils.isEmpty(newsHeadline) && !TextUtils.isEmpty(newsDescription)) {
             StorageReference filePath = mStorage.child("News_Images").child(resultUri.getLastPathSegment());
             filePath.putFile(resultUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                     final Uri downloadUrl = taskSnapshot.getDownloadUrl();
+
+                    //Fetch type of user from database from "NgoAdmin" database.
                     DatabaseReference getUserType = FirebaseDatabase.getInstance().getReference().child("NgoAdmin");
                     getUserType.addValueEventListener(new ValueEventListener() {
 
@@ -119,6 +128,8 @@ public class AddNewsActivity extends AppCompatActivity implements AdapterView.On
 
                             DatabaseReference newNews = mDatabaseReference.push();
                             Map<String, String> dataToSave = new HashMap<>();
+
+                            //HashMap is being used to save data to database.
                             dataToSave.put("newsOrgName", userDetails.getOrgName());
                             dataToSave.put("newsOrgDp", userDetails.getImageDp());
                             dataToSave.put("newsHeadline", newsHeadline);
@@ -142,6 +153,8 @@ public class AddNewsActivity extends AppCompatActivity implements AdapterView.On
         }
     }
 
+
+    //Image Cropper Function and generate resultUri to store in dataBase.
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == GALLERY_CODE && resultCode == RESULT_OK) {

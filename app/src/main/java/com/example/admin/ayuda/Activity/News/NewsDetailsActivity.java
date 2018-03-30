@@ -43,12 +43,14 @@ public class NewsDetailsActivity extends AppCompatActivity {
         newsDescriptionPlainText = findViewById(R.id.NewsDescriptionPlainText);
 
 
+        //Connecting firebase to database.
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
         mDatabase = FirebaseDatabase.getInstance();
         mDatabaseReference = mDatabase.getReference().child("News");
         mDatabaseReference.keepSynced(true);
 
+        //setText to all TextView to show data to user.
         String imageUrl = getIntent().getStringExtra("newsPic");
         Picasso.with(getApplicationContext()).load(imageUrl).into(newsPicProofImageView);
         newsHeadlinePlainText.setText(String.format("Headline : %s", getIntent().getStringExtra("newsHeadline")));

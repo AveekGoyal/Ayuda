@@ -66,6 +66,8 @@ public class NewsListFragment extends Fragment {
         recycler.setLayoutManager(new LinearLayoutManager(getActivity()));
         String userId = mUser.getUid();
 
+
+        //checking user Type from Firebase. If it is NgoAdmin then Floating button is visible otherwise not.
         DatabaseReference getType = FirebaseDatabase.getInstance().getReference().child("NgoAdmin").child(userId);
         getType.addValueEventListener(new ValueEventListener() {
             @Override
@@ -96,6 +98,8 @@ public class NewsListFragment extends Fragment {
 
             }
         });
+
+        //Clearing the list.
         newsList.clear();
 
         getNewsData();
@@ -108,6 +112,8 @@ public class NewsListFragment extends Fragment {
         mDatabase.getReference().child("News").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+
+                //Fetch Data from adapter.
                 News news = dataSnapshot.getValue(News.class);
                 newsList.add(news);
                 addNewsAdapter = new NewsAdapter(getActivity(),newsList);
