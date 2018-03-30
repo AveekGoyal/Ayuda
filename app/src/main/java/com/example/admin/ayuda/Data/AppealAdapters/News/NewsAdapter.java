@@ -67,7 +67,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
         imageUrl =newNews.getPicProof();
         Picasso.with(context).load(imageUrl).into(holder.newsPic);
         holder.newsHeadline.setText(String.format("Headline : %s is uploading %s important news",newNews.getNewsOrgName(), newNews.getNewsHeadline()));
-        holder.newsDescription.setText(String.format("Description: %s ",newNews.getNewsDescription()));
+        //holder.newsDescription.setText(String.format("Description: %s ",newNews.getNewsDescription()));
 
     }
 
@@ -80,14 +80,14 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
 
         private ImageView newsPic;
         public TextView newsHeadline;
-        public TextView newsDescription;
+       // public TextView newsDescription;
 
         public ViewHolder(View itemView, final Context ctx) {
             super(itemView);
             context = ctx;
             newsPic = itemView.findViewById(R.id.NewsListPicProofImageView);
             newsHeadline = itemView.findViewById(R.id.NewsListHeadlinePlainText);
-            newsDescription = itemView.findViewById(id.NewsListDescriptionPlainText);
+           // newsDescription = itemView.findViewById(id.NewsListDescriptionPlainText);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
