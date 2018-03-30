@@ -124,6 +124,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Accept"
+                android:background="#009688"
                 android:id="@+id/CommunityDevAcceptButton"
                 android:layout_margin="10dp"
                 />
@@ -132,6 +133,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Reject"
+                android:background="#009688"
                 android:id="@+id/CommunityDevRejectButton"
                 android:layout_margin="10dp"/>
 

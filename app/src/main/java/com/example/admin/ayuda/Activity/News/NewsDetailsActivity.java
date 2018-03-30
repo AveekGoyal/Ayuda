@@ -24,6 +24,7 @@ public class NewsDetailsActivity extends AppCompatActivity {
     private ImageView newsPicProofImageView;
     private TextView newsDescriptionPlainText;
     private TextView newsHeadlinePlainText;
+    private TextView newsDateTextBox;
     private DatabaseReference mDatabaseReference;
     private FirebaseDatabase mDatabase;
     private FirebaseUser mUser;
@@ -41,6 +42,7 @@ public class NewsDetailsActivity extends AppCompatActivity {
         newsPicProofImageView = findViewById(R.id.NewsPicProofImageView);
         newsHeadlinePlainText = findViewById(R.id.NewsHeadlinePlainText);
         newsDescriptionPlainText = findViewById(R.id.NewsDescriptionPlainText);
+        newsDateTextBox = findViewById(R.id.NewsDateTextBox);
 
 
         //Connecting firebase to database.
@@ -55,6 +57,7 @@ public class NewsDetailsActivity extends AppCompatActivity {
         Picasso.with(getApplicationContext()).load(imageUrl).into(newsPicProofImageView);
         newsHeadlinePlainText.setText(String.format("Headline : %s", getIntent().getStringExtra("newsHeadline")));
         newsDescriptionPlainText.setText(String.format("Description : %s", getIntent().getStringExtra("newsDescription")));
+        newsDateTextBox.setText(String.format("Date : %s", getIntent().getStringExtra("newsDate")));
 
 
 
