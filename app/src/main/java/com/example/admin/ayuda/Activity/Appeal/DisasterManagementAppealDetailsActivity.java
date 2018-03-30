@@ -1,9 +1,14 @@
 package com.example.admin.ayuda.Activity.Appeal;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
+import android.text.Spanned;
+import android.text.style.StyleSpan;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -96,7 +101,13 @@ public class DisasterManagementAppealDetailsActivity extends AppCompatActivity {
 
         String imageUrl = getIntent().getStringExtra("appealPic");
         Picasso.with(getApplicationContext()).load(imageUrl).into(disasterMgmtPicProofImageView);
-        disasterMgmtDescPlainText.setText(String.format("Description: %s " , getIntent().getStringExtra("appealTitle")));
+
+        String boldText1 = "Description :";
+        String normalText1 = (String.format(getIntent().getStringExtra("appealTitle")));
+        SpannableStringBuilder str1 = new SpannableStringBuilder(boldText1 + normalText1);
+        str1.setSpan(new StyleSpan(Typeface.BOLD), 0, boldText1.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        disasterMgmtDescPlainText.setText(str1);
+
         if (getIntent().getStringExtra("needFood").equals("Yes"))
         {
             disasterMgmtNeedFood.setChecked(true);
@@ -147,8 +158,18 @@ public class DisasterManagementAppealDetailsActivity extends AppCompatActivity {
             disasterMgmtNeedRehab.setEnabled(false);
         }
         disasterMgmtTypeOfDisasterPlainText.setText(String.format(" : %s", getIntent().getStringExtra("typeOfDisaster")));
-        disasterMgmtContactNoPlainText.setText(String.format("Contact Number : %s", getIntent().getStringExtra("contactNo")));
-        disasterMgmtAltContactNoPlainText.setText(String.format("Alternate Number: %s", getIntent().getStringExtra("altContactNo")));
+
+        String boldText2 = "Contact Number : ";
+        String normalText2 = (String.format(getIntent().getStringExtra("contactNo")));
+        SpannableStringBuilder str2 = new SpannableStringBuilder(boldText2 + normalText2);
+        str2.setSpan(new StyleSpan(Typeface.BOLD), 0, boldText2.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        disasterMgmtContactNoPlainText.setText(str2);
+
+        String boldText3 = "Alternate Contact Number : ";
+        String normalText3 = (String.format(getIntent().getStringExtra("altContactNo")));
+        SpannableStringBuilder str3 = new SpannableStringBuilder(boldText3 + normalText3);
+        str3.setSpan(new StyleSpan(Typeface.BOLD), 0, boldText3.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        disasterMgmtAltContactNoPlainText.setText(str3);
 
 
         disasterMgmtRejectButton.setOnClickListener(new View.OnClickListener() {

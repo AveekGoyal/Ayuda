@@ -26,6 +26,7 @@
                 android:id="@+id/textView1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textStyle="bold"
                 android:text="Type Of Disasters"
                 />
 
@@ -57,6 +58,7 @@
                 android:id="@+id/textView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textStyle="bold"
                 android:text="Needs:"
                 android:padding="2dp"/>
 
@@ -123,6 +125,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Safety Procedures"
+            android:background="#009688"
+            android:textColor="@color/white"
             android:layout_gravity="center"
             android:layout_marginBottom="25dp" />
 
@@ -137,6 +141,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Accept"
+            android:textColor="@color/white"
             android:background="#009688"
             android:layout_gravity="left"
             />
@@ -146,6 +151,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Reject"
+            android:textColor="@color/white"
             android:background="#009688"
             android:layout_marginLeft="60dp"
             android:layout_marginBottom="25dp"

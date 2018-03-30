@@ -7,7 +7,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:background="@color/TBlue"
         android:orientation="vertical">
 
         <ImageView
@@ -22,7 +21,7 @@
         <TextView
             android:id="@+id/OldAgeHomeDescriptionPlainText"
             android:layout_width="match_parent"
-            android:text="Old Age Home Description"
+            android:hint="Old Age Home Description"
             android:layout_height="wrap_content"
             android:padding="2dp"
             android:layout_margin="5dp"/>
@@ -30,7 +29,7 @@
         <TextView
             android:id="@+id/OldAgeHomeAddressPlainText"
             android:layout_width="match_parent"
-            android:text="Old Age Home Address"
+            android:hint="Old Age Home Address"
             android:layout_height="wrap_content"
             android:padding="2dp"
             android:layout_margin="5dp"/>
@@ -45,6 +44,7 @@
                 android:id="@+id/textView1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textStyle="bold"
                 android:text="The Elderly Needs"
                 android:padding="2dp"/>
 
@@ -81,6 +81,7 @@
                 android:layout_height="wrap_content"
                 android:text="Accept"
                 android:background="#009688"
+                android:textColor="@color/white"
                 android:layout_gravity="left"
                 android:layout_marginBottom="25dp" />
 
@@ -90,6 +91,7 @@
                 android:layout_height="wrap_content"
                 android:text="Reject"
                 android:background="#009688"
+                android:textColor="@color/white"
                 android:layout_marginLeft="60dp"
                 android:layout_marginBottom="25dp" />
 

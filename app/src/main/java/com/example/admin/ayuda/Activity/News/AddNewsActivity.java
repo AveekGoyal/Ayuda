@@ -41,7 +41,6 @@ import java.util.Map;
 public class AddNewsActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     private ImageButton addNewsPicProofImageButton;
-    private Spinner addNewsChooseCategorySpinner;
     private EditText addNewsHeadlineTextBox;
     private EditText addNewsDescriptionTextBox;
     private Button addNewsUploadButton;
@@ -62,7 +61,6 @@ public class AddNewsActivity extends AppCompatActivity implements AdapterView.On
         // Joining Variables with their Ids
 
         addNewsPicProofImageButton = findViewById(R.id.AddNewsPicProofImageButton);
-        addNewsChooseCategorySpinner = findViewById(R.id.AddNewsChooseCategorySpinner);
         addNewsHeadlineTextBox = findViewById(R.id.AddNewsHeadlineTextBox);
         addNewsDescriptionTextBox = findViewById(R.id.AddNewsDescriptionTextBox);
         addNewsUploadButton = findViewById(R.id.AddNewsUploadButton);

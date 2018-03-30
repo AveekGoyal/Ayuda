@@ -63,7 +63,7 @@
 
             <TextView
                 android:id="@+id/AppealListDateCreatedPlainText"
-                android:text="Date Created: "
+                android:text="Date Created : "
                 android:textStyle="italic"
                 android:padding="5dp"
                 android:layout_width="wrap_content"
