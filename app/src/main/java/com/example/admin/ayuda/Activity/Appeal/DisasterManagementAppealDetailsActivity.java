@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.example.admin.ayuda.Activity.MainNavigationActivity;
@@ -33,6 +34,8 @@ import org.w3c.dom.Text;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import es.dmoral.toasty.Toasty;
 
 public class DisasterManagementAppealDetailsActivity extends AppCompatActivity {
 
@@ -226,6 +229,7 @@ public class DisasterManagementAppealDetailsActivity extends AppCompatActivity {
 
                                     }
                                 });
+                                Toasty.info(getApplicationContext() , "Appeal Accepted." , Toast.LENGTH_SHORT).show();
                                 startActivity(new Intent(DisasterManagementAppealDetailsActivity.this, MainNavigationActivity.class));
                                 finish();
 

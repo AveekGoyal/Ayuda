@@ -158,7 +158,35 @@ public class MainNavigationActivity extends AppCompatActivity{
                 break;
 
             case R.id.action_appealsUploaded:
-                startActivity(new Intent(getApplicationContext(), AppealsStatusForUserActivity.class));
+                DatabaseReference getUserType = FirebaseDatabase.getInstance().getReference().child("NgoAdmin").child(userId);
+                getUserType.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        String type = dataSnapshot.child("type").getValue(String.class);
+                        if(type == null)
+                        {
+                            startActivity(new Intent(getApplicationContext(), AppealsAcceptedByNgoActivity.class));
+
+
+                        }
+                        else if(type.equals("NgoAdmin"))
+                        {
+                            Alerter.create(MainNavigationActivity.this)
+                                    .setTitle("Error ")
+                                    .setText("You are not allowed to access this functionality")
+                                    .setDuration(10000)
+                                    .show();
+
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+
+
                 break;
 
         }
