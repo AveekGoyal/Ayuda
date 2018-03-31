@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.widget.Button;
 
 import com.example.admin.ayuda.Data.AppealAdapters.AppealAcceptedByNgoAdapter;
 import com.example.admin.ayuda.Model.Ngo_Appeals;
@@ -29,6 +30,8 @@ public class AppealsAcceptedByNgoActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private List<Ngo_Appeals> ngo_appealsList;
     private AppealAcceptedByNgoAdapter appealAcceptedByNgoAdapter;
+
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
