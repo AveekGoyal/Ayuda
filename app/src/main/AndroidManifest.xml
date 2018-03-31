@@ -111,7 +111,8 @@
             android:name=".Activity.InvitePeople"
             android:label="Invite Friends" />
         <activity android:name=".Activity.LeaderBoard" />
-        <activity android:name=".Activity.ContactUs"></activity>
+        <activity android:name=".Activity.ContactUs" />
+        <activity android:name=".Activity.NgoStatistics"></activity>
     </application>
 
 </manifest>
