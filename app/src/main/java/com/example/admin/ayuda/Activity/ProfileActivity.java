@@ -119,6 +119,7 @@ public class ProfileActivity extends AppCompatActivity {
                                         profileEmailIdEditText.setText(email);
                                         profileNameEditText.setText(String.format("%s %s", firstName, lastName));
                                         profileContactNoEditText.setText(contactNumber);
+                                        profileLocationEditText.setText(type);
 
 
                                     }
@@ -138,6 +139,7 @@ public class ProfileActivity extends AppCompatActivity {
                                 profileEmailIdEditText.setText(email);
                                 profileNameEditText.setText(String.format("%s %s", firstName, lastName));
                                 profileContactNoEditText.setText(contactNumber);
+                                profileLocationEditText.setText(type);
                             }
                         }
 
@@ -157,6 +159,7 @@ public class ProfileActivity extends AppCompatActivity {
                     profileEmailIdEditText.setText(email);
                     profileNameEditText.setText(orgName);
                     profileContactNoEditText.setText(mobileNumber);
+                    profileLocationEditText.setText(type);
 
                 }
             }
