@@ -6,13 +6,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.admin.ayuda.Activity.Login.NonMemberRegistrationActivity"
-    android:background="@color/graylight"
     android:orientation="vertical">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <LinearLayout
-            android:background="@drawable/gradientbackground"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
@@ -22,7 +20,7 @@
                 android:layout_height="wrap_content"
                 android:text="PROFILE"
                 android:textSize="15dp"
-                android:textColor="#fff"
+
                 android:textStyle="bold"/>
             <ImageButton
                 android:id="@+id/ProfileActivityDpImageButton"
@@ -37,7 +35,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Name of the Applicant"
-                android:textColor="#fff"
+
                 android:textStyle="bold"
                 android:inputType="text" />
             <EditText
@@ -45,7 +43,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/ProfileContactNoEditText"
                 android:text="Contact Number"
-                android:textColor="#fff"
+
                 android:textStyle="bold"
                 android:inputType="text" />
             <EditText
@@ -53,22 +51,24 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/ProfileEmailIdEditText"
                 android:text="Email Address"
-                android:textColor="#fff"
+
                 android:textStyle="bold"
                 android:inputType="text"/>
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Location"
+                android:text="Type of User"
                 android:id="@+id/ProfileLocationEditText"
-                android:textColor="#fff"
+
                 android:textStyle="bold"/>
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:background="#009688"
                 android:text="Submit"
+                android:textColor="@color/white"
                 android:id="@+id/ProfileSubmitButton"/>
 
         </LinearLayout>
