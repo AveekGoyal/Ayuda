@@ -16,14 +16,14 @@
       <TextView
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:text="Address"
+          android:text="Address: MIT,Meerut"
           android:id="@+id/ContactUsAddressPlainText"
           android:textSize="20dp"
           android:layout_margin="10dp"></TextView>
       <TextView
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:text="Mobile no."
+          android:text="Mobile number : +91**********"
           android:textSize="20dp"
           android:layout_margin="10dp"
           android:id="@+id/ContactUsContactNoPlainText"></TextView>
@@ -33,7 +33,7 @@
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:layout_margin="10dp"
-          android:text="Email Address"
+          android:text="Email Address : admin@ayuda.com "
           android:textSize="20dp"></TextView>
   </LinearLayout>
 

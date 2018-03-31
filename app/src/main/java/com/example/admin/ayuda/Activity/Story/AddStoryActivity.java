@@ -175,9 +175,9 @@ public class AddStoryActivity extends AppCompatActivity {
                                 Map<String, String> dataToSave = new HashMap<>();
                                 dataToSave.put("storyImage" , downloadUrl.toString());
                                 dataToSave.put("caption" , storyTitle);
-                                dataToSave.put("firstName" , nonMemberDetails.getFirstName());
-                                dataToSave.put("lastName" , nonMemberDetails.getLastName());
-                                dataToSave.put("imageDp" , nonMemberDetails.getDpImage());
+                                dataToSave.put("firstName" , fName);
+                                dataToSave.put("lastName" , lname);
+                                dataToSave.put("imageDp" , imageUrl);
                                 dataToSave.put("timestamp", String.valueOf(java.lang.System.currentTimeMillis()));
                                 newStory.setValue(dataToSave);
                                 startActivity(new Intent(AddStoryActivity.this , MainNavigationActivity.class));
